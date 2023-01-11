@@ -11,7 +11,7 @@ export default async function team(
   res: NextApiResponse<Data>
 ) {
   if (req.method === 'GET') {
-    const fileContents = fs.readFile('json/team.json', 'utf8', (err, data) => {
+    const fileContents = fs.readFile('src/json/team.json', 'utf8', (err, data) => {
       if (err) res.status(500)
       res.status(200).json(JSON.parse(data))
     })
@@ -23,7 +23,7 @@ export default async function team(
 }
 
 async function post(req: NextApiRequest, res: NextApiResponse<Data>) {
-  fs.readFile('json/team.json', (err, data) => {
+  fs.readFile('src/json/team.json', (err, data) => {
     if (err) res.status(500)
     const team = JSON.parse(data.toString())
 
@@ -36,7 +36,7 @@ async function post(req: NextApiRequest, res: NextApiResponse<Data>) {
     })
 
     // Write the updated array back to the JSON file
-    fs.writeFile('json/team.json', JSON.stringify(team), (err) => {
+    fs.writeFile('src/json/team.json', JSON.stringify(team), (err) => {
       if (err) res.status(500)
       res.status(200)
     })

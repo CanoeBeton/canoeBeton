@@ -24,7 +24,7 @@ const TournamentInformation: FunctionComponent<PropsWithChildren<HeaderProps>> =
       console.log(data);
     }
     fetchData();
-  }, []);
+  }, [tournamentName]);
   
   return (
     <div className={styles.page}>

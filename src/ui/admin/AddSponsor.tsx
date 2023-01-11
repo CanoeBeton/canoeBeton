@@ -37,7 +37,7 @@ const AddSponsor: FunctionComponent<PropsWithChildren> = () => {
         value={categorie}
         onChange={(event) => {
           setCategorie(event.target.value)
-          setImagePath(event.target.value.replace(/ /g, ''))
+          setImagePath(event.target.value.replace(/ /g, ""))
         }}
       />
       <br />
@@ -48,11 +48,11 @@ const AddSponsor: FunctionComponent<PropsWithChildren> = () => {
         id="description"
         value={description}
         onChange={(event) => setDescription(event.target.value)}
-        style={{ width: '2000px', height: '200px' }}
+        style={{ width: "2000px", height: "200px" }}
       />
       <br />
       <br />
-      <label htmlFor="imagePath">Nom du fichier de l'image:</label>
+      <label htmlFor="imagePath">Nom du fichier de l&apos;image:</label>
       <input
         type="text"
         id="imagePath"

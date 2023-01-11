@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  
 }
 
 module.exports = {
@@ -9,7 +10,10 @@ module.exports = {
 
     return config;
   },
-  
+  images: {
+    unoptimized: true,
+  },
+
   reactStrictMode: true,
   
 };

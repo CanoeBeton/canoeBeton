@@ -13,7 +13,7 @@ const MemberCard: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ member,
   return (
     <div className={styles.card}>
       {afficherRole ? <span className={styles.role}>{member.role}</span> : null}
-      <Image src={"/../public/Team/"+member.imagePath} alt={member.name} width={300} height={300} />
+      <Image src={"Team/"+member.imagePath} alt={member.name} width={300} height={300} />
       <span className={styles.name}>{member.name}</span>
       <span className={styles.description}>{member.description}</span>
     </div>

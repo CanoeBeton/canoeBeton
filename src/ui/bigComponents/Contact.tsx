@@ -42,7 +42,7 @@ const Contact: FunctionComponent<PropsWithChildren<ContactProps>> = ({}) => {
           </ComplexBox>
           <ComplexBox title="Faire un don">
             Merci de votre intéret! Pour nous encourager, transmettez-nous un
-            chèque à l’ordre de l'<b>Université Laval</b>, pour
+            chèque à l&apos;ordre de l&apos;<b>Université Laval</b>, pour
             <b> Équipe de Canoë de béton</b>.
           </ComplexBox>
         </div>
