@@ -2,7 +2,7 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 import Footer from './Footer'
 import styles from 'styles/ui/bigComponents/Accueil.module.css'
 import Hero from '../smallComponents/hero'
-import Information from '../smallComponents/Information'
+import Information from '../smallComponents/information'
 
 interface HeaderProps {}
 
