@@ -4,7 +4,7 @@ import {
   useEffect,
   useState,
 } from 'react'
-import MemberCard from '../smallComponents/MemberCard'
+import MemberCard from '../smallComponents/memberCard'
 import styles from 'styles/ui/bigComponents/Team.module.css'
 
 export interface Member {
