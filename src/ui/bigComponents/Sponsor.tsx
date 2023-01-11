@@ -5,7 +5,7 @@ import {
   useState,
 } from 'react'
 
-import SponsorCard from '../smallComponents/sponsorCard'
+import SponsorCard from '../smallComponents/SponsorCard'
 import styles from 'styles/ui/bigComponents/Sponsor.module.css'
 
 export interface Sponsor {
