@@ -7,7 +7,7 @@ const Hero: FunctionComponent<PropsWithChildren<HeaderProps>> = ({}) => {
   return (
     <div style={parent}>
       <Image
-        src="/../public/Accueil/hero.webp"
+        src="Accueil/hero.webp"
         alt="Hero image"
         width={1920}
         height={1080}
