@@ -15,7 +15,7 @@ const TournamentCard: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ tou
   return (
     <Link href={lien}>
       <div className={styles.card}>
-        <Image src={"/../public/Historique/" + tournament.imagePath + "main.webp"} alt={tournament.name} width={368} height={314} />
+        <Image src={"Historique/" + tournament.imagePath + "main.webp"} alt={tournament.name} width={368} height={314} />
         <span className={styles.tournament_name}>{tournament.name} - {tournament.date}</span>
       </div>
     </Link>
