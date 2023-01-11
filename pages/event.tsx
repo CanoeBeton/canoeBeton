@@ -5,6 +5,7 @@ const event = () => {
   return (
     <>
       <Header current={'event'} />
+      <h1>Event</h1>
     </>
   )
 }
