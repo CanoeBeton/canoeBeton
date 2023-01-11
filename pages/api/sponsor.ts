@@ -12,7 +12,7 @@ export default async function sponsor(
 ) {
   if (req.method === 'GET') {
     const fileContents = fs.readFile(
-      'json/sponsor.json',
+      'src/json/sponsor.json',
       'utf8',
       (err, data) => {
         if (err) {
@@ -29,7 +29,7 @@ export default async function sponsor(
 }
 
 async function post(req: NextApiRequest, res: NextApiResponse<Data>) {
-  fs.readFile('json/sponsor.json', (err, data) => {
+  fs.readFile('src/json/sponsor.json', (err, data) => {
     if (err) {
       res.status(500)
     }
@@ -41,7 +41,7 @@ async function post(req: NextApiRequest, res: NextApiResponse<Data>) {
       imagePath: req.body.imagePath + '.webp',
     })
 
-    fs.writeFile('json/sponsor.json', JSON.stringify(sponsor), (err) => {
+    fs.writeFile('src/json/sponsor.json', JSON.stringify(sponsor), (err) => {
       if (err) res.status(500)
       res.status(200)
     })

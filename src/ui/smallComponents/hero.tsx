@@ -7,7 +7,7 @@ const Hero: FunctionComponent<PropsWithChildren<HeaderProps>> = ({}) => {
   return (
     <div style={parent}>
       <Image
-        src="/../public/Accueil/hero.webp"
+        src="Accueil/hero.webp"
         alt="Hero image"
         width={1920}
         height={1080}
@@ -18,6 +18,7 @@ const Hero: FunctionComponent<PropsWithChildren<HeaderProps>> = ({}) => {
           objectPosition: '0 100',
         }}
         object-fit={'cover'}
+        priority={true}
       />
       <div style={text}>
         <span style={title}>Canoë de Béton</span>

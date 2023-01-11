@@ -16,7 +16,7 @@ const sponsorCard: FunctionComponent<PropsWithChildren<SponsorCardProps>> = ({
     <div>
       {isMosaique ? (
         <Image
-          src={'/../public/Sponsors/' + sponsor.imagePath}
+          src={'Sponsors/' + sponsor.imagePath}
           width={1000}
           height={3000}
           alt={'logo sponsor'}
@@ -27,7 +27,7 @@ const sponsorCard: FunctionComponent<PropsWithChildren<SponsorCardProps>> = ({
           <div className={styles.description}>{sponsor.description}</div>
           <div className={styles.imageContainer}>
             <Image
-              src={'/../public/Sponsors/' + sponsor.imagePath}
+              src={'Sponsors/' + sponsor.imagePath}
               width={1000}
               height={1000}
               alt={'logo sponsor'}

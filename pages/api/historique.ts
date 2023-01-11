@@ -11,7 +11,7 @@ export default async function historique(
   res: NextApiResponse<Data>
 ) {
   if (req.method === 'GET') {
-    const fileContents = fs.readFile("json/historique.json", 'utf8', (err, data) => {
+    const fileContents = fs.readFile("src/json/historique.json", 'utf8', (err, data) => {
       if (err)
         res.status(500);
       res.status(200).json(JSON.parse(data));

@@ -5,7 +5,7 @@ import {
   useState,
 } from 'react'
 
-import SponsorCard from '../smallComponents/sponsorCard'
+import SponsorCard from '../smallComponents/SponsorCard'
 import styles from 'styles/ui/bigComponents/Sponsor.module.css'
 
 export interface Sponsor {
@@ -37,7 +37,7 @@ const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
       <div className={styles.mosaiqueContainer}>
         {sponsors.map((sponsor) =>
           sponsor.categorie === 'mosaique' ? (
-            <SponsorCard sponsor={sponsor} isMosaique={true} />
+            <SponsorCard sponsor={sponsor} isMosaique={true} key={sponsor.imagePath}/>
           ) : null
         )}
       </div>
@@ -48,7 +48,7 @@ const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
       <div className={styles.sponsorsContainer}>
         {sponsors.map((sponsor) =>
           sponsor.categorie === 'Béton' ? (
-            <SponsorCard sponsor={sponsor} isMosaique={false} />
+            <SponsorCard sponsor={sponsor} isMosaique={false} key={sponsor.imagePath}/>
           ) : null
         )}
       </div>

@@ -4,20 +4,19 @@ import Footer from '../../src/ui/bigComponents/Footer'
 import Header from '../../src/ui/bigComponents/Header'
 import TournamentInformation from '../../src/ui/bigComponents/TournamentInformation'
 
-type Props = {
-};
+type Props = {}
 
-const tournament: React.FC<Props> = ({ }) => {
+const Tournament: React.FC<Props> = ({}) => {
   const router = useRouter()
   const { tournament } = router.query
 
   return (
     <>
       <Header current={'historique'} />
-      <TournamentInformation tournamentName={tournament}/>
+      {/* <TournamentInformation tournamentName={tournament}/> */}
       <Footer />
     </>
   )
 }
 
-export default tournament
+export default Tournament
