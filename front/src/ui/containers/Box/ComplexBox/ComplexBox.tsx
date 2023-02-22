@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FunctionComponent, PropsWithChildren } from 'react'
-import styles from 'styles/ui/containers/box.module.css'
-import stylesTitle from 'styles/ui/bigComponents/Contact.module.css'
+import styles from '../box.module.css'
+import stylesTitle from '../../../bigComponents/Contact/Contact.module.css'
 
 interface ComplexBoxProps {
   title: string

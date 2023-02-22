@@ -1,11 +1,11 @@
-import { CSSProperties, FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent, PropsWithChildren } from 'react'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import YouTubeIcon from '@mui/icons-material/YouTube'
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic'
-import styles from 'styles/ui/smallComponents/Socials.module.css'
+import styles from './Socials.module.css'
 import Link from 'next/link'
 
 interface SocialsProps {}

@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../src/ui/bigComponents/Header'
+import Header from '../src/ui/bigComponents/Header/Header'
 
 const event = () => {
   return (

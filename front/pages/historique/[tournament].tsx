@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-import Footer from '../../src/ui/bigComponents/Footer'
-import Header from '../../src/ui/bigComponents/Header'
-import TournamentInformation from '../../src/ui/bigComponents/TournamentInformation'
+import Footer from '../../src/ui/bigComponents/Accueil/Footer'
+import Header from '../../src/ui/bigComponents/Header/Header'
+import TournamentInformation from '../../src/ui/bigComponents/TournamentInformation/TournamentInformation'
 
 type Props = {}
 

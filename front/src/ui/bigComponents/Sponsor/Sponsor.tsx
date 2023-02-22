@@ -5,14 +5,11 @@ import {
   useState,
 } from 'react'
 
-import SponsorCard from '../smallComponents/SponsorCard'
-import styles from 'styles/ui/bigComponents/Sponsor.module.css'
+import SponsorCard from './SponsorCard/SponsorCard'
+import styles from './Sponsor.module.css'
 
-export interface Sponsor {
-  categorie: string
-  description: string
-  imagePath: string
-}
+//Type
+import { Sponsor } from '../../../domain/Sponsor'
 
 const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
   const [sponsors, setSponsors] = useState<Sponsor[]>([])
@@ -37,7 +34,11 @@ const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
       <div className={styles.mosaiqueContainer}>
         {sponsors.map((sponsor) =>
           sponsor.categorie === 'mosaique' ? (
-            <SponsorCard sponsor={sponsor} isMosaique={true} key={sponsor.imagePath}/>
+            <SponsorCard
+              sponsor={sponsor}
+              isMosaique={true}
+              key={sponsor.imagePath}
+            />
           ) : null
         )}
       </div>
@@ -48,7 +49,11 @@ const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
       <div className={styles.sponsorsContainer}>
         {sponsors.map((sponsor) =>
           sponsor.categorie === 'Béton' ? (
-            <SponsorCard sponsor={sponsor} isMosaique={false} key={sponsor.imagePath}/>
+            <SponsorCard
+              sponsor={sponsor}
+              isMosaique={false}
+              key={sponsor.imagePath}
+            />
           ) : null
         )}
       </div>
