@@ -1,9 +1,9 @@
 import React from 'react'
 import { FunctionComponent, PropsWithChildren } from 'react'
-import styles from 'styles/ui/bigComponents/Contact.module.css'
-import SimpleBox from '../containers/SimpleBox'
-import ComplexBox from '../containers/ComplexBox'
-import Socials from '../smallComponents/Socials'
+import styles from './Contact.module.css'
+import SimpleBox from '../../containers/Box/SimpleBox/SimpleBox'
+import ComplexBox from '../../containers/Box/ComplexBox/ComplexBox'
+import Socials from '../../smallComponents/Socials/Socials'
 import Image from 'next/image'
 
 interface ContactProps {}

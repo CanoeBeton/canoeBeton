@@ -4,15 +4,11 @@ import {
   useEffect,
   useState,
 } from 'react'
-import MemberCard from '../smallComponents/MemberCard'
-import styles from 'styles/ui/bigComponents/Team.module.css'
+import MemberCard from './MemberCard/MemberCard'
+import styles from './Team.module.css'
 
-export interface Member {
-  name: string
-  role: string
-  description: string
-  imagePath: string
-}
+//Type
+import { Member } from '../../../domain/Member'
 
 const Team: FunctionComponent<PropsWithChildren> = ({}) => {
   const [members, setMembers] = useState<Member[]>([])

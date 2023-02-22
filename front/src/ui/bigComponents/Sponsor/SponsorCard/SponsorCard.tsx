@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { FunctionComponent, PropsWithChildren } from 'react'
-import { Sponsor } from '../bigComponents/Sponsor'
-import styles from 'styles/ui/smallComponents/SponsorCard.module.css'
+import Sponsor from '../Sponsor'
+import styles from './SponsorCard.module.css'
 
 interface SponsorCardProps {
   sponsor: Sponsor
