@@ -11,5 +11,4 @@ services:
       - '9200'
     volumes:
       - my-db:/var/lib/mysql
-volumes:
-  my-db:
+      - ./infra/init:/docker-entrypoint-initdb.d
