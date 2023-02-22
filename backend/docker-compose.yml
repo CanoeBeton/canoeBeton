@@ -1,0 +1,9 @@
+version: '2.1'
+services:
+  bd:
+      image: mysql:latest
+      container_name: canoe-bd
+      volumes:
+        - base_de_donnee
+      ports:
+        - '3306:3306'
