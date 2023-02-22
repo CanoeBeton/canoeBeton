@@ -1,0 +1,6 @@
+Flask==2.2.2
+Flask-RESTful==0.3.9
+Flask-Cors==3.0.10
+pymongo==4.3.3
+yagmail==0.15.293
+sendgrid==6.9.7
