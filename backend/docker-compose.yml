@@ -10,5 +10,4 @@ services:
     expose:
       - '9200'
     volumes:
-      - my-db:/var/lib/mysql
-      - ./infra/init:/docker-entrypoint-initdb.d
+      - ./init:/docker-entrypoint-initdb.d
