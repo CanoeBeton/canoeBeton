@@ -1,9 +1,15 @@
-version: '2.1'
+version: '3.3'
 services:
-  bd:
-      image: mysql:latest
-      container_name: canoe-bd
-      volumes:
-        - base_de_donnee
-      ports:
-        - '3306:3306'
+  db:
+    image: mysql:8.0.32
+    environment:
+      MYSQL_DATABASE: 'canoe'
+      MYSQL_ROOT_PASSWORD: '1234'
+    ports:
+      - '9200:3306'
+    expose:
+      - '9200'
+    volumes:
+      - my-db:/var/lib/mysql
+volumes:
+  my-db:
