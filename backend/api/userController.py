@@ -1,4 +1,3 @@
-from bson import json_util
 from flask import request, jsonify
 
 from api.resource import ApiResource
@@ -26,43 +25,7 @@ class UserController(ApiResource):
         user_repository.create_account(user)
 
     def put(self):
-        data = request.get_json()
-        if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
-            return {"error": "Token invalide"}, 400
-        return user_repository.update_mdp(data['newMdp'], request.headers.get("authorization").replace("Bearer ", ""))
+        return {}, 200
 
     def get(self):
-        users = user_repository.get_all_users()
-        return json.loads(json_util.dumps(users))
-
-
-class LoginController(ApiResource):
-    @staticmethod
-    def path():
-        return "/user:login"
-
-    def post(self):
-        data = request.get_json()
-        if (not user_repository.user_exist(data['email'])):
-            return {"error": "Courriel invalide"}, 400
-
-        return user_repository.login(data['email'], data['password'])
-
-class MeController(ApiResource):
-    @staticmethod
-    def path():
-        return "/user:me"
-
-    def get(self):
-        user = user_repository.get(request.headers.get("authorization").replace("Bearer ", ""))
-        return json.dumps(user, default=str)
-
-class LogoutController(ApiResource):
-    @staticmethod
-    def path():
-        return "/user:logout"
-
-    def post(self):
-        token = request.headers.get("authorization").replace("Bearer ", "")
-        return user_repository.logout(token)
-
+        return {}, 200
