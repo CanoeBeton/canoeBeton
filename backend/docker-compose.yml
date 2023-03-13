@@ -6,8 +6,8 @@ services:
       MYSQL_DATABASE: 'canoe'
       MYSQL_ROOT_PASSWORD: '1234'
     ports:
-      - '9200:3306'
+      - '3306:3306'
     expose:
-      - '9200'
+      - '3306'
     volumes:
       - ./init:/docker-entrypoint-initdb.d

@@ -5,7 +5,7 @@ from flask_cors import CORS
 from flask_restful import Api
 
 from api.resource import ApiResource
-from api.userController import UserController, LoginController, LogoutController, MeController
+from api.userController import UserController
 
 
 app = Flask(__name__)
@@ -15,9 +15,6 @@ api = Api(app)
 
 routes: list[Type[ApiResource]] = [
     UserController,
-    LoginController,
-    LogoutController,
-    MeController
 ]
 
 for route in routes:

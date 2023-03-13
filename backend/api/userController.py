@@ -2,8 +2,6 @@ from flask import request, jsonify
 
 from api.resource import ApiResource
 from infra.userRepository import UserRepository
-from domain.user import User
-import json
 
 user_repository = UserRepository()
 
@@ -13,19 +11,28 @@ class UserController(ApiResource):
         return "/user"
 
     def post(self):
-        if(not user_repository.is_valide_token(request.headers.get("authorization").replace("Bearer ", ""))):
-            return {"error": "Token invalide"}, 400
-        if(not user_repository.is_admin(request.headers.get("authorization").replace("Bearer ", ""))):
-            return {"error": "Vous n'êtes pas admin"}, 400
-        data = request.get_json()
-        user = User(data['type'], data['firstName'], data['lastName'], data['email'])
-        if(user_repository.user_exist(user.email)):
-            return {"error": "User already exists"}, 400
-
-        user_repository.create_account(user)
-
-    def put(self):
-        return {}, 200
+        user = request.get_json()
+        user_repository.create_user(user["name"], user["role"], user["description"], user["image"])
+        return jsonify({"success": True})
 
     def get(self):
-        return {}, 200
+        users = user_repository.get_all_users()
+        return jsonify(users)
+
+class UserByIdController(ApiResource):
+    @staticmethod
+    def path():
+        return "/user/<id>"
+
+    def get(self, id):
+        user = user_repository.get_user(id)
+        return jsonify(user)
+
+    def put(self, id):
+        user = request.get_json()
+        user_repository.update_user(user["name"], user["role"], user["description"], user["image"], id)
+        return jsonify({"success": True})
+
+    def delete(self, id):
+        user_repository.delete_user(id)
+        return jsonify({"success": True})

@@ -1,5 +1,6 @@
 class User:
-    def __init__(self, firstName: str, lastName: str, email: str):
-        self.firstName = firstName
-        self.lastName = lastName
-        self.email = email
+    def __init__(self, name, description, role, image):
+        self.name = name
+        self.description = description
+        self.role = role
+        self.image = image
