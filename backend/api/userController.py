@@ -1,6 +1,7 @@
 from flask import request, jsonify
 
 from api.resource import ApiResource
+from domain.user import UserRequest
 from infra.userRepository import UserRepository
 
 user_repository = UserRepository()
@@ -11,8 +12,9 @@ class UserController(ApiResource):
         return "/user"
 
     def post(self):
-        user = request.get_json()
-        user_repository.create_user(user["name"], user["role"], user["description"], user["image"])
+        user_json = request.get_json()
+        user_request = UserRequest(**user_json)
+        user_repository.create_user(user_request)
         return jsonify({"success": True})
 
     def get(self):
