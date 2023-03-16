@@ -1,8 +1,8 @@
 USE canoe;
 
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS users;
 
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS users (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     role VARCHAR(255) NOT NULL,
@@ -11,5 +11,5 @@ CREATE TABLE IF NOT EXISTS user (
     PRIMARY KEY (id)
 );
 
-INSERT INTO user (name, role, description, image_path)
+INSERT INTO users (name, role, description, image_path)
 VALUES ('Test', 'Role', 'Description', 'image_path');
