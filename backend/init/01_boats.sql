@@ -1,5 +1,3 @@
-USE canoe;
-
 DROP TABLE IF EXISTS boats;
 
 CREATE TABLE IF NOT EXISTS boats (
