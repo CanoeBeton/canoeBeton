@@ -1,4 +1,4 @@
-class UserRequest:
+class MemberRequest:
     def __init__(self, name, description, role, image_path):
         self.name = name
         self.description = description
