@@ -7,17 +7,15 @@ import { Member } from '../../../../domain/Member'
 
 interface HeaderProps {
   member: Member
-  afficherRole?: boolean
 }
 
 const MemberCard: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
-  member,
-  afficherRole,
+  member
 }) => {
   console.log(member)
   return (
     <div className={styles.card}>
-      {afficherRole ? <span className={styles.role}>{member.role}</span> : null}
+      {member.role ? <span className={styles.role}>{member.role}</span> : null}
       <img
         src={`data:image/png;base64,${member.image}`}
         alt={member.name}
