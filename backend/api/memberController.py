@@ -2,7 +2,7 @@ from flask import request, jsonify
 
 from api.resource import ApiResource
 from domain.member import MemberRequest
-from infra.memberrRepository import MemberRepository
+from infra.memberRepository import MemberRepository
 
 member_repository = MemberRepository()
 
@@ -19,7 +19,7 @@ class MemberController(ApiResource):
 
     def get(self):
         members = member_repository.get_all_members()
-        return jsonify(members)
+        return jsonify(members.__dict__())
 
 class MemberByIdController(ApiResource):
     @staticmethod
@@ -28,7 +28,7 @@ class MemberByIdController(ApiResource):
 
     def get(self, id):
         member = member_repository.get_member(id)
-        return jsonify(member)
+        return jsonify(member.__dict__())
 
     def put(self, id):
         member = request.get_json()

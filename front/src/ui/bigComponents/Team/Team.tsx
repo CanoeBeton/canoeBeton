@@ -7,18 +7,18 @@ import {
 import MemberCard from './MemberCard/MemberCard'
 import styles from './Team.module.css'
 
-//Type
 import { Member } from '../../../domain/Member'
+import { getMembers } from '../../../api/member'
 
 const Team: FunctionComponent<PropsWithChildren> = ({}) => {
   const [members, setMembers] = useState<Member[]>([])
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await fetch('/api/team')
-      const data = await res.json()
-      setMembers(data)
-    }
+    const fetchData = async () => {
+      const members = await getMembers();
+      setMembers(members);
+    };
+
     fetchData()
   }, [])
 
@@ -29,7 +29,7 @@ const Team: FunctionComponent<PropsWithChildren> = ({}) => {
       <div className={styles.team_container}>
         {members.map((member) =>
           member.role !== "Membre de l'équipe" ? (
-            <MemberCard member={member} key={member.name} afficherRole />
+            <MemberCard member={member} key={member.id} afficherRole />
           ) : null
         )}
       </div>

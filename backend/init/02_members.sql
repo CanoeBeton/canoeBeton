@@ -13,7 +13,7 @@ set @image = '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApoAAAMMCA
 ';
 
 INSERT INTO members (name, role, description, image) VALUES
-('John Doe', 'Responsable communication', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', @image),
+('John Doe', 'Responsable communication', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', 'test'),
 ('John Doe2', 'CEO', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', @image),
 ('Alice Smith', 'Marketing Manager', 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas', @image),
 ('Robert Johnson', 'Sales Director', 'Donec malesuada convallis lectus ac maximus. Fusce porta ipsum vitae felis mollis blandit', @image),
