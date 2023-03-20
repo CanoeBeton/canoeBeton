@@ -11,8 +11,8 @@ class MemberResponse:
     def __init__(self, tuple):
         self.id = tuple[0]
         self.name = tuple[1]
-        self.description = tuple[2]
-        self.role = tuple[3]
+        self.role = tuple[2]
+        self.description = tuple[3]
         self.image = tuple[4]
 
     def __dict__(self):
