@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-import Footer from '../../src/ui/bigComponents/Accueil/Footer'
+import Footer from '../../src/ui/bigComponents/Accueil/Footer/Footer'
 import Header from '../../src/ui/bigComponents/Header/Header'
 import TournamentInformation from '../../src/ui/bigComponents/TournamentInformation/TournamentInformation'
 

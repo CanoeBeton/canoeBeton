@@ -7,18 +7,18 @@ import {
 import MemberCard from './MemberCard/MemberCard'
 import styles from './Team.module.css'
 
-//Type
 import { Member } from '../../../domain/Member'
+import { getMembers } from '../../../api/member'
 
 const Team: FunctionComponent<PropsWithChildren> = ({}) => {
   const [members, setMembers] = useState<Member[]>([])
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await fetch('/api/team')
-      const data = await res.json()
-      setMembers(data)
-    }
+    const fetchData = async () => {
+      const members = await getMembers();
+      setMembers(members);
+    };
+
     fetchData()
   }, [])
 
@@ -27,20 +27,13 @@ const Team: FunctionComponent<PropsWithChildren> = ({}) => {
       <span className={styles.big_title}>Notre équipe</span>
       <span className={styles.title}>Nos responsables</span>
       <div className={styles.team_container}>
-        {members.map((member) =>
-          member.role !== "Membre de l'équipe" ? (
-            <MemberCard member={member} key={member.name} afficherRole />
-          ) : null
-        )}
+      {members.filter((member) => member.role !== null).map((member) => (<MemberCard member={member} key={member.name} />))}
+
       </div>
 
       <span className={styles.title}>Nos membres</span>
       <div className={styles.team_container}>
-        {members.map((member) =>
-          member.role === "Membre de l'équipe" ? (
-            <MemberCard member={member} key={member.name} />
-          ) : null
-        )}
+        {members.filter((member) => member.role === null).map((member) => (<MemberCard member={member} key={member.name} />))}
       </div>
     </div>
   )
