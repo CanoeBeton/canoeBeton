@@ -8,18 +8,18 @@ class MemberRepository:
 
     def __init__(self):
         self.connection = Connection()
-    def create_member(self, member: MemberRequest):
-        self.connection.change(f'INSERT INTO {MemberRepository.TABLE} (name, role, description, image_path) VALUES ("{member.name}", "{member.role}" , "{member.description}",  "{member.image_path}")')
+    def create(self, member: MemberRequest):
+        self.connection.change(f'INSERT INTO {MemberRepository.TABLE} (name, role, description, image) VALUES ("{member.name}", "{member.role}" , "{member.description}",  "{member.image_path}")')
 
-    def get_member(self, id) -> MemberResponse:
+    def get(self, id) -> MemberResponse:
         tuple = self.connection.get(f'SELECT * FROM {MemberRepository.TABLE} WHERE id = {id}')
         return MemberResponse(tuple[0])
 
-    def get_all_members(self) -> MemberResponseList:
+    def get_all(self) -> MemberResponseList:
         return MemberResponseList(self.connection.get(f'SELECT * FROM {MemberRepository.TABLE}'))
 
-    def update_member(self, member, member_id):
-        self.connection.change(f'UPDATE {MemberRepository.TABLE} SET name = {member.name}, role = {member.role}, description = {member.description} image_path = {member.image_path} WHERE id = {member_id}')
+    def update(self, member, member_id):
+        self.connection.change(f'UPDATE {MemberRepository.TABLE} SET name = "{member.name}", role = "{member.role}", description = "{member.description}", image = "{member.image_path}" WHERE id = {member_id}')
 
-    def delete_member(self, id):
+    def delete(self, id):
         self.connection.change(f'DELETE FROM {MemberRepository.TABLE} WHERE id = {id}')

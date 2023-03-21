@@ -1,5 +1,3 @@
-import json
-
 class MemberRequest:
     def __init__(self, name, description, role, image):
         self.name = name
