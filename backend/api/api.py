@@ -4,6 +4,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_restful import Api
 
+from api.eventController import EventController, EventByIdController
 from api.resource import ApiResource
 from api.memberController import MemberController, MemberByIdController
 from api.healthContoller import HealthController
@@ -17,7 +18,9 @@ api = Api(app)
 routes: list[Type[ApiResource]] = [
     MemberController,
     HealthController,
-    MemberByIdController
+    MemberByIdController,
+    EventController,
+    EventByIdController
 ]
 
 for route in routes:

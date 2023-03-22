@@ -1,9 +1,9 @@
 class MemberRequest:
-    def __init__(self, name, description, role, image):
-        self.name = name
-        self.description = description
-        self.role = role
-        self.image = image
+    def __init__(self, member_json):
+        self.name = member_json["name"]
+        self.description = member_json["description"]
+        self.role = member_json["role"]
+        self.image = member_json["image"]
 
 class MemberResponse:
     def __init__(self, tuple):

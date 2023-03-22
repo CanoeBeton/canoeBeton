@@ -13,7 +13,7 @@ class MemberController(ApiResource):
 
     def post(self):
         member_json = request.get_json()
-        member_request = MemberRequest(**member_json)
+        member_request = MemberRequest(member_json)
         member_repository.create(member_request)
         return jsonify({"success": True})
 
@@ -31,8 +31,11 @@ class MemberByIdController(ApiResource):
         return jsonify(member.__dict__())
 
     def put(self, id):
-        member = request.get_json()
-        member_repository.update(member["name"], member["role"], member["description"], member["image"], id)
+        member_json = request.get_json()
+
+        member_request = MemberRequest(member_json)
+
+        member_repository.update(member_request, id)
         return jsonify({"success": True})
 
     def delete(self, id):
