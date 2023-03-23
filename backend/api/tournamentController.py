@@ -37,7 +37,3 @@ class TournamentByIdController(ApiResource):
     def delete(self, id):
         tournament_repository.delete(id)
         return jsonify({"success": True})
-
-    def position(self, id):
-        position = request.get_json()["position"]
-        tournament_repository.position(id, position)

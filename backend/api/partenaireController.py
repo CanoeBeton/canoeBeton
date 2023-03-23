@@ -42,10 +42,14 @@ class PartenaireByIdController(ApiResource):
         partenaireRepository.delete(id)
         return jsonify({"success": True})
 
-    def activate(self, id):
-        partenaireRepository.activate(id)
+class PartenaireActivateController(ApiResource):
+    @staticmethod
+    def path():
+        return "/partenaire/<id>/<activate>"
+    def post(self, id, activate):
+        if activate==1:
+            return self.partenaireRepository.activate(id)
+        elif activate==0:
+            return self.partenaireRepository.deactivate(id)
         return jsonify({"success": True})
 
-    def deactivate(self, id):
-        partenaireRepository.deactivate(id)
-        return jsonify({"success": True})

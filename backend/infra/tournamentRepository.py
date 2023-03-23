@@ -23,6 +23,3 @@ class TournamentRepository:
 
     def delete(self, id):
         self.connection.change(f'DELETE FROM {TournamentRepository.TABLE} WHERE id = {id}')
-
-    def position(self, id, position):
-        self.connection.change(f'UPDATE {TournamentRepository.TABLE} SET position = {position} WHERE id = {id}')
