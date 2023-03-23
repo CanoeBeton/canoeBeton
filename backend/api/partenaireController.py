@@ -21,7 +21,7 @@ class PartenaireController(ApiResource):
         partenaires = partenaireRepository.get_all()
         return jsonify(partenaires.__dict__())
 
-class PartenaireByIDController(ApiResource):
+class PartenaireByIdController(ApiResource):
     @staticmethod
     def path():
         return "/partenaire/<id>"
