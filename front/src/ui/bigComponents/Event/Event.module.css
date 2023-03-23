@@ -9,10 +9,13 @@
   justify-content: center;
 }
 
-.subtitle{
-  padding: 0 0 0 20px;
-}
-
 .calendar{
   margin: 0px 20px;
+}
+
+.calendar_section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5vh;
 }

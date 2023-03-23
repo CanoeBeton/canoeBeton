@@ -6,6 +6,10 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from "@fullcalendar/interaction"
 import { EventClickArg } from '@fullcalendar/core'
+import frLocale from '@fullcalendar/core/locales/fr';
+import Modal from '@mui/material/Modal';
+import EventModal from '../EventModal/EventModal'
+
 
 interface HeaderProps { 
   events: EventDomaine[]
@@ -19,8 +23,10 @@ interface CalendarEvent {
   allDay: boolean;
  }
 
-const Event: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ events }) => {
+const Calendar: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ events }) => {
   const [calendarEvents, setCalendarEvent] = useState<CalendarEvent[]>([])
+  const [event, setEvent] = useState<EventDomaine | undefined>(undefined)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     const calendarEvents: CalendarEvent[] = events.map((event: EventDomaine) => ({
@@ -30,17 +36,18 @@ const Event: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ events }) =>
       end: new Date(event.end_date).toISOString().split('T')[0],
       allDay: true,
     }))
-    console.log(calendarEvents)
     setCalendarEvent(calendarEvents)
    }, [events])
 
   const handleEventClick = (arg: EventClickArg) => { 
-    alert(arg.event.title)
+    setEvent(events.find((event: EventDomaine) => event.id.toString() === arg.event.id))
+    setOpen(true)
   }
 
   return (
     <span className={styles.calendar}>
       <FullCalendar
+        locale={frLocale}
         plugins={[dayGridPlugin, interactionPlugin]}
         initialView='dayGridMonth'
         selectable={true}
@@ -48,9 +55,19 @@ const Event: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ events }) =>
         events={calendarEvents}
         themeSystem={'true'}
         eventClick={handleEventClick}
-        />
+        height={600}
+      />
+    <Modal
+      open={open}
+      onClose={() => setOpen(false)}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      {event ? <EventModal event={event} /> : <span>Une erreur est survenu!</span>}
+    </Modal>
+        
     </span>
   )
 }
 
-export default Event
+export default Calendar
