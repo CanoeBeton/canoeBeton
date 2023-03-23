@@ -42,6 +42,7 @@ class YearActivateController(ApiResource):
     @staticmethod
     def path():
         return "/year/<id>/activate"
+
     def post(self, id):
         year_repository.activate(id)
         return jsonify({"success": True})
