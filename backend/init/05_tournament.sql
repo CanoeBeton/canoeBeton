@@ -7,6 +7,7 @@ CREATE TABLE tournaments (
     position INT,
     localisation VARCHAR(255),
     description VARCHAR(255),
+    date DATE,
   PRIMARY KEY (id)
 );
 
