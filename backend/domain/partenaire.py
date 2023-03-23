@@ -1,12 +1,3 @@
-# CREATE TABLE partenaires (
-#     name varchar(255) NOT NULL,
-#     description TEXT NOT NULL,
-#     active tinyint(1) NOT NULL DEFAULT '0',
-#     type enum('bronze', 'argent', 'or', 'platinium') NOT NULL DEFAULT 'bronze',
-#     image BLOB,
-#     PRIMARY KEY (name)
-# );
-
 class PartenaireRequest:
     def __init__(self, partenaire_json):
         self.name = partenaire_json['name']
