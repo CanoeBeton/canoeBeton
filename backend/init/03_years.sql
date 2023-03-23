@@ -3,7 +3,7 @@ drop table if exists years;
 CREATE TABLE years (
   year int(4) NOT NULL,
   boat_name varchar(100) not null,
-  partenaire_mosaique blob,
+  partenaire_mosaique LONGBLOB,
   active tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (year)
 );
