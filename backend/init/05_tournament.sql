@@ -8,6 +8,7 @@ CREATE TABLE tournaments (
     localisation VARCHAR(255),
     description VARCHAR(255),
     date DATETIME,
+    FOREIGN KEY (year) REFERENCES years(year),
     PRIMARY KEY (id)
 );
 

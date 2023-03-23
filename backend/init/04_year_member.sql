@@ -1,9 +1,11 @@
 drop table if exists years_members;
 
 CREATE TABLE years_members (
-  year int(11) NOT NULL,
-  member_id int(11) NOT NULL,
-  PRIMARY KEY (year, member_id)
+    year int(11) NOT NULL,
+    member_id int(11) NOT NULL,
+    FOREIGN KEY (year) REFERENCES years(year),
+    FOREIGN KEY (member_id) REFERENCES members(id),
+    PRIMARY KEY (year, member_id)
 );
 
 insert into years_members (year, member_id) values

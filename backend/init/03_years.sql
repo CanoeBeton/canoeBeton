@@ -5,6 +5,7 @@ CREATE TABLE years (
   boat_name varchar(100) not null,
   partenaire_mosaique LONGBLOB,
   active tinyint(1) NOT NULL DEFAULT '0',
+  FOREIGN KEY (boat_name) REFERENCES boats(name),
   PRIMARY KEY (year)
 );
 
@@ -15,29 +16,29 @@ set @partenaire_image = 'data:image/webp;base64,UklGRnpjCQBXRUJQVlA4WAoAAAAIAAAA
 
 
 insert into years (year, boat_name, partenaire_mosaique) values
-(2000, 'boat0', @partenaire_image),
-(2001, 'boat1', @partenaire_image),
-(2002, 'boat2', @partenaire_image),
-(2003, 'boat3', @partenaire_image),
-(2004, 'boat4', @partenaire_image),
-(2005, 'boat5', @partenaire_image),
-(2006, 'boat6', @partenaire_image),
-(2007, 'boat7', @partenaire_image),
-(2008, 'boat8', @partenaire_image),
-(2009, 'boat9', @partenaire_image),
-(2010, 'boat10', @partenaire_image),
-(2011, 'boat11', @partenaire_image),
-(2012, 'boat12', @partenaire_image),
-(2013, 'boat13', @partenaire_image),
-(2014, 'boat14', @partenaire_image),
-(2015, 'boat15', @partenaire_image),
-(2016, 'boat16', @partenaire_image),
-(2017, 'boat17', @partenaire_image),
-(2018, 'boat18', @partenaire_image),
-(2019, 'boat19', @partenaire_image),
-(2020, 'boat20', @partenaire_image),
-(2021, 'boat21', @partenaire_image),
-(2022, 'boat22', @partenaire_image);
+(2000, 'boat1', @partenaire_image),
+(2001, 'boat2', @partenaire_image),
+(2002, 'boat3', @partenaire_image),
+(2003, 'boat4', @partenaire_image),
+(2004, 'boat5', @partenaire_image),
+(2005, 'boat6', @partenaire_image),
+(2006, 'boat7', @partenaire_image),
+(2007, 'boat8', @partenaire_image),
+(2008, 'boat9', @partenaire_image),
+(2009, 'boat10', @partenaire_image),
+(2010, 'boat11', @partenaire_image),
+(2011, 'boat12', @partenaire_image),
+(2012, 'boat13', @partenaire_image),
+(2013, 'boat14', @partenaire_image),
+(2014, 'boat15', @partenaire_image),
+(2015, 'boat16', @partenaire_image),
+(2016, 'boat17', @partenaire_image),
+(2017, 'boat18', @partenaire_image),
+(2018, 'boat19', @partenaire_image),
+(2019, 'boat20', @partenaire_image),
+(2020, 'boat21', @partenaire_image),
+(2021, 'boat22', @partenaire_image),
+(2022, 'boat23', @partenaire_image);
 
 insert into years (year, boat_name, partenaire_mosaique, active) values
 (2023, 'boat23', @partenaire_image, 1);
