@@ -1,62 +1,32 @@
 import {
   FunctionComponent,
   PropsWithChildren,
-  useEffect,
-  useState,
 } from 'react'
 
-import SponsorCard from './SponsorCard/SponsorCard'
 import styles from './Sponsor.module.css'
 
-//Type
-import { Sponsor } from '../../../domain/Sponsor'
+import { useQuery } from "@tanstack/react-query";
+import { getPartenaire } from "../../../api/partenaire";
+import {Partenaire} from "../../../domain/Partenaire";
+import SponsorCard from "./SponsorCard/SponsorCard";
 
 const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
-  const [sponsors, setSponsors] = useState<Sponsor[]>([])
 
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch('/api/sponsor')
-      const data = await res.json()
-      setSponsors(data)
-    }
-    fetchData()
-  }, [])
+  const {data: partenaire , status} = useQuery({ queryKey: ['partenaire'], queryFn: () => getPartenaire(true) })
 
   return (
     <div className={styles.page}>
       <div className={styles.h1}>Partenaires</div>
-      <div className={styles.sousTitre}>2021-2022</div>
-      <div>
-        Merci à nos fidèles partenaires de contribuer à notre projet chaque
-        année!
-      </div>
-      <div className={styles.mosaiqueContainer}>
-        {sponsors.map((sponsor) =>
-          sponsor.categorie === 'mosaique' ? (
-            <SponsorCard
-              sponsor={sponsor}
-              isMosaique={true}
-              key={sponsor.imagePath}
-            />
-          ) : null
-        )}
-      </div>
-      <div className={styles.h2}>Categorie Béton</div>
-      <div>
-        Un merci spéciale à nos partenaires <b>Béton</b>!
-      </div>
-      <div className={styles.sponsorsContainer}>
-        {sponsors.map((sponsor) =>
-          sponsor.categorie === 'Béton' ? (
-            <SponsorCard
-              sponsor={sponsor}
-              isMosaique={false}
-              key={sponsor.imagePath}
-            />
-          ) : null
-        )}
-      </div>
+      <h2>Nos partenaire de l&apos;année! </h2>
+      <h2>Nos partenaire </h2>
+
+      {status == 'error' && <span>Une erreur est survenue, veillez réessayer plustard</span>}
+      {status == 'loading' && <span> Chargement en cours ! </span>}
+      {status == 'success' &&
+        <div>
+          {partenaire?.map((partenaire) => <SponsorCard partenaire={partenaire}/>)}
+        </div>
+      }
     </div>
   )
 }

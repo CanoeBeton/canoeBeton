@@ -9,16 +9,16 @@ class PartenaireResponse:
     def __init__(self, tuple):
         self.name = tuple[0]
         self.description = tuple[1]
-        self.type = tuple[2]
-        self.image = tuple[3]
-        self.active = tuple[4]
+        self.active = tuple[2]
+        self.type = tuple[3]
+        self.image = tuple[4]
 
     def __dict__(self):
         dict_obj = {
             "name": self.name,
             "description": self.description,
             "type": self.type,
-            "image": self.image,
+            "image": self.image.decode('utf-8'),
             "active": self.active,
         }
         return dict_obj

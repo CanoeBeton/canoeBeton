@@ -2,7 +2,7 @@ from flask import request, jsonify
 
 from api.resource import ApiResource
 from infra.partenaireRepository import PartenaireRepository
-from domain.partenaire import PartenaireRequest
+from domain.partenaire import PartenaireRequest, PartenaireResponseList
 
 partenaireRepository = PartenaireRepository()
 
@@ -18,8 +18,12 @@ class PartenaireController(ApiResource):
         return jsonify({"success": True})
 
     def get(self):
-        partenaires = partenaireRepository.get_all()
-        return jsonify(partenaires.__dict__())
+        if request.headers.get('active') == 'true':
+            partenaires = partenaireRepository.get_all_active()
+            return jsonify(partenaires.__dict__())
+        else:
+            partenaires = partenaireRepository.get_all()
+            return jsonify(partenaires.__dict__())
 
 class PartenaireByIdController(ApiResource):
     @staticmethod

@@ -29,3 +29,6 @@ class PartenaireRepository:
 
     def deactivate(self, id):
         self.connection.change(f'UPDATE {PartenaireRepository.TABLE} SET active = 0 WHERE id = {id}')
+
+    def get_all_active(self) -> PartenaireResponseList:
+        return PartenaireResponseList(self.connection.get(f'SELECT * FROM {PartenaireRepository.TABLE} WHERE active = 1'))
