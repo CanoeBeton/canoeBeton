@@ -1,3 +1,5 @@
-CREATE DATABASE IF NOT EXISTS canoe;
+DROP DATABASE IF EXISTS canoe;
+
+CREATE DATABASE canoe;
 
 use canoe;

@@ -1,41 +1,29 @@
 import Image from 'next/image'
 import { FunctionComponent, PropsWithChildren } from 'react'
-import Sponsor from '../Sponsor'
 import styles from './SponsorCard.module.css'
+import {Partenaire} from "../../../../domain/Partenaire";
 
 interface SponsorCardProps {
-  sponsor: Sponsor
-  isMosaique?: boolean
+  partenaire : Partenaire
 }
 
 const sponsorCard: FunctionComponent<PropsWithChildren<SponsorCardProps>> = ({
-  sponsor,
-  isMosaique,
+ partenaire
 }) => {
   return (
     <div>
-      {isMosaique ? (
-        <Image
-          src={'Sponsors/' + sponsor.imagePath}
-          width={1000}
-          height={3000}
-          alt={'logo sponsor'}
-          className={styles.responsive}
-        />
-      ) : (
-        <div className={styles.card}>
-          <div className={styles.description}>{sponsor.description}</div>
-          <div className={styles.imageContainer}>
-            <Image
-              src={'Sponsors/' + sponsor.imagePath}
-              width={1000}
-              height={1000}
-              alt={'logo sponsor'}
-              className={styles.responsiveSmaller}
-            />
-          </div>
+      <div className={styles.card}>
+        <div className={styles.description}>{partenaire.description}</div>
+        <div className={styles.imageContainer}>
+          <Image
+            src={partenaire.image}
+            width={1000}
+            height={1000}
+            alt={'logo sponsor'}
+            className={styles.responsiveSmaller}
+          />
         </div>
-      )}
+      </div>
     </div>
   )
 }

@@ -8,6 +8,10 @@ from api.eventController import EventController, EventByIdController
 from api.resource import ApiResource
 from api.memberController import MemberController, MemberByIdController
 from api.healthContoller import HealthController
+from api.boatController import BoatController, BoatByIdController
+from api.partenaireController import PartenaireController, PartenaireByIdController, PartenaireActivateController
+from api.tournamentController import TournamentController, TournamentByIdController
+from api.yearController import YearController, YearByIdController, YearActivateController
 from error.NotFoundError import NotFoundError
 
 app = Flask(__name__)
@@ -20,7 +24,17 @@ routes: list[Type[ApiResource]] = [
     HealthController,
     MemberByIdController,
     EventController,
-    EventByIdController
+    EventByIdController,
+    BoatController,
+    BoatByIdController,
+    PartenaireController,
+    PartenaireByIdController,
+    TournamentController,
+    TournamentByIdController,
+    PartenaireActivateController,
+    YearController,
+    YearByIdController,
+    YearActivateController
 ]
 
 for route in routes:

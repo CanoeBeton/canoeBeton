@@ -4,7 +4,7 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 import styles from './TournamentCard.module.css'
 
 //Type
-import { Tournament } from '../../../domain/Tournament'
+import { Tournament } from '../../../../domain/Tournament'
 
 interface HeaderProps {
   tournament: Tournament

@@ -7,7 +7,7 @@ import {
 import styles from 'styles/ui/bigComponents/Historique.module.css'
 
 //Type
-import { Tournament } from '../../../domain/Tournament'
+import { Tournament } from '../../../../domain/Tournament'
 
 interface HeaderProps {
   tournamentName: string
@@ -16,7 +16,6 @@ interface HeaderProps {
 const TournamentInformation: FunctionComponent<
   PropsWithChildren<HeaderProps>
 > = ({ tournamentName }) => {
-  console.log(tournamentName)
   const [tournament, setTournament] = useState<Tournament>()
 
   useEffect(() => {
@@ -24,7 +23,6 @@ const TournamentInformation: FunctionComponent<
       const res = await fetch('/api/tournament?tournament=' + tournamentName)
       const data = await res.json()
       setTournament(data)
-      console.log(data)
     }
     fetchData()
   }, [tournamentName])

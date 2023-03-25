@@ -3,7 +3,7 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 import styles from './Contact.module.css'
 import SimpleBox from '../../containers/Box/SimpleBox/SimpleBox'
 import ComplexBox from '../../containers/Box/ComplexBox/ComplexBox'
-import Socials from '../../smallComponents/Socials/Socials'
+import Socials from '../Socials/Socials'
 import Image from 'next/image'
 
 interface ContactProps {}

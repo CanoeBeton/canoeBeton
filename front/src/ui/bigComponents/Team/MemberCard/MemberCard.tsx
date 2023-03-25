@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { FunctionComponent, PropsWithChildren } from 'react'
 import styles from './MemberCard.module.css'
 
-//Type
 import { Member } from '../../../../domain/Member'
 
 interface HeaderProps {
@@ -12,12 +11,11 @@ interface HeaderProps {
 const MemberCard: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
   member
 }) => {
-  console.log(member)
   return (
     <div className={styles.card}>
       {member.role ? <span className={styles.role}>{member.role}</span> : null}
       <img
-        src={`data:image/png;base64,${member.image}`}
+        src={member.image}
         alt={member.name}
         width={300}
         height={300}/>
