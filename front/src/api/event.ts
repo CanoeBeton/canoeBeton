@@ -1,6 +1,7 @@
 import { api } from "./api";
+import { Event } from "../domain/Event"
 
-export const getEvents = async () => {
+export const getEvents = async () : Promise<Event[]> => {
   const eventResponse = await api
     .get("event")
     .then((response) => {

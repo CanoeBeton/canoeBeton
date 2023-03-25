@@ -6,37 +6,37 @@ import { getEvents } from '../../../api/event'
 import Calendar from './Calendar/Calendar'
 import NextEvent from './NextEvent/NextEvent'
 import LiveEvents from './LiveEvent/LiveEvents'
+import {useQuery} from "@tanstack/react-query";
 
 interface HeaderProps { }
 
 
 const Event: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ }) => {
-  const [events, setEvents] = useState<Event[]>([])
-  const [nextEvent, setNextEvent] = useState<Event | undefined>({} as Event)
+  const {data: events, status} = useQuery({queryFn: ()=> getEvents()})
+
+  const [nextEvent, setNextEvent] = useState<Event | undefined>(undefined)
   const [liveEvents, setLiveEvents] = useState<Event[]>([])
 
 
   useEffect(() => {
-    const fetchData = async () => {
-      const events: Event[] = await getEvents();
+      if(events !== undefined) {
+        events.sort((a, b) => {
+          const aDate = new Date(a.begin_date)
+          const bDate = new Date(b.begin_date)
+          return aDate >= bDate ? 1 : -1
+        })
 
-      events.sort((a, b) => {
-        const aDate = new Date(a.begin_date)
-        const bDate = new Date(b.begin_date)
-        return aDate >= bDate ? 1 : -1
-      })
-      
-      setNextEvent(events.find((event) => {
-        return new Date(event.begin_date) >= new Date(Date.now())
-      }))
+        setNextEvent(events.find((event) => {
+          return new Date(event.begin_date) >= new Date(Date.now())
+        }))
 
-      setLiveEvents(events.filter((event) => { new Date(event.begin_date) <= new Date(Date.now()) && new Date(event.end_date) >= new Date(Date.now()) }))
-      
-      setEvents(events);
-    };
+        setLiveEvents(events.filter((event) => {
+          new Date(event.begin_date) <= new Date(Date.now()) && new Date(event.end_date) >= new Date(Date.now())
+        }))
+      }
 
-    fetchData()
-  }, [])
+  }, [events])
+
 
   return (
     <div className={styles.page}>
@@ -46,7 +46,7 @@ const Event: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ }) => {
       <h2> Prochain événement </h2>
       {nextEvent ?
         <div className={styles.next_event}>
-          <NextEvent event={nextEvent}/> 
+          <NextEvent event={nextEvent}/>
         </div>
         : <p>Aucun événement prévu pour l&apos;instant</p>}
       
@@ -61,7 +61,9 @@ const Event: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ }) => {
       
       <div className={styles.calendar_section}>
         <h2 className={styles.subtitle}>Notre calendrier</h2>
-        <Calendar events={events} />
+        {status == 'error' && <span>Erreur lors du chargement des événements</span>}
+        {status == 'loading' && <span>Chargement des événements...</span>}
+        {status == 'success' && <Calendar events={events} />}
       </div>
     </div>
   )

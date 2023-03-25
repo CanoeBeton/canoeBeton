@@ -16,7 +16,6 @@ interface HeaderProps {
 const TournamentInformation: FunctionComponent<
   PropsWithChildren<HeaderProps>
 > = ({ tournamentName }) => {
-  console.log(tournamentName)
   const [tournament, setTournament] = useState<Tournament>()
 
   useEffect(() => {
@@ -24,7 +23,6 @@ const TournamentInformation: FunctionComponent<
       const res = await fetch('/api/tournament?tournament=' + tournamentName)
       const data = await res.json()
       setTournament(data)
-      console.log(data)
     }
     fetchData()
   }, [tournamentName])

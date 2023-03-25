@@ -26,3 +26,7 @@ class YearRepository:
     def activate(self, id):
         self.connection.change(f'UPDATE {YearRepository.TABLE} SET active = {0}')
         self.connection.change(f'UPDATE {YearRepository.TABLE} SET active = {1} WHERE id = {id}')
+
+    def get_active(self) -> YearResponse:
+        tuple = self.connection.get(f'SELECT * FROM {YearRepository.TABLE} WHERE active = 1')
+        return YearResponse(tuple[0])

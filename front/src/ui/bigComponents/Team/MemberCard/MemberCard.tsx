@@ -11,7 +11,6 @@ interface HeaderProps {
 const MemberCard: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
   member
 }) => {
-  console.log(member)
   return (
     <div className={styles.card}>
       {member.role ? <span className={styles.role}>{member.role}</span> : null}

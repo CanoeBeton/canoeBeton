@@ -16,6 +16,10 @@ class YearController(ApiResource):
         return jsonify({"success": True})
 
     def get(self):
+        if request.headers.get('active') == 'true':
+            year = year_repository.get_active()
+            return jsonify(year.__dict__())
+
         years = year_repository.get_all()
         return jsonify(years.__dict__())
 

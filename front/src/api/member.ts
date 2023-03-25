@@ -1,6 +1,7 @@
 import { api } from "./api";
+import {Member} from "../domain/Member";
 
-export const getMembers = async () => {
+export const getMembers = async () : Promise<Member[]> => {
   const memberResponse = await api
     .get("member")
     .then((response) => {
