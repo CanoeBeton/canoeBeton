@@ -22,7 +22,7 @@ const AdminPage = ({ what, allEntities }: AdminPageProps) => {
       <div>
         {allEntities.map((entity) => {
           return (
-            <div>
+            <div key={entity.id}>
               {entity.name}
               <button id={entity.id} onClick={modifyClickHandler}>
                 Modifier
