@@ -30,7 +30,6 @@ class YearByIdController(ApiResource):
 
     def put(self, id):
         year_json = request.get_json()
-
         year_repository.update(year_json, id)
         return jsonify({"success": True})
 
