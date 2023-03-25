@@ -5,6 +5,7 @@ CREATE TABLE years (
   boat_name varchar(100) not null,
   partenaire_mosaique LONGBLOB,
   active tinyint(1) NOT NULL DEFAULT '0',
+  icone LONGBLOB,
   FOREIGN KEY (boat_name) REFERENCES boats(name),
   PRIMARY KEY (year)
 );

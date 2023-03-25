@@ -1,5 +1,5 @@
 import { CSSProperties, FunctionComponent, PropsWithChildren } from 'react'
-import Socials from '../../../smallComponents/Socials/Socials'
+import Socials from '../../Socials/Socials'
 interface HeaderProps {}
 
 const Footer: FunctionComponent<PropsWithChildren<HeaderProps>> = () => {
