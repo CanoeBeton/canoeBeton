@@ -2,20 +2,18 @@ import React from 'react'
 import AdminPage from '../../src/ui/admin/AdminPage'
 import { Member } from '../../src/domain/Member'
 import { getMembers } from '../../src/api/member'
+import { useQuery } from 'react-query'
 
 const member = () => {
-  const [allMembers, setAllMembers] = React.useState<Member[]>([])
-  getMembers().then((members) => {
-    return (
-      <div>
-        <AdminPage what="member" allEntities={members} />
-      </div>
-    )
-  })
+  const { data: allMembers, status } = useQuery({ queryFn: () => getMembers() })
 
   return (
     <div>
-      <AdminPage what="member" allEntities={allMembers} />
+      {status === 'success' ? (
+        <AdminPage what="member" allEntities={allMembers} />
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   )
 }
