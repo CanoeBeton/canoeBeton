@@ -1,15 +1,28 @@
-import { api } from "./api";
-import { Event } from "../domain/Event"
+import { api } from './api'
+import { Event } from '../domain/Event'
 
-export const getEvents = async () : Promise<Event[]> => {
+export const getEvents = async (): Promise<Event[]> => {
   const eventResponse = await api
-    .get("event")
+    .get('event')
     .then((response) => {
-      return response.data;
+      return response.data
     })
     .catch((error) => {
-      console.log(error);
-    });
+      console.log(error)
+    })
 
-  return eventResponse;
+  return eventResponse
+}
+
+export const getEvent = async (id: string): Promise<Event> => {
+  const eventResponse = await api
+    .get(`event/${id}`)
+    .then((response) => {
+      return response.data
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+
+  return eventResponse
 }
