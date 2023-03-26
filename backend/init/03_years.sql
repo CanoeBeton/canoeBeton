@@ -41,5 +41,5 @@ insert into years (year, boat_name, partenaire_mosaique, icone) values
 (2021, 'boat22', @partenaire_image, @icone),
 (2022, 'boat23', @partenaire_image, @icone);
 
-insert into years (year, boat_name, partenaire_mosaique, active) values
-(2023, 'boat23', @partenaire_image, 1);
+insert into years (year, boat_name, partenaire_mosaique, active, icone) values
+(2023, 'boat24', @partenaire_image, 1, @icone);

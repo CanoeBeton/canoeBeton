@@ -19,7 +19,7 @@ class YearResponse:
             "boat_name": self.boat_name,
             "partenaire_mosaique": self.partenaire_mosaique.decode('utf-8'),
             "active": self.active,
-            "icone": self.icone.decode('utf-8')
+            "icone": self.icone.decode('utf-8'),
         }
         return dict_obj
 

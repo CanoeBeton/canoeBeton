@@ -7,7 +7,7 @@ import {
 import styles from 'styles/ui/bigComponents/Historique.module.css'
 
 //Type
-import { Tournament } from '../../../../domain/Tournament'
+import { Tournament } from '../../../domain/Tournament'
 
 interface HeaderProps {
   tournamentName: string
