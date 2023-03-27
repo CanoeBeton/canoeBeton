@@ -26,26 +26,26 @@ class YearController(ApiResource):
 class YearByIdController(ApiResource):
     @staticmethod
     def path():
-        return "/year/<id>"
+        return "/year/<year>"
 
-    def get(self, id):
-        year = year_repository.get(id)
+    def get(self, year):
+        year = year_repository.get(year)
         return jsonify(year.__dict__())
 
-    def put(self, id):
+    def put(self, year):
         year_json = request.get_json()
-        year_repository.update(year_json, id)
+        year_repository.update(year_json, year)
         return jsonify({"success": True})
 
-    def delete(self, id):
-        year_repository.delete(id)
+    def delete(self, year):
+        year_repository.delete(year)
         return jsonify({"success": True})
 
 class YearActivateController(ApiResource):
     @staticmethod
     def path():
-        return "/year/<id>/activate"
+        return "/year/<year>/activate"
 
-    def post(self, id):
-        year_repository.activate(id)
+    def post(self, year):
+        year_repository.activate(year)
         return jsonify({"success": True})

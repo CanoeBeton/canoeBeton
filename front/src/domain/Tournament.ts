@@ -1,6 +1,9 @@
 export interface Tournament {
-  name: string
-  date: string
-  imagePath: string
   id: string
+  name: string
+  year: number
+  position: number
+  localisation: string
+  description: string
+  date: Date
 }

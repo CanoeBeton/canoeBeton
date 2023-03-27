@@ -2,21 +2,22 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import Footer from '../../src/ui/bigComponents/Accueil/Footer/Footer'
 import Header from '../../src/ui/bigComponents/Header/Header'
-import TournamentInformation from '../../src/ui/bigComponents/TournamentInformation/TournamentInformation'
+import YearInformation from "../../src/ui/bigComponents/YearInformation/YearInformation";
 
 type Props = {}
 
-const Tournament: React.FC<Props> = ({}) => {
+const Year: React.FC<Props> = ({}) => {
   const router = useRouter()
-  const { tournament } = router.query
+  const { year } = router.query
 
   return (
     <>
       <Header current={'historique'} />
-      {/* <TournamentInformation tournamentName={tournament}/> */}
+      {typeof year === 'string' &&
+        <YearInformation yearName={year} />}
       <Footer />
     </>
   )
 }
 
-export default Tournament
+export default Year
