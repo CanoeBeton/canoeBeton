@@ -6,8 +6,9 @@ import {
 import styles from './YearInformation.module.css'
 import {getYear} from "../../../api/year";
 import {useQuery} from "@tanstack/react-query";
-import {Tournament} from "../../../domain/Tournament";
 import {getTournaments} from "../../../api/tournament";
+import {getBoat} from "../../../api/boat";
+import {Boat} from "../../../domain/Boat";
 
 interface HeaderProps {
   yearName: string
@@ -17,23 +18,25 @@ interface HeaderProps {
 const YearInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
  yearName
 }) => {
-  const {data: year, status} = useQuery({ queryKey: ['year'], queryFn: () => getYear(Number(yearName)) })
+  const {data: year, status: statusYear} = useQuery({ queryKey: ['year'], queryFn: () => getYear(Number(yearName)), onSuccess: () => setBoatData() })
   const {data: tournaments, status: statusTournaments} = useQuery({ queryKey: ['tournaments'], queryFn: () => getTournaments(Number(yearName)) })
-  const [boat, setBoat] = useState<Tournament>()
-  //write a useEffect to fetch the boat.ts associate with year.boat_name
-  useEffect(() => {
-    console.log(year)
+  const [boat, setBoat] = useState<Boat>()
 
-  }, [year])
+  const setBoatData = async () => {
+    if (year == undefined) return
+    setBoat(await getBoat(year.boat_name))
+  }
 
   return (
     <div className={styles.page}>
-      {status == 'error' && <span>Une erreur est survenue, veillez réessayer plustard</span>}
-      {status == 'loading' && <span> Chargement en cours ! </span>}
-      {status == 'success' &&
+      {statusYear == 'error' && <span>Une erreur est survenue, veillez réessayer plustard</span>}
+      {statusYear == 'loading' && <span> Chargement en cours ! </span>}
+      {statusYear == 'success' &&
         <div>
           <h1>Les tournois</h1>
-
+          { statusTournaments == 'error' && <span>Aucun tournoi pour cette année</span>}
+          <h1>Le bateau</h1>
+          <h1>Les respoonsables</h1>
           <h1>Nos partenaires</h1>
           <img src={year.partenaire_mosaique}/>
         </div>
