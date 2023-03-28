@@ -13,3 +13,16 @@ export const getMembers = async () : Promise<Member[]> => {
   
   return memberResponse;
 };
+
+export const getMembersYear = async (year: number) : Promise<Member[]> => {
+  const memberResponse = await api
+    .get(`member/year/${year}`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  return memberResponse;
+}

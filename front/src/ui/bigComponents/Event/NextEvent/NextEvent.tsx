@@ -27,7 +27,7 @@ const NextEvent: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ event })
           alt="image de l\'événement'"
         />
       </div>
-      </div>
+    </div>
   )
 }
 

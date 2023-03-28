@@ -41,3 +41,12 @@ class MemberByIdController(ApiResource):
     def delete(self, id):
         member_repository.delete(id)
         return jsonify({"success": True})
+
+class MemberByYearController(ApiResource):
+    @staticmethod
+    def path():
+        return "/member/year/<year>"
+
+    def get(self, year):
+        members = member_repository.get_by_year(year)
+        return jsonify(members.__dict__())

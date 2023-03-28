@@ -1,0 +1,19 @@
+.tournamentCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px;
+    gap: 1vh;
+    background: whitesmoke;
+    border-radius: 0.5rem;
+    box-shadow: lightgray 0px 0px 2px;
+    margin: 20px;
+}
+
+.tournamentName{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+

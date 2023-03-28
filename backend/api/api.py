@@ -6,7 +6,7 @@ from flask_restful import Api
 
 from api.eventController import EventController, EventByIdController
 from api.resource import ApiResource
-from api.memberController import MemberController, MemberByIdController
+from api.memberController import MemberController, MemberByIdController, MemberByYearController
 from api.healthContoller import HealthController
 from api.boatController import BoatController, BoatByIdController
 from api.partenaireController import PartenaireController, PartenaireByIdController, PartenaireActivateController
@@ -35,7 +35,8 @@ routes: list[Type[ApiResource]] = [
     YearController,
     YearByIdController,
     YearActivateController,
-    TournamentByYearController
+    TournamentByYearController,
+    MemberByYearController
 ]
 
 for route in routes:
