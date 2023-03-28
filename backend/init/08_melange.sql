@@ -1,17 +1,17 @@
-DROP TABLE IF EXISTS melange;
+DROP TABLE IF EXISTS melanges;
 
-CREATE TABLE IF NOT EXISTS melange (
+CREATE TABLE IF NOT EXISTS melanges (
     boat_name varchar(100),
-    tile varchar(100),
+    title varchar(100),
     masse_volumique_seche varchar(100),
     resistance_compression varchar(100),
     resistance_tension varchar(100),
     module_young varchar(100),
     FOREIGN KEY (boat_name) REFERENCES boats(name),
-    PRIMARY KEY (boat_name, tile)
+    PRIMARY KEY (boat_name, title)
 );
 
-INSERT INTO melange (boat_name, tile, masse_volumique_seche, resistance_compression, resistance_tension, module_young) values
+INSERT INTO melanges (boat_name, title, masse_volumique_seche, resistance_compression, resistance_tension, module_young) values
 ('boat1', 'Mélange structural', '961 kg/m3', '24,0 MPa', '2,3 MPa', '4,2 GPa'),
 ('boat1', 'Mélange de gravures','1025 kg/m3', '9,5 MPa', '0,7 MPa', '4,0 MPa'),
 ('boat1', 'Mélange de bas-reliefs','993 kg/m3', '23,4 MPa', '2,0 MPa', '3,4 GPa'),
