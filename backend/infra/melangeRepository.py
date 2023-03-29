@@ -1,7 +1,7 @@
-from domain.melange import MelangeResponse, MelangeRequest, MelangeResponseList
+from domain.melange import MelangeRequest, MelangeResponseList
 from infra.connection import Connection
 
-class BoatRepository:
+class MelangeRepository:
     TABLE = 'melanges'
 
     def __init__(self):
@@ -13,6 +13,9 @@ class BoatRepository:
     def getByBoatName(self, boat_name: str) -> MelangeResponseList:
         result = self.connection.get(f'SELECT * FROM {self.TABLE} WHERE boat_name = "{boat_name}"')
         return MelangeResponseList(result)
+
+    def deleteByBoatName(self, boat_name: str):
+        self.connection.change(f'DELETE FROM {self.TABLE} WHERE boat_name = "{boat_name}"')
 
     def delete(self, boat_name: str, title: str):
         self.connection.change(f'DELETE FROM {self.TABLE} WHERE boat_name = "{boat_name}" and title = "{title}"')
