@@ -1,6 +1,5 @@
 import React from 'react'
 import AdminPage from '../../src/ui/admin/AdminPage'
-import { Member } from '../../src/domain/Member'
 import { getMembers } from '../../src/api/member'
 import { useQuery } from 'react-query'
 

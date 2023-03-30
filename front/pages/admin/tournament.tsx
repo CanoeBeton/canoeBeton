@@ -1,17 +1,21 @@
 import React from 'react'
 import AdminPage from '../../src/ui/admin/AdminPage'
 import { Tournament } from '../../src/domain/Tournament'
+import { getTournaments } from '../../src/api/tournament'
+import { useQuery } from 'react-query'
 
 const tournament = () => {
-  const allTournaments: Tournament[] = [
-    { name: 'CQI', date: '22/03/2023', imagePath: '', id: '1' },
-    { name: 'CCI', date: '22/07/2023', imagePath: '', id: '2' },
-  ]
+  const { data: allTournaments, status } = useQuery({
+    queryFn: () => getTournaments(),
+  })
+
   return (
     <div>
-      <div>
-        <AdminPage what="tournament" allEntities={allTournaments} />{' '}
-      </div>
+      {status === 'success' ? (
+        <AdminPage what="tournament" allEntities={allTournaments} />
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   )
 }
