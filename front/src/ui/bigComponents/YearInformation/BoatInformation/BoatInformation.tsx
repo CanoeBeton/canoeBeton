@@ -3,10 +3,9 @@ import {
   PropsWithChildren
 } from 'react'
 import styles from './BoatInformation.module.css'
-import {Boat} from "../../../../domain/Boat";
 import {useQuery} from "@tanstack/react-query";
-import {getYear} from "../../../../api/year";
 import {getBoat} from "../../../../api/boat";
+import {getMelangesByBoat} from "../../../../api/melange";
 
 
 interface HeaderProps {
@@ -15,6 +14,7 @@ interface HeaderProps {
 
 const BoatInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ boatName }) => {
   const {data: boat, status: status} = useQuery({ queryKey: ['boaty'], queryFn: () => getBoat(boatName)})
+  const {data: melange, status: statusMelange} = useQuery({ queryKey: ['melange'], queryFn: () => getMelangesByBoat(boatName)})
 
   return (
     <div className={styles.informationContainer}>
@@ -39,10 +39,24 @@ const BoatInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ bo
             <span>Renforcement: {boat.renforcement}</span>
           </div>
 
-          <div className={styles.container}>
-            <h1>Propriétés du Béton</h1>
-            <h3>TODO</h3>
-          </div>
+          { statusMelange == 'success' &&
+            <div className={styles.container}>
+              <h1>Propriétés du Béton</h1>
+              {melange.map((melange) => {
+                return (
+                <div>
+                  <h2> {melange.title} </h2>
+                  <div className={styles.melangeContainer}>
+                    <span>Masse volumique sèche : {melange.masse_volumique_seche}</span>
+                    <span>Résistance en compression à 28 jours : {melange.resistance_compression}</span>
+                    <span>Résistance en tension à 28 jours : {melange.resistance_tension}</span>
+                    <span>Module de Young : {melange.module_young}</span>
+                  </div>
+                </div>)
+              })
+              }
+            </div>
+          }
         </>
       }
     </div>

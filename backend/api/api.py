@@ -5,6 +5,7 @@ from flask_cors import CORS
 from flask_restful import Api
 
 from api.eventController import EventController, EventByIdController
+from api.melangeController import MelangeController, MelangeByBoatController
 from api.resource import ApiResource
 from api.memberController import MemberController, MemberByIdController, MemberByYearController
 from api.healthContoller import HealthController
@@ -36,7 +37,9 @@ routes: list[Type[ApiResource]] = [
     YearByIdController,
     YearActivateController,
     TournamentByYearController,
-    MemberByYearController
+    MemberByYearController,
+    MelangeController,
+    MelangeByBoatController
 ]
 
 for route in routes:
