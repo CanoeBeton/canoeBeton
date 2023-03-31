@@ -26,3 +26,32 @@ export const getMember = async (id: string): Promise<Member> => {
 
   return memberResponse
 }
+
+export const deleteMember = async (id: string) => {
+  await api
+    .delete(`member/${id}`)
+    .then((response) => {
+      console.log(`${id} deleted`)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
+export const deleteMembers = async (ids: string[]) => {
+  for (const id of ids) {
+    await deleteMember(id)
+  }
+}
+
+export const modifyMember = async (member: Member) => {
+  console.log(member)
+  await api
+    .put(`member/${member.id}`, member)
+    .then((response) => {
+      console.log(`${member} modified`)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}

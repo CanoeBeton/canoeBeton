@@ -26,3 +26,32 @@ export const getBoat = async (id: string): Promise<Boat> => {
 
   return boatResponse
 }
+
+export const deleteBoat = async (id: string) => {
+  await api
+    .delete(`boat/${id}`)
+    .then((response) => {
+      console.log(`${id} deleted`)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
+export const deleteBoats = async (ids: string[]) => {
+  for (const id of ids) {
+    await deleteBoat(id)
+  }
+}
+
+export const modifyBoat = async (boat: Boat) => {
+  console.log(boat)
+  await api
+    .put(`boat/${boat.name}`, boat)
+    .then((response) => {
+      console.log(`${boat} modified`)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}

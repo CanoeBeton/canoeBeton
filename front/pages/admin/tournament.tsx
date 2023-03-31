@@ -1,7 +1,6 @@
 import React from 'react'
 import AdminPage from '../../src/ui/admin/AdminPage'
-import { Tournament } from '../../src/domain/Tournament'
-import { getTournaments } from '../../src/api/tournament'
+import { getTournaments, deleteTournaments } from '../../src/api/tournament'
 import { useQuery } from 'react-query'
 
 const tournament = () => {
@@ -12,7 +11,11 @@ const tournament = () => {
   return (
     <div>
       {status === 'success' ? (
-        <AdminPage what="tournament" allEntities={allTournaments} />
+        <AdminPage
+          what="tournament"
+          allEntities={allTournaments}
+          deleteAllFunc={deleteTournaments}
+        />
       ) : (
         <div>Loading...</div>
       )}

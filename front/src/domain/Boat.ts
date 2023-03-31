@@ -7,7 +7,7 @@ export interface Boat {
   epaisseur: number
   couleur_exterieure: string
   couleur_interieure: string
-  reinforcement: string
+  renforcement: string
   masse_volumique_seche_1: number
   resistance_compression_1: number
   resistance_tension_1: number

@@ -26,3 +26,20 @@ export const getTournament = async (id: string): Promise<Tournament> => {
 
   return tournamentResponse
 }
+
+export const deleteTournament = async (id: string) => {
+  await api
+    .delete(`tournament/${id}`)
+    .then((response) => {
+      console.log(`${id} deleted`)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
+export const deleteTournaments = async (ids: string[]) => {
+  for (const id of ids) {
+    await deleteTournament(id)
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminPage from '../../src/ui/admin/AdminPage'
-import { getMembers } from '../../src/api/member'
+import { getMembers, deleteMembers } from '../../src/api/member'
 import { useQuery } from 'react-query'
 
 const member = () => {
@@ -9,7 +9,11 @@ const member = () => {
   return (
     <div>
       {status === 'success' ? (
-        <AdminPage what="member" allEntities={allMembers} />
+        <AdminPage
+          what="member"
+          allEntities={allMembers}
+          deleteAllFunc={deleteMembers}
+        />
       ) : (
         <div>Loading...</div>
       )}

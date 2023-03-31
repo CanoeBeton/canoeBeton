@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminPage from '../../src/ui/admin/AdminPage'
-import { getBoats } from '../../src/api/boat'
+import { getBoats, deleteBoats } from '../../src/api/boat'
 import { useQuery } from 'react-query'
 const boat = () => {
   const { data: allBoats, status } = useQuery({ queryFn: () => getBoats() })
@@ -8,7 +8,11 @@ const boat = () => {
   return (
     <div>
       {status === 'success' ? (
-        <AdminPage what="boat" allEntities={allBoats} />
+        <AdminPage
+          what="boat"
+          allEntities={allBoats}
+          deleteAllFunc={deleteBoats}
+        />
       ) : (
         <div>Loading...</div>
       )}

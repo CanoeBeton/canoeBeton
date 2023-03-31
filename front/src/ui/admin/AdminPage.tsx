@@ -8,51 +8,109 @@ import { useRouter } from 'next/router'
 interface AdminPageProps {
   what: 'boat' | 'member' | 'tournament'
   allEntities: Member[] | Tournament[] | Boat[]
+  deleteAllFunc: (ids: string[]) => void
 }
 
-const AdminPage = ({ what, allEntities }: AdminPageProps) => {
+const AdminPage = ({ what, allEntities, deleteAllFunc }: AdminPageProps) => {
   const router = useRouter()
+  const [selectedForDeletion, setSelectedForDeletion] = React.useState<
+    string[]
+  >([])
 
   const modifyClickHandler = (e: any) => {
     console.log(e.target.id)
     router.push(`/admin/${what}/${e.target.id}`)
   }
 
+  const removeHandler = (selId: string) => {
+    if (selectedForDeletion.includes(selId)) {
+      setSelectedForDeletion(selectedForDeletion.filter((id) => id !== selId))
+    } else {
+      setSelectedForDeletion([...selectedForDeletion, selId])
+    }
+  }
+
+  const deleteAll = () => {
+    deleteAllFunc(selectedForDeletion)
+    location.reload()
+  }
+
+  const modifyBtnStyle =
+    'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+  const deleteBtnStyle =
+    'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
+  const nameStyle = 'w-1/2 text-center text-xl '
+  let mappedEntities
+
+  if (what === 'boat') {
+    mappedEntities = allEntities.map((entity) => {
+      return (
+        <div
+          className={` flex  justify-around border border-gray-400 p-1 ${
+            selectedForDeletion.includes(entity.name) ? ' bg-red-500' : ''
+          }`}
+          key={entity.name}
+        >
+          <p className={nameStyle}>{entity.name}</p>
+          <button
+            id={entity.name}
+            onClick={modifyClickHandler}
+            className={modifyBtnStyle}
+          >
+            Modifier
+          </button>
+          <button
+            onClick={() => removeHandler(entity.name)}
+            className={deleteBtnStyle}
+          >
+            Supprimer
+          </button>
+        </div>
+      )
+    })
+  } else {
+    mappedEntities = allEntities.map((entity: any) => {
+      return (
+        <div
+          className={` flex  justify-around border border-gray-400 p-1 ${
+            selectedForDeletion.includes(entity.id) ? ' bg-red-500' : ''
+          }`}
+          key={entity.id}
+        >
+          <p className={nameStyle}>{entity.name}</p>
+          <button
+            id={entity.id}
+            onClick={modifyClickHandler}
+            className={modifyBtnStyle}
+          >
+            Modifier
+          </button>
+          <button
+            onClick={() => removeHandler(entity.id)}
+            className={deleteBtnStyle}
+          >
+            Supprimer
+          </button>
+        </div>
+      )
+    })
+  }
+
   return (
     <div>
       <AdminNavBar />
-      <button>Ajouter un {what}</button>
-      <div className=" flex flex-col gap-1 justify-center">
-        {allEntities.map((entity) => {
-          //if entity is a boat use name as key else use id as key
-          if (what === 'boat') {
-            return (
-              <div
-                className=" flex justify-center justify-around border"
-                key={entity.name}
-              >
-                {entity.name}
-                <button id={entity.name} onClick={modifyClickHandler}>
-                  Modifier
-                </button>
-                <button>Supprimer</button>
-              </div>
-            )
-          }
-
-          return (
-            <div
-              key={entity.id}
-              className=" flex justify-center justify-around border"
-            >
-              {entity.name}
-              <button id={entity.id} onClick={modifyClickHandler}>
-                Modifier
-              </button>
-              <button>Supprimer</button>
-            </div>
-          )
-        })}
+      <div className=" flex gap-5">
+        <button>Ajouter un {what}</button>
+        <button
+          {...(selectedForDeletion.length > 0 ? {} : { disabled: true })}
+          className=" disabled:text-gray-300"
+          onClick={deleteAll}
+        >
+          Confirmer suppression
+        </button>
+      </div>
+      <div className=" flex flex-col gap-1 justify-center mx-72">
+        {mappedEntities}
       </div>
     </div>
   )
