@@ -1,6 +1,7 @@
 .box{
   display: flex;
   flex-direction: row;
+  padding: 1vh 0 5vh 0;
 }
 
 .half_box{

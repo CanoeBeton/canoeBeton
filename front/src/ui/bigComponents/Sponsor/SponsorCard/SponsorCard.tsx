@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { FunctionComponent, PropsWithChildren } from 'react'
 import styles from './SponsorCard.module.css'
 import {Partenaire} from "../../../../domain/Partenaire";
@@ -15,7 +14,7 @@ const sponsorCard: FunctionComponent<PropsWithChildren<SponsorCardProps>> = ({
       <div className={styles.card}>
         <div className={styles.description}>{partenaire.description}</div>
         <div className={styles.imageContainer}>
-          <Image
+          <img
             src={partenaire.image}
             width={1000}
             height={1000}

@@ -37,3 +37,12 @@ class TournamentByIdController(ApiResource):
     def delete(self, id):
         tournament_repository.delete(id)
         return jsonify({"success": True})
+
+class TournamentByYearController(ApiResource):
+    @staticmethod
+    def path():
+        return "/tournament/year/<year>"
+
+    def get(self, year):
+        tournaments = tournament_repository.get_by_year(year)
+        return jsonify(tournaments.__dict__())

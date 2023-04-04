@@ -3,26 +3,26 @@ import {
   PropsWithChildren,
 } from 'react'
 import styles from './Historique.module.css'
-import TournamentCard from './TournamentCard/TournamentCard'
-
-import { Tournament } from '../../../domain/Tournament'
+import {useQuery} from "@tanstack/react-query";
+import {getYears} from "../../../api/year";
+import YearCard from "./YearCard/YearCard";
 
 interface HeaderProps {}
 
 const Historique: FunctionComponent<PropsWithChildren<HeaderProps>> = ({}) => {
-  return <></>
-  /*return (
+  const {data: year, status} = useQuery({ queryKey: ['year'], queryFn: () => getYears() })
+
+  return (
     <div className={styles.page}>
       <span className={styles.page_title}>Historique</span>
       <div className={styles.tournament_container}>
-        {tournament.map((tournament) => (
-          <TournamentCard tournament={tournament} key={tournament.name} />
-        ))}
+        {status == 'error' && <span>Une erreur est survenue, veillez réessayer plustard</span>}
+        {status == 'loading' && <span> Chargement en cours ! </span>}
+        {year?.sort((a, b) => b.year-a.year).
+        map((year) => <YearCard year={year}/>)}
       </div>
     </div>
   )
-
-   */
 }
 
 export default Historique

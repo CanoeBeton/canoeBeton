@@ -23,3 +23,6 @@ class MemberRepository:
 
     def delete(self, id):
         self.connection.change(f'DELETE FROM {MemberRepository.TABLE} WHERE id = {id}')
+
+    def get_by_year(self, year):
+        return MemberResponseList(self.connection.get(f'SELECT * FROM {MemberRepository.TABLE} WHERE id IN (SELECT member_id FROM years_members WHERE year = {year})'))

@@ -2,15 +2,16 @@ import { useRouter } from 'next/router'
 import { getMember, modifyMember } from '../../../src/api/member'
 import { useQuery } from 'react-query'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import Dropzone, { DropzoneState } from 'react-dropzone'
 import { Member } from '../../../src/domain/Member'
 
 const MemberInfo = () => {
   const router = useRouter()
   const { id } = router.query as { id: string }
-  const [image, setImage] = useState<string | null>(null)
+
   const { data: member, status } = useQuery({ queryFn: () => getMember(id) })
+  const [image, setImage] = useState<string | null>(null)
 
   const handleDrop = (acceptedFiles: File[]) => {
     const reader = new FileReader()
@@ -19,6 +20,20 @@ const MemberInfo = () => {
       setImage(reader.result as string)
     }
   }
+
+  const dropzone = useMemo(
+    () => (
+      <Dropzone onDrop={handleDrop}>
+        {({ getRootProps, getInputProps }: DropzoneState) => (
+          <div {...getRootProps()}>
+            <input {...getInputProps()} />
+            <p>Cliquer ici ou deposer une image </p>
+          </div>
+        )}
+      </Dropzone>
+    ),
+    [handleDrop]
+  )
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
@@ -79,17 +94,10 @@ const MemberInfo = () => {
                 />
               </div>
               <div className={divStyle}>
-                <Dropzone onDrop={handleDrop}>
-                  {({ getRootProps, getInputProps }: DropzoneState) => (
-                    <div {...getRootProps()}>
-                      <input {...getInputProps()} />
-                      <p>
-                        Drag and drop a picture here, or click to select a file
-                      </p>
-                    </div>
-                  )}
-                </Dropzone>
-                <p className={inputStyle}>{image ? 'Success' : 'Pas encore'}</p>
+                {dropzone}
+                <p className={inputStyle}>
+                  {image ? image.substring(0, 25) : '--'}
+                </p>
               </div>
             </div>
             <div className="flex mt-5 justify-around">
@@ -105,6 +113,16 @@ const MemberInfo = () => {
               >
                 Retour
               </Link>
+              <button
+                disabled={status !== 'success' ? true : false}
+                className="w-1/5 rounded bg-green-300 p-2 disabled:bg-gray-500"
+                type="button"
+                onClick={() => {
+                  if (member) setImage(member.image)
+                }}
+              >
+                load
+              </button>
             </div>
           </form>
           {image && (

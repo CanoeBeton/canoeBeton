@@ -30,7 +30,7 @@ insert into tournaments (name, year, position, localisation, description, date) 
 ('Mita', 2000, 17, 'Łyse', 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante.', '2013-02-06 23:09:34'),
 ('Ntags', 2009, 7, 'Atlanta', 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', '2014-02-09 01:41:22'),
 ('Flashpoint', 2001, 1, 'Mỏ Cày', 'Sed accumsan felis. Ut at dolor quis odio consequat varius.', '2001-07-18 22:10:44'),
-('Roodel', 2016, 5, 'Dongshe', 'Ut tellus.', '2013-07-09 11:57:00'),
+('Roodel', 2023, 5, 'Dongshe', 'Ut tellus.', '2013-07-09 11:57:00'),
 ('Digitube', 2001, 16, 'Hobaramachi', 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet.', '2022-11-22 16:31:05'),
 ('Feedfish', 2000, 4, 'Kitimat', 'Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', '2019-03-23 04:52:54'),
 ('Gigazoom', 2021, 11, 'Cobre', 'Proin eu mi.', '2003-05-28 08:13:15'),

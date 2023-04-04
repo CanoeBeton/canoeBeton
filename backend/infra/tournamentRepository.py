@@ -23,3 +23,6 @@ class TournamentRepository:
 
     def delete(self, id):
         self.connection.change(f'DELETE FROM {TournamentRepository.TABLE} WHERE id = {id}')
+
+    def get_by_year(self, year):
+        return TournamentResponseList(self.connection.get(f'SELECT * FROM {TournamentRepository.TABLE} WHERE year = {year}'))

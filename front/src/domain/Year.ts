@@ -3,4 +3,5 @@ export interface Year{
     boat_name: string
     partenaire_mosaique: string
     active: boolean
+    icone: string
 }

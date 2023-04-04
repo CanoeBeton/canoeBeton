@@ -12,3 +12,17 @@ export const getActiveYear = async () : Promise<Year> => {
 
     return response.data
 };
+
+export const getYears = async () : Promise<Year[]> => {
+    const response = await api
+      .get("year");
+
+    return response.data
+}
+
+export const getYear = async (year: number) : Promise<Year> => {
+    const response = await api
+      .get(`year/${year}`);
+
+    return response.data
+}
