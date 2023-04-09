@@ -1,26 +1,29 @@
-import {
-  FunctionComponent,
-  PropsWithChildren
-} from 'react'
+import { FunctionComponent, PropsWithChildren } from 'react'
 import styles from './BoatInformation.module.css'
-import {Boat} from "../../../../domain/Boat";
-import {useQuery} from "@tanstack/react-query";
-import {getYear} from "../../../../api/year";
-import {getBoat} from "../../../../api/boat";
-
+import { Boat } from '../../../../domain/Boat'
+import { useQuery } from 'react-query'
+import { getYear } from '../../../../api/year'
+import { getBoat } from '../../../../api/boat'
 
 interface HeaderProps {
   boatName: string
 }
 
-const BoatInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ boatName }) => {
-  const {data: boat, status: status} = useQuery({ queryKey: ['boaty'], queryFn: () => getBoat(boatName)})
+const BoatInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
+  boatName,
+}) => {
+  const { data: boat, status: status } = useQuery({
+    queryKey: ['boaty'],
+    queryFn: () => getBoat(boatName),
+  })
 
   return (
     <div className={styles.informationContainer}>
-      {status == 'error' && <span>Une erreur est survenue, veillez réessayer plus tard</span>}
+      {status == 'error' && (
+        <span>Une erreur est survenue, veillez réessayer plus tard</span>
+      )}
       {status == 'loading' && <span> Chargement en cours ! </span>}
-      {status == 'success' &&
+      {status == 'success' && (
         <>
           <div className={styles.container}>
             <h1>Dimensions, Caractéristique</h1>
@@ -44,7 +47,7 @@ const BoatInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ bo
             <h3>TODO</h3>
           </div>
         </>
-      }
+      )}
     </div>
   )
 }

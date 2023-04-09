@@ -8,6 +8,7 @@ const AdminNavBar = () => {
       <Link href="/admin/member">Membres</Link>
       <Link href="/admin/tournament">Tournois</Link>
       <Link href="/admin/boat">Bateau</Link>
+      <Link href="/">Accueil</Link>
     </div>
   )
 }

@@ -58,7 +58,7 @@ const MemberInfo = () => {
   const inputStyle = 'border-2 border-gray-300 rounded-md p-2 w-full'
 
   return (
-    <div>
+    <div className="mt-5">
       {status === 'success' ? (
         <div>
           <form className="mx-5">

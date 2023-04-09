@@ -43,3 +43,15 @@ export const deleteTournaments = async (ids: string[]) => {
     await deleteTournament(id)
   }
 }
+
+export const modifyTournament = async (tournament: Tournament) => {
+  console.log(tournament)
+  await api
+    .put(`tournament/${tournament.id}`, tournament)
+    .then((response) => {
+      console.log(`${tournament} modified`)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
