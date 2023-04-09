@@ -18,7 +18,8 @@ class TournamentRepository:
     def get_all(self) -> TournamentResponseList:
         return TournamentResponseList(self.connection.get(f'SELECT * FROM {TournamentRepository.TABLE}'))
 
-    def update(self, tournament: TournamentRequest, id):
+    def update(self, tournament, id):
+
         self.connection.change(f'UPDATE {TournamentRepository.TABLE} SET name = "{tournament.name}", begin_date = "{tournament.begin_date}", end_date = "{tournament.end_date}", description = "{tournament.description}", image = "{tournament.image}" WHERE id = {id}')
 
     def delete(self, id):

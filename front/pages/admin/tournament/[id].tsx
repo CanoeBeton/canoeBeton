@@ -1,9 +1,9 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { getTournament } from '../../../src/api/tournament'
+import { getTournament, modifyTournament } from '../../../src/api/tournament'
 import { useQuery } from 'react-query'
-import boat from '../boat'
+import { Tournament } from '../../../src/domain/Tournament'
 
 const TournamentInfo = () => {
   const router = useRouter()
@@ -12,7 +12,23 @@ const TournamentInfo = () => {
     queryFn: () => getTournament(id),
   })
 
-  const handleSubmit = (e: any) => {}
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    if (status === 'success') {
+      let res: {} = {
+        id: tournament.id,
+      }
+      for (const input of e.target.form) {
+        if (input.value) {
+          res = { ...res, [input.name]: input.value }
+        } else {
+          res = { ...res, [input.name]: input.placeholder }
+        }
+      }
+      console.log(res)
+      modifyTournament(res as Tournament)
+    }
+  }
 
   const divStyle = 'flex flex-col gap-2 justify-between '
   const inputStyle = 'border-2 border-gray-300 rounded-md p-2 w-full'

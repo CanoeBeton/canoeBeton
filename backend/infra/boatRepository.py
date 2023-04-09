@@ -19,7 +19,7 @@ class BoatRepository:
         return BoatResponseList(result)
 
     def update(self, boat: BoatRequest, name:str):
-        self.connection.change(f'UPDATE {BoatRepository.TABLE} SET poids = {boat.poids}, longueur = {boat.longueur}, largeur = {boat.largeur}, profondeur = {boat.profondeur}, epaisseur = {boat.epaisseur}, couleur_exterieure = "{boat.couleur_exterieure}", couleur_interieure = "{boat.couleur_interieure}", reinforcement = "{boat.renforcement}", masse_volumique_seche_1 = {boat.masse_volumique_seche_1}, resistance_compression_1 = {boat.resistance_compression_1}, resistance_tension_1 = {boat.resistance_tension_1}, module_young_1 = {boat.module_young_1}, masse_volumique_seche_2 = {boat.masse_volumique_seche_2}, resistance_compression_2 = {boat.resistance_compression_2}, resistance_tension_2 = {boat.resistance_tension_2}, module_young_2 = {boat.module_young_2}, masse_volumique_seche_3 = {boat.masse_volumique_seche_3}, resistance_compression_3 = {boat.resistance_compression_3}, resistance_tension_3 = {boat.resistance_tension_3}, module_young_3 = {boat.module_young_3} WHERE name = "{name}"')
+        self.connection.change(f'UPDATE {BoatRepository.TABLE} SET poids = {boat.poids}, longueur = {boat.longueur}, largeur = {boat.largeur}, profondeur = {boat.profondeur}, epaisseur = {boat.epaisseur}, couleur_exterieure = "{boat.couleur_exterieure}", couleur_interieure = "{boat.couleur_interieure}", reinforcement = "{boat.renforcement}" WHERE name = "{name}"')
 
     def delete(self, name: str):
         self.connection.change(f'DELETE FROM {BoatRepository.TABLE} WHERE name = "{name}"')
