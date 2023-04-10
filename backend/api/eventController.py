@@ -1,6 +1,6 @@
 from flask import request, jsonify
 
-from api.resource import ApiResource
+from api.resource import ApiResource, checkAdminRight
 from domain.event import EventRequest
 from infra.eventRepository import EventRepository
 
@@ -12,6 +12,8 @@ class EventController(ApiResource):
         return "/event"
 
     def post(self):
+        checkAdminRight()
+
         event_json = request.get_json()
         event_request = EventRequest(**event_json)
         event_repository.create(event_request)
@@ -31,10 +33,14 @@ class EventByIdController(ApiResource):
         return jsonify(member.__dict__())
 
     def put(self, id):
+        checkAdminRight()
+
         member = request.get_json()
         event_repository.update(member["name"], member["role"], member["description"], member["image"], id)
         return jsonify({"success": True})
 
     def delete(self, id):
+        checkAdminRight()
+
         event_repository.delete(id)
         return jsonify({"success": True})

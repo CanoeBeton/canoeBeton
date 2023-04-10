@@ -1,6 +1,6 @@
 from flask import request, jsonify
 
-from api.resource import ApiResource
+from api.resource import ApiResource, checkAdminRight
 from infra.partenaireRepository import PartenaireRepository
 from domain.partenaire import PartenaireRequest, PartenaireResponseList
 
@@ -35,6 +35,8 @@ class PartenaireByIdController(ApiResource):
         return jsonify(partenaire.__dict__())
 
     def put(self, id):
+        checkAdminRight()
+
         partenaire_json = request.get_json()
 
         partenaire_request = PartenaireRequest(partenaire_json)
@@ -43,6 +45,8 @@ class PartenaireByIdController(ApiResource):
         return jsonify({"success": True})
 
     def delete(self, id):
+        checkAdminRight()
+
         partenaireRepository.delete(id)
         return jsonify({"success": True})
 
@@ -51,6 +55,8 @@ class PartenaireActivateController(ApiResource):
     def path():
         return "/partenaire/<id>/<activate>"
     def post(self, id, activate):
+        checkAdminRight()
+
         if activate==1:
             return self.partenaireRepository.activate(id)
         elif activate==0:

@@ -1,6 +1,6 @@
 from flask import request, jsonify
 
-from api.resource import ApiResource
+from api.resource import ApiResource, checkAdminRight
 from domain.member import MemberRequest
 from infra.memberRepository import MemberRepository
 
@@ -12,6 +12,8 @@ class MemberController(ApiResource):
         return "/member"
 
     def post(self):
+        checkAdminRight()
+
         member_json = request.get_json()
         member_request = MemberRequest(member_json)
         member_repository.create(member_request)
@@ -31,6 +33,8 @@ class MemberByIdController(ApiResource):
         return jsonify(member.__dict__())
 
     def put(self, id):
+        checkAdminRight()
+
         member_json = request.get_json()
 
         member_request = MemberRequest(member_json)
@@ -39,6 +43,8 @@ class MemberByIdController(ApiResource):
         return jsonify({"success": True})
 
     def delete(self, id):
+        checkAdminRight()
+
         member_repository.delete(id)
         return jsonify({"success": True})
 

@@ -1,6 +1,6 @@
 from typing import Type
 
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_restful import Api
 
@@ -14,9 +14,6 @@ from api.partenaireController import PartenaireController, PartenaireByIdControl
 from api.tournamentController import TournamentController, TournamentByIdController, TournamentByYearController
 from api.yearController import YearController, YearByIdController, YearActivateController
 from error.NotFoundError import NotFoundError
-from infra.adminRepository import AdminRepository
-
-admin_repository = AdminRepository()
 
 app = Flask(__name__)
 CORS(app)
@@ -46,13 +43,6 @@ routes: list[Type[ApiResource]] = [
 
 for route in routes:
     api.add_resource(route, route.path())
-
-@app.before_request
-def before_request():
-    tuple = admin_repository.getToken(request.headers.get('token'))
-    if tuple is None:
-        abort(403)
-
 
 @app.errorhandler(NotFoundError)
 def handle_not_found_error(error):

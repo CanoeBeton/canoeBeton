@@ -1,5 +1,7 @@
 from flask import jsonify
-from api.resource import ApiResource
+from api.resource import ApiResource, checkAdminRight
+
+
 class HealthController(ApiResource):
     @staticmethod
     def path():

@@ -1,6 +1,6 @@
 from flask import request, jsonify
 
-from api.resource import ApiResource
+from api.resource import ApiResource, checkAdminRight
 from domain.melange import MelangeRequest
 from infra.melangeRepository import MelangeRepository
 
@@ -12,6 +12,8 @@ class MelangeController(ApiResource):
         return "/melange"
 
     def post(self):
+        checkAdminRight()
+
         melange_json = request.get_json()
         melange_request = MelangeRequest(melange_json)
         melange_repository.create(melange_request)
@@ -22,6 +24,8 @@ class MelangeController(ApiResource):
         return jsonify(melanges.__dict__())
 
     def put(self):
+        checkAdminRight()
+
         melange_json = request.get_json()
         melange_request = MelangeRequest(melange_json)
         melange_repository.update(melange_request)
@@ -37,6 +41,8 @@ class MelangeByBoatController(ApiResource):
         return jsonify(melange.__dict__())
 
     def delete(self, boat_name):
+        checkAdminRight()
+
         if request.headers.get('tile') != '':
             melange_repository.delete(boat_name, request.headers.get('tile'))
         else:
