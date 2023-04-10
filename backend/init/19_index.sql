@@ -1,3 +1,4 @@
+
 #Index qui permet de retrouver facilement les années acitives
 CREATE INDEX yearActive on years (active, year);
 
