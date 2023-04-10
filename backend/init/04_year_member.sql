@@ -5,7 +5,7 @@ CREATE TABLE years_members (
     member_id int(11) NOT NULL,
     FOREIGN KEY (year) REFERENCES years(year),
     FOREIGN KEY (member_id) REFERENCES members(id),
-    PRIMARY KEY (year, member_id)
+    PRIMARY KEY (year, member_id) # permet de creér un index sur les deux colonnes
 );
 
 insert into years_members (year, member_id) values
