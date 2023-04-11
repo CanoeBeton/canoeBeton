@@ -1,6 +1,6 @@
 from flask import request, jsonify
 
-from api.resource import ApiResource
+from api.resource import ApiResource, checkAdminRight
 from domain.boat import BoatRequest
 from infra.boatRepository import BoatRepository
 
@@ -12,6 +12,7 @@ class BoatController(ApiResource):
         return "/boat"
 
     def post(self):
+        checkAdminRight()
         boat_json = request.get_json()
         boat_request = BoatRequest(boat_json)
         boat_repository.create(boat_request)
@@ -30,7 +31,9 @@ class BoatByIdController(ApiResource):
         boat = boat_repository.get(name)
         return jsonify(boat.__dict__())
 
-    def put(self, name):
+    def put(self, id):
+        checkAdminRight()
+
         boat_json = request.get_json()
 
         boat_request = BoatRequest(boat_json)
@@ -38,6 +41,8 @@ class BoatByIdController(ApiResource):
         boat_repository.update(boat_request, name)
         return jsonify({"success": True})
 
-    def delete(self, name):
-        boat_repository.delete(name)
+    def delete(self, id):
+        checkAdminRight()
+
+        boat_repository.delete(id)
         return jsonify({"success": True})

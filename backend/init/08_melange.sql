@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS melanges (
     resistance_compression varchar(100),
     resistance_tension varchar(100),
     module_young varchar(100),
-    FOREIGN KEY (boat_name) REFERENCES boats(name),
+    FOREIGN KEY (boat_name) REFERENCES boats(name), # permet de créer un index sur cette élément
     PRIMARY KEY (boat_name, title)
 );
 

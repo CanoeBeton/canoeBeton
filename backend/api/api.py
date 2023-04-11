@@ -4,7 +4,9 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_restful import Api
 
+from api.adminController import AdminController
 from api.eventController import EventController, EventByIdController
+from api.melangeController import MelangeController, MelangeByBoatController
 from api.resource import ApiResource
 from api.memberController import MemberController, MemberByIdController, MemberByYearController
 from api.healthContoller import HealthController
@@ -17,7 +19,6 @@ from error.NotFoundError import NotFoundError
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
-
 
 routes: list[Type[ApiResource]] = [
     MemberController,
@@ -36,7 +37,10 @@ routes: list[Type[ApiResource]] = [
     YearByIdController,
     YearActivateController,
     TournamentByYearController,
-    MemberByYearController
+    MemberByYearController,
+    MelangeController,
+    MelangeByBoatController,
+    AdminController,
 ]
 
 for route in routes:
