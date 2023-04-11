@@ -10,3 +10,6 @@ class HealthController(ApiResource):
     def get(self):
         return jsonify({"status": "ok"})
 
+    def post(self):
+        checkAdminRight()
+        return jsonify({"status": "ok"})
