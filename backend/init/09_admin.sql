@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS sessions;
 DROP TABLE IF EXISTS admins;
 
 CREATE TABLE IF NOT EXISTS admins (
@@ -6,7 +7,7 @@ CREATE TABLE IF NOT EXISTS admins (
     PRIMARY KEY (email)
 );
 
-DROP TABLE IF EXISTS sessions;
+INSERT INTO admins VALUES ('admin@canoe.ca', '3a32dc7438a256cadeafb78b062b4e19bb0f516c364b73f24ac3e576581366ba');
 
 CREATE TABLE IF NOT EXISTS sessions (
     token varchar(100),

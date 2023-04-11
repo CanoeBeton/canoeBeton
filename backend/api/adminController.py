@@ -1,9 +1,11 @@
 from flask import request, jsonify
 
-from api.resource import ApiResource
+from api.resource import ApiResource, checkAdminRight
 from infra.adminRepository import AdminRepository
 
 admin_repository = AdminRepository()
+
+
 class AdminController(ApiResource):
     @staticmethod
     def path():
@@ -16,4 +18,10 @@ class AdminController(ApiResource):
         if len(token) == 0:
             return jsonify({"error": "Invalid email or password"}), 401
         else:
-            return jsonify({"token": {token}})
+            return jsonify({"token": token})
+
+    def get(self): # to verify token
+        checkAdminRight()
+        return jsonify({"success": True})
+
+

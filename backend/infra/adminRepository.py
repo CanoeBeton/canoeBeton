@@ -16,7 +16,9 @@ class AdminRepository:
         self.connection.change(f'INSERT INTO {AdminRepository.TABLE} (email, password) VALUES ("{email}", "{passwordHash}")')
 
     def login(self, email: string, password: string) -> string:
-        passwordHash = hashlib.sha256(f'{password}{AdminRepository.SALT}').hexdigest()
+        encodedPassword = (password + AdminRepository.SALT)
+        encodedPassword = encodedPassword.encode('utf-8')
+        passwordHash = hashlib.sha256(encodedPassword).hexdigest()
         self.connection.get(f'SELECT * FROM {AdminRepository.TABLE} WHERE email = "{email}" AND password = "{passwordHash}"')
 
         if( self.connection.cursor.rowcount == 1 ):

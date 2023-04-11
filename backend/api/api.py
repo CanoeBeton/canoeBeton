@@ -4,7 +4,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_restful import Api
 
-from api import adminController
+from api.adminController import AdminController
 from api.eventController import EventController, EventByIdController
 from api.melangeController import MelangeController, MelangeByBoatController
 from api.resource import ApiResource
@@ -40,7 +40,7 @@ routes: list[Type[ApiResource]] = [
     MemberByYearController,
     MelangeController,
     MelangeByBoatController,
-    adminController
+    AdminController,
 ]
 
 for route in routes:
