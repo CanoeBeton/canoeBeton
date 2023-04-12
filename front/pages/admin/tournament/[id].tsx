@@ -25,7 +25,6 @@ const TournamentInfo = () => {
           res = { ...res, [input.name]: input.placeholder }
         }
       }
-      console.log(res)
       modifyTournament(res as Tournament)
     }
   }

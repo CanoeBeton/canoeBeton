@@ -3,7 +3,7 @@ import { api } from './api'
 
 export const getMelangesByBoat = async (
   boatName: string
-): Promise<[Melange]> => {
+): Promise<Melange[]> => {
   const melangeResponse = await api()
     .get(`/melange/${boatName}`)
     .then((response) => {
@@ -14,4 +14,11 @@ export const getMelangesByBoat = async (
     })
 
   return melangeResponse
+}
+
+export const updateMelange = async (melange: Melange) => {
+  await api()
+    .put(`/melange`, melange)
+    .then((response) => {})
+    .catch((error) => {})
 }

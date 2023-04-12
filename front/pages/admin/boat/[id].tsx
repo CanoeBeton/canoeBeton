@@ -15,16 +15,13 @@ const BoatInfo = () => {
     let res = { name: boat.name } as Boat
     for (const input of e.target.form) {
       if (input.value !== '' && input.name) {
-        // console.log(input.name, input.value)
         res[input.name] = input.value
       } else {
-        // console.log(input.name, input.placeholder)
         res[input.name] = input.placeholder
       }
     }
 
     modifyBoat(res)
-    // location.reload()
   }
   const divStyle = ' flex flex-col gap-2 justify-between '
   const inputStyle = 'border-2 border-gray-300 rounded-md p-2 w-full'
@@ -45,7 +42,7 @@ const BoatInfo = () => {
                   type="text"
                   name="poids"
                   id="poids"
-                  placeholder={boat.poids.toString()}
+                  placeholder={boat.poids}
                 />
               </div>
               <div className={divStyle}>
@@ -55,7 +52,7 @@ const BoatInfo = () => {
                   type="text"
                   name="longueur"
                   id="longueur"
-                  placeholder={boat.longueur.toString()}
+                  placeholder={boat.longueur}
                 />
               </div>
               <div className={divStyle}>
@@ -65,7 +62,7 @@ const BoatInfo = () => {
                   type="text"
                   name="largeur"
                   id="largeur"
-                  placeholder={boat.largeur.toString()}
+                  placeholder={boat.largeur}
                 />
               </div>
               <div className={divStyle}>
@@ -75,7 +72,7 @@ const BoatInfo = () => {
                   type="text"
                   name="profondeur"
                   id="profondeur"
-                  placeholder={boat.profondeur.toString()}
+                  placeholder={boat.profondeur}
                 />
               </div>
               <div className={divStyle}>
@@ -85,7 +82,7 @@ const BoatInfo = () => {
                   type="text"
                   name="epaisseur"
                   id="epaisseur"
-                  placeholder={boat.epaisseur.toString()}
+                  placeholder={boat.epaisseur}
                 />
               </div>
               <div className={divStyle}>
@@ -131,6 +128,12 @@ const BoatInfo = () => {
                 href="/admin/boat"
               >
                 Retour
+              </Link>
+              <Link
+                className="w-1/5 text-center rounded bg-green-500 p-2"
+                href={`/admin/boat/melange/${boat.name}`}
+              >
+                melange
               </Link>
             </div>
           </form>
