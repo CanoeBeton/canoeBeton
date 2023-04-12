@@ -29,7 +29,9 @@ class AdminRepository:
     def createToken(self, email: string) -> string:
         token = secrets.token_urlsafe(32)
         self.connection.change(f'INSERT INTO sessions (token, email) VALUES ("{token}", "{email}")')
+        print("token created", token)
         return token
 
     def getToken(self, token: string) -> string:
+        print(token)
         return self.connection.get(f'SELECT * FROM sessions WHERE token = "{token}"')

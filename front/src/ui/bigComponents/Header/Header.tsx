@@ -43,6 +43,12 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
       >
         Nous joindre
       </Link>
+      <Link
+        href="/admin"
+        style={current === 'admin' ? activeLinkStyle : linkStyle}
+      >
+        Admin
+      </Link>
     </div>
   )
 }

@@ -12,7 +12,7 @@ const BoatInfo = () => {
   const { data: boat, status } = useQuery({ queryFn: () => getBoat(id) })
   const handleSubmit = (e: any) => {
     e.preventDefault()
-    let res = {} as Boat
+    let res = { name: boat.name } as Boat
     for (const input of e.target.form) {
       if (input.value !== '' && input.name) {
         // console.log(input.name, input.value)
@@ -35,20 +35,14 @@ const BoatInfo = () => {
           <form className="  mx-5" id="form">
             <div className="lg:columns-3 md:columns-2">
               <div className={divStyle}>
-                <label htmlFor="name">Nom</label>
-                <input
-                  className={inputStyle}
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder={boat.name}
-                />
+                <p>Nom</p>
+                <p className={inputStyle}>{boat.name}</p>
               </div>
               <div className={divStyle}>
                 <label htmlFor="poids">Poids</label>
                 <input
                   className={inputStyle}
-                  type="number"
+                  type="text"
                   name="poids"
                   id="poids"
                   placeholder={boat.poids.toString()}
@@ -58,7 +52,7 @@ const BoatInfo = () => {
                 <label htmlFor="longueur">Longueur</label>
                 <input
                   className={inputStyle}
-                  type="number"
+                  type="text"
                   name="longueur"
                   id="longueur"
                   placeholder={boat.longueur.toString()}
@@ -68,7 +62,7 @@ const BoatInfo = () => {
                 <label htmlFor="largeur">Largeur</label>
                 <input
                   className={inputStyle}
-                  type="number"
+                  type="text"
                   name="largeur"
                   id="largeur"
                   placeholder={boat.largeur.toString()}
@@ -78,7 +72,7 @@ const BoatInfo = () => {
                 <label htmlFor="profondeur">Profondeur</label>
                 <input
                   className={inputStyle}
-                  type="number"
+                  type="text"
                   name="profondeur"
                   id="profondeur"
                   placeholder={boat.profondeur.toString()}
@@ -88,7 +82,7 @@ const BoatInfo = () => {
                 <label htmlFor="epaisseur">Epaisseur</label>
                 <input
                   className={inputStyle}
-                  type="number"
+                  type="text"
                   name="epaisseur"
                   id="epaisseur"
                   placeholder={boat.epaisseur.toString()}

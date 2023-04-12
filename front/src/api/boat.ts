@@ -2,7 +2,7 @@ import { Boat } from '../domain/Boat'
 import { api } from './api'
 
 export const getBoats = async (): Promise<Boat[]> => {
-  const boatResponse = await api
+  const boatResponse = await api()
     .get('boat')
     .then((response) => {
       return response.data
@@ -15,7 +15,7 @@ export const getBoats = async (): Promise<Boat[]> => {
 }
 
 export const getBoat = async (id: string): Promise<Boat> => {
-  const boatResponse = await api
+  const boatResponse = await api()
     .get(`boat/${id}`)
     .then((response) => {
       return response.data
@@ -28,7 +28,7 @@ export const getBoat = async (id: string): Promise<Boat> => {
 }
 
 export const deleteBoat = async (id: string) => {
-  await api
+  await api()
     .delete(`boat/${id}`)
     .then((response) => {
       console.log(`${id} deleted`)
@@ -46,7 +46,7 @@ export const deleteBoats = async (ids: string[]) => {
 
 export const modifyBoat = async (boat: Boat) => {
   console.log(boat)
-  await api
+  await api()
     .put(`boat/${boat.name}`, boat)
     .then((response) => {
       console.log(`${boat} modified`)

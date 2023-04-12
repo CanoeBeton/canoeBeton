@@ -2,7 +2,7 @@ import { Tournament } from '../domain/Tournament'
 import { api } from './api'
 
 export const getTournaments = async (): Promise<Tournament[]> => {
-  const tournamentResponse = await api
+  const tournamentResponse = await api()
     .get('tournament')
     .then((response) => {
       return response.data
@@ -15,7 +15,7 @@ export const getTournaments = async (): Promise<Tournament[]> => {
 }
 
 export const getTournament = async (id: string): Promise<Tournament> => {
-  const tournamentResponse = await api
+  const tournamentResponse = await api()
     .get(`tournament/${id}`)
     .then((response) => {
       return response.data
@@ -28,7 +28,7 @@ export const getTournament = async (id: string): Promise<Tournament> => {
 }
 
 export const deleteTournament = async (id: string) => {
-  await api
+  await api()
     .delete(`tournament/${id}`)
     .then((response) => {
       console.log(`${id} deleted`)
@@ -46,7 +46,7 @@ export const deleteTournaments = async (ids: string[]) => {
 
 export const modifyTournament = async (tournament: Tournament) => {
   console.log(tournament)
-  await api
+  await api()
     .put(`tournament/${tournament.id}`, tournament)
     .then((response) => {
       console.log(`${tournament} modified`)

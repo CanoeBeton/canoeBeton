@@ -31,7 +31,7 @@ class BoatByIdController(ApiResource):
         boat = boat_repository.get(name)
         return jsonify(boat.__dict__())
 
-    def put(self, id):
+    def put(self, name):
         checkAdminRight()
 
         boat_json = request.get_json()
@@ -41,8 +41,8 @@ class BoatByIdController(ApiResource):
         boat_repository.update(boat_request, name)
         return jsonify({"success": True})
 
-    def delete(self, id):
+    def delete(self, name):
         checkAdminRight()
 
-        boat_repository.delete(id)
+        boat_repository.delete(name)
         return jsonify({"success": True})

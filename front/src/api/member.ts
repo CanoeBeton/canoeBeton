@@ -2,7 +2,7 @@ import { Member } from '../domain/Member'
 import { api } from './api'
 
 export const getMembers = async (): Promise<Member[]> => {
-  const memberResponse = await api
+  const memberResponse = await api()
     .get('member')
     .then((response) => {
       return response.data
@@ -15,7 +15,7 @@ export const getMembers = async (): Promise<Member[]> => {
 }
 
 export const getMember = async (id: string): Promise<Member> => {
-  const memberResponse = await api
+  const memberResponse = await api()
     .get(`member/${id}`)
     .then((response) => {
       return response.data
@@ -28,7 +28,7 @@ export const getMember = async (id: string): Promise<Member> => {
 }
 
 export const deleteMember = async (id: string) => {
-  await api
+  await api()
     .delete(`member/${id}`)
     .then((response) => {
       console.log(`${id} deleted`)
@@ -45,8 +45,7 @@ export const deleteMembers = async (ids: string[]) => {
 }
 
 export const modifyMember = async (member: Member) => {
-  console.log(member)
-  await api
+  await api()
     .put(`member/${member.id}`, member)
     .then((response) => {
       console.log(`${member} modified`)
