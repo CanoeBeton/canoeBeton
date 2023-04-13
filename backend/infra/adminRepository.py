@@ -19,9 +19,9 @@ class AdminRepository:
         encodedPassword = (password + AdminRepository.SALT)
         encodedPassword = encodedPassword.encode('utf-8')
         passwordHash = hashlib.sha256(encodedPassword).hexdigest()
-        self.connection.get(f'SELECT * FROM {AdminRepository.TABLE} WHERE email = "{email}" AND password = "{passwordHash}"')
+        result = self.connection.get(f'SELECT * FROM {AdminRepository.TABLE} WHERE email = "{email}" AND password = "{passwordHash}"')
 
-        if( self.connection.cursor.rowcount == 1 ):
+        if( len(result) == 1 ):
             return self.createToken(email)
         else:
             return ""
@@ -29,9 +29,7 @@ class AdminRepository:
     def createToken(self, email: string) -> string:
         token = secrets.token_urlsafe(32)
         self.connection.change(f'INSERT INTO sessions (token, email) VALUES ("{token}", "{email}")')
-        print("token created", token)
         return token
 
     def getToken(self, token: string) -> string:
-        print(token)
         return self.connection.get(f'SELECT * FROM sessions WHERE token = "{token}"')
