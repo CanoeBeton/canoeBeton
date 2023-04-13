@@ -1,5 +1,6 @@
 class EventRequest:
-    def __init__(self, name, begin_date, end_date, description, image):
+    def __init__(self,id, name, begin_date, end_date, description, image):
+        self.id = id
         self.name = name
         self.begin_date = begin_date
         self.end_date = end_date

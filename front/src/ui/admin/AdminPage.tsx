@@ -5,10 +5,10 @@ import { Boat } from '../../domain/Boat'
 import { Tournament } from '../../domain/Tournament'
 import { useRouter } from 'next/router'
 import { Partenaire } from '../../domain/Partenaire'
-
+import { Event } from '../../domain/Event'
 interface AdminPageProps {
-  what: 'boat' | 'member' | 'tournament' | 'partenaire'
-  allEntities: Member[] | Tournament[] | Boat[] | Partenaire[]
+  what: 'boat' | 'member' | 'tournament' | 'partenaire' | 'event'
+  allEntities: Member[] | Tournament[] | Boat[] | Partenaire[] | Event[]
   deleteAllFunc: (ids: string[]) => void
 }
 

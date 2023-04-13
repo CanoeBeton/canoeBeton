@@ -1,21 +1,15 @@
 import React, { useState, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import {
-  getPartenaireByName,
-  modifyPartenaire,
-} from '../../../src/api/partenaire'
+import { getEvent, modifyEvent } from '../../../src/api/event'
 import { useQuery } from 'react-query'
-import { Partenaire } from '../../../src/domain/Partenaire'
+import { Event } from '../../../src/domain/Event'
 import Dropzone, { DropzoneState } from 'react-dropzone'
 
-const PartenaireInfo = () => {
+const EventInfo = () => {
   const router = useRouter()
   const { id } = router.query as { id: string }
-
-  const { data: partenaire, status } = useQuery({
-    queryFn: () => getPartenaireByName(id),
-  })
+  const { data: event, status } = useQuery({ queryFn: () => getEvent(id) })
 
   const [image, setImage] = useState<string | null>(null)
 
@@ -43,44 +37,37 @@ const PartenaireInfo = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
-
-    if (status === 'success') {
-      let res: {} = {
-        id: partenaire.name,
-        image: (image as string) ? (image as string) : partenaire.image,
+    let res = {
+      id: event.id,
+      image: (image as string) ? (image as string) : event.image,
+    } as Event
+    for (const input of e.target.form) {
+      if (input.value !== '' && input.name) {
+        res[input.name] = input.value
+      } else {
+        res[input.name] = input.placeholder
       }
-      for (const input of e.target.form) {
-        if (input.value) {
-          res = { ...res, [input.name]: input.value }
-        } else {
-          res = { ...res, [input.name]: input.placeholder }
-        }
-      }
-      modifyPartenaire(res as Partenaire)
     }
+
+    modifyEvent(res)
   }
 
-  const divStyle = 'flex flex-col gap-2 justify-between '
+  const divStyle = ' flex flex-col gap-2 justify-between no-wrap'
   const inputStyle = 'border-2 border-gray-300 rounded-md p-2 w-full'
-
   return (
     <div className="mt-5">
-      {status === 'success' && partenaire ? (
+      {status === 'success' && event ? (
         <div>
           <form className="  mx-5" id="form">
-            <div className="lg:columns-3 md:columns-2">
+            <div className="md:columns-2">
               <div className={divStyle}>
-                <p>Nom</p>
-                <p className={inputStyle}>{partenaire.name}</p>
-              </div>
-              <div className={divStyle}>
-                <label htmlFor="type">Type</label>
+                <label htmlFor="name">Nom</label>
                 <input
-                  className={inputStyle}
                   type="text"
-                  name="type"
-                  id="type"
-                  placeholder={partenaire.type}
+                  name="name"
+                  id="name"
+                  placeholder={event.name}
+                  className={inputStyle}
                 />
               </div>
               <div className={divStyle}>
@@ -90,40 +77,67 @@ const PartenaireInfo = () => {
                   type="text"
                   name="description"
                   id="description"
-                  placeholder={partenaire.description}
+                  placeholder={event.description}
                 />
               </div>
               <div className={divStyle}>
-                <label htmlFor="active">Active</label>
+                <label htmlFor="begin_date">Date début (aaa-mm-jj)</label>
                 <input
                   className={inputStyle}
-                  type="checkbox"
-                  name="active"
-                  id="active"
-                  checked={partenaire.active}
+                  type="text"
+                  name="begin_date"
+                  id="begin_date"
+                  placeholder={
+                    new Date(event.begin_date).getFullYear() +
+                    '-' +
+                    (new Date(event.begin_date).getMonth() + 1) +
+                    '-' +
+                    new Date(event.begin_date).getDate()
+                  }
+                />
+              </div>
+              <div className={divStyle}>
+                <label htmlFor="end_date">Date fin (aaaa-mm-jj)</label>
+                <input
+                  className={inputStyle}
+                  type="text"
+                  name="end_date"
+                  id="end_date"
+                  placeholder={
+                    new Date(event.end_date).getFullYear() +
+                    '-' +
+                    (new Date(event.end_date).getMonth() + 1) +
+                    '-' +
+                    new Date(event.end_date).getDate()
+                  }
                 />
               </div>
               <div className={divStyle}>
                 {dropzone}
                 <p className={inputStyle}>
-                  {image ? image.substring(0, 25) : '---'}
+                  {image ? image.substring(0, 25) : '--'}
                 </p>
               </div>
             </div>
-            <div className="flex justify-around">
+            <div className="flex mt-5 justify-around">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="w-1/3 rounded bg-blue-500 p-2"
                 onClick={handleSubmit}
               >
-                Modifier
+                Appliquer
               </button>
-              <Link href="/admin/partenaire">Retour</Link>
+              <Link
+                className="w-1/3 text-center rounded bg-red-500 p-2"
+                href="/admin/event"
+              >
+                Retour
+              </Link>
               <button
                 disabled={status !== 'success' ? true : false}
                 className="w-1/5 rounded bg-green-300 p-2 disabled:bg-gray-500"
                 type="button"
                 onClick={() => {
-                  if (partenaire) setImage(partenaire.image)
+                  if (event) setImage(event.image)
                 }}
               >
                 load
@@ -138,10 +152,10 @@ const PartenaireInfo = () => {
           )}
         </div>
       ) : (
-        <div>loading</div>
+        <div>Loading...</div>
       )}
     </div>
   )
 }
 
-export default PartenaireInfo
+export default EventInfo
