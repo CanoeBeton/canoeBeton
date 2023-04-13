@@ -29,14 +29,16 @@ class EventByIdController(ApiResource):
         return "/event/<id>"
 
     def get(self, id):
-        member = event_repository.get(id)
-        return jsonify(member.__dict__())
+        event = event_repository.get(id)
+        return jsonify(event.__dict__())
 
     def put(self, id):
         checkAdminRight()
 
-        member = request.get_json()
-        event_repository.update(member["name"], member["role"], member["description"], member["image"], id)
+        event_json = request.get_json()
+        event_request = EventRequest(**event_json)
+
+        event_repository.update(event_request, id)
         return jsonify({"success": True})
 
     def delete(self, id):

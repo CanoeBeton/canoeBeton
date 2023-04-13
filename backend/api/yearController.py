@@ -1,6 +1,7 @@
 from flask import request, jsonify
 
 from api.resource import ApiResource, checkAdminRight
+from domain.year import YearRequest
 from infra.yearRepository import YearRepository
 
 year_repository = YearRepository()
@@ -14,7 +15,8 @@ class YearController(ApiResource):
         checkAdminRight()
 
         year_json = request.get_json()
-        year_repository.create(year_json)
+        year = YearRequest(**year_json)
+        year_repository.create(year)
         return jsonify({"success": True})
 
     def get(self):
@@ -38,7 +40,8 @@ class YearByIdController(ApiResource):
         checkAdminRight()
 
         year_json = request.get_json()
-        year_repository.update(year_json, year)
+        year = YearRequest(**year_json)
+        year_repository.update(year, year)
         return jsonify({"success": True})
 
     def delete(self, year):
