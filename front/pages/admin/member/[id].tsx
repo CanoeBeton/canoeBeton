@@ -54,7 +54,7 @@ const MemberInfo = () => {
     }
   }
 
-  const divStyle = 'flex flex-col gap-2 justify-between '
+  const divStyle = 'gap-2 justify-between '
   const inputStyle = 'border-2 border-gray-300 rounded-md p-2 w-full'
 
   return (

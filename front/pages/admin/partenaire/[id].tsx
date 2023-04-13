@@ -16,6 +16,7 @@ const PartenaireInfo = () => {
   const { data: partenaire, status } = useQuery({
     queryFn: () => getPartenaireByName(id),
   })
+  const [clicked, setClicked] = useState<boolean>(false)
 
   const [image, setImage] = useState<string | null>(null)
 
@@ -25,6 +26,10 @@ const PartenaireInfo = () => {
     reader.onload = () => {
       setImage(reader.result as string)
     }
+  }
+
+  const checkActive = () => {
+    return partenaire?.active
   }
 
   const dropzone = useMemo(
@@ -46,8 +51,9 @@ const PartenaireInfo = () => {
 
     if (status === 'success') {
       let res: {} = {
-        id: partenaire.name,
+        name: partenaire.name,
         image: (image as string) ? (image as string) : partenaire.image,
+        active: clicked ? !checkActive() : checkActive(),
       }
       for (const input of e.target.form) {
         if (input.value) {
@@ -60,7 +66,7 @@ const PartenaireInfo = () => {
     }
   }
 
-  const divStyle = 'flex flex-col gap-2 justify-between '
+  const divStyle = 'gap-2 justify-between'
   const inputStyle = 'border-2 border-gray-300 rounded-md p-2 w-full'
 
   return (
@@ -95,29 +101,40 @@ const PartenaireInfo = () => {
               </div>
               <div className={divStyle}>
                 <label htmlFor="active">Active</label>
-                <input
+                <button
                   className={inputStyle}
-                  type="checkbox"
-                  name="active"
-                  id="active"
-                  checked={partenaire.active}
-                />
+                  onClick={() => setClicked(!clicked)}
+                  type="button"
+                >
+                  {clicked
+                    ? !checkActive()
+                      ? 'Oui'
+                      : 'Non'
+                    : checkActive()
+                    ? 'Oui'
+                    : 'Non'}
+                </button>
               </div>
               <div className={divStyle}>
                 {dropzone}
                 <p className={inputStyle}>
-                  {image ? image.substring(0, 25) : '---'}
+                  {image ? image.substring(0, 25) : '--'}
                 </p>
               </div>
             </div>
-            <div className="flex justify-around">
+            <div className="flex mt-5 justify-around">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="w-1/3 rounded bg-blue-500 p-2"
                 onClick={handleSubmit}
               >
-                Modifier
+                Appliquer
               </button>
-              <Link href="/admin/partenaire">Retour</Link>
+              <Link
+                className="w-1/3 text-center rounded bg-red-500 p-2"
+                href="/admin/partenaire"
+              >
+                Retour
+              </Link>
               <button
                 disabled={status !== 'success' ? true : false}
                 className="w-1/5 rounded bg-green-300 p-2 disabled:bg-gray-500"
