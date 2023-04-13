@@ -12,7 +12,7 @@ class PartenaireRepository:
         self.connection.change(f'INSERT INTO {PartenaireRepository.TABLE} (name, description, type, image) VALUES ("{partenaire.name}", "{partenaire.description}" , "{partenaire.type}",  "{partenaire.image}")')
 
     def get(self, id) -> PartenaireResponse:
-        tuple = self.connection.get(f'SELECT * FROM {PartenaireRepository.TABLE} WHERE id = {id}')
+        tuple = self.connection.get(f'SELECT * FROM {PartenaireRepository.TABLE} WHERE name = {id}')
         return PartenaireResponse(tuple[0])
 
     def get_all(self) -> PartenaireResponseList:

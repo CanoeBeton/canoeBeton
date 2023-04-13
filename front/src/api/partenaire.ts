@@ -11,3 +11,32 @@ export const getPartenaire = async (active: boolean): Promise<Partenaire[]> => {
 
   return response.data
 }
+
+export const getPartenaireByName = async (
+  name: string
+): Promise<Partenaire> => {
+  const response = await api().get(`partenaire/${name}`)
+  return response.data
+}
+
+export const deletePartenaire = async (id: string) => {
+  await api()
+    .delete(`partenaire/${id}`)
+    .then((response) => {
+      console.log(`${id} deleted`)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
+export const deletePartenaires = async (ids: string[]) => {
+  for (const id of ids) {
+    await deletePartenaire(id)
+  }
+}
+
+export const modifyPartenaire = async (partenaire: Partenaire) => {
+  const response = await api().put(`partenaire/${partenaire.name}`, partenaire)
+  return response.data
+}

@@ -4,10 +4,11 @@ import { Member } from '../../domain/Member'
 import { Boat } from '../../domain/Boat'
 import { Tournament } from '../../domain/Tournament'
 import { useRouter } from 'next/router'
+import { Partenaire } from '../../domain/Partenaire'
 
 interface AdminPageProps {
-  what: 'boat' | 'member' | 'tournament'
-  allEntities: Member[] | Tournament[] | Boat[]
+  what: 'boat' | 'member' | 'tournament' | 'partenaire'
+  allEntities: Member[] | Tournament[] | Boat[] | Partenaire[]
   deleteAllFunc: (ids: string[]) => void
 }
 
@@ -42,12 +43,18 @@ const AdminPage = ({ what, allEntities, deleteAllFunc }: AdminPageProps) => {
   const nameStyle = 'w-1/2 text-center text-xl '
   let mappedEntities
 
-  if (what === 'boat') {
+  if (what === 'boat' || what === 'partenaire') {
     mappedEntities = allEntities.map((entity) => {
       return (
         <div
           className={` flex  justify-around border border-gray-400 p-1 ${
             selectedForDeletion.includes(entity.name) ? ' bg-red-500' : ''
+          } ${
+            what === 'partenaire'
+              ? entity.active
+                ? 'bg-green-400/20'
+                : ''
+              : ''
           }`}
           key={entity.name}
         >
@@ -109,7 +116,7 @@ const AdminPage = ({ what, allEntities, deleteAllFunc }: AdminPageProps) => {
           Confirmer suppression
         </button>
       </div>
-      <div className=" flex flex-col gap-1 justify-center mx-72">
+      <div className=" flex flex-col gap-1 justify-center xl:mx-72 mx-52">
         {mappedEntities}
       </div>
     </div>
