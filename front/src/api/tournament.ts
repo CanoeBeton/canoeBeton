@@ -27,6 +27,20 @@ export const getTournament = async (id: string): Promise<Tournament> => {
   return tournamentResponse
 }
 
+export const getTournamentsByYear = async (year: string): Promise<Tournament[]> => {
+  const tournamentResponse = await api()
+      .get(`tournament/year/${year}`)
+      .then((response) => {
+        return response.data
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
+  return tournamentResponse
+}
+
+
 export const deleteTournament = async (id: string) => {
   await api()
     .delete(`tournament/${id}`)

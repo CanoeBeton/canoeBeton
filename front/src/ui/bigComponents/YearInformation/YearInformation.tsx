@@ -2,11 +2,11 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 import styles from './YearInformation.module.css'
 import { getYear } from '../../../api/year'
 import { useQuery } from 'react-query'
-import { getTournaments } from '../../../api/tournament'
+import {getTournamentsByYear} from '../../../api/tournament'
 import TournamentCard from './TournamentCard/TournamentCard'
 import BoatInformation from './BoatInformation/BoatInformation'
 import MemberCard from '../Team/MemberCard/MemberCard'
-import { getMembersYear } from '../../../api/member'
+import {getMembersByYear} from '../../../api/member'
 
 interface HeaderProps {
   yearName: string
@@ -19,13 +19,15 @@ const YearInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
     queryKey: ['year'],
     queryFn: () => getYear(Number(yearName)),
   })
+
   const { data: tournaments, status: statusTournaments } = useQuery({
     queryKey: ['tournaments'],
-    queryFn: () => getTournaments(Number(yearName)),
+    queryFn: () => getTournamentsByYear(yearName),
   })
+
   const { data: responsables, status: statusResponsables } = useQuery({
     queryKey: ['responsables'],
-    queryFn: () => getMembersYear(Number(yearName)),
+    queryFn: () => getMembersByYear(yearName),
   })
 
   return (

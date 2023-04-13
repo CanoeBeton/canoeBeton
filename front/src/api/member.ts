@@ -27,6 +27,20 @@ export const getMember = async (id: string): Promise<Member> => {
   return memberResponse
 }
 
+export const getMembersByYear = async (year: string): Promise<Member[]> => {
+  const memberResponse = await api()
+      .get(`member/year/${year}`)
+      .then((response) => {
+        return response.data
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
+  return memberResponse
+}
+
+
 export const deleteMember = async (id: string) => {
   await api()
     .delete(`member/${id}`)

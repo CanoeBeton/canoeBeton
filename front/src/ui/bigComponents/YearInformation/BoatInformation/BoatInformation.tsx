@@ -1,8 +1,9 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
 import styles from './BoatInformation.module.css'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery } from 'react-query'
 import { getBoat } from '../../../../api/boat'
 import { getMelangesByBoat } from '../../../../api/melange'
+import {getYear} from "../../../../api/year";
 
 interface HeaderProps {
   boatName: string
@@ -12,9 +13,10 @@ const BoatInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
   boatName,
 }) => {
   const { data: boat, status: status } = useQuery({
-    queryKey: ['boaty'],
+    queryKey: ['boat'],
     queryFn: () => getBoat(boatName),
   })
+
   const { data: melange, status: statusMelange } = useQuery({
     queryKey: ['melange'],
     queryFn: () => getMelangesByBoat(boatName),
