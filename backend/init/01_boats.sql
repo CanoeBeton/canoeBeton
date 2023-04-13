@@ -1,15 +1,15 @@
 DROP TABLE IF EXISTS boats;
 
 CREATE TABLE IF NOT EXISTS boats (
-  name varchar(100) PRIMARY KEY,
-  poids varchar(100),
-  longueur varchar(100),
-  largeur varchar(100),
-  profondeur varchar(100),
-  epaisseur varchar(100),
-  couleur_exterieure varchar(100),
-  couleur_interieure varchar(100),
-  renforcement varchar(1000)
+  name varchar(100) CHARACTER SET utf8mb4 PRIMARY KEY,
+  poids varchar(100) CHARACTER SET utf8mb4,
+  longueur varchar(100) CHARACTER SET utf8mb4,
+  largeur varchar(100) CHARACTER SET utf8mb4,
+  profondeur varchar(100) CHARACTER SET utf8mb4,
+  epaisseur varchar(100) CHARACTER SET utf8mb4,
+  couleur_exterieure varchar(100) CHARACTER SET utf8mb4,
+  couleur_interieure varchar(100) CHARACTER SET utf8mb4,
+  renforcement varchar(1000) CHARACTER SET utf8mb4
 );
 
 INSERT INTO boats (name, poids, longueur, largeur, profondeur, epaisseur, couleur_exterieure, couleur_interieure, renforcement)

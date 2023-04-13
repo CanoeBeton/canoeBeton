@@ -2,11 +2,11 @@ drop table if exists tournaments;
 
 CREATE TABLE tournaments (
     id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL,
     year INT(4) NOT NULL,
     position INT(4),
-    localisation VARCHAR(255),
-    description VARCHAR(255),
+    localisation VARCHAR(255) CHARACTER SET utf8mb4,
+    description VARCHAR(255) CHARACTER SET utf8mb4,
     date DATETIME,
     FOREIGN KEY (year) REFERENCES years(year), #permet de créer un index sur la colonne year
     PRIMARY KEY (id)

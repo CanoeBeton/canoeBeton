@@ -1,12 +1,12 @@
 DROP TABLE IF EXISTS melanges;
 
 CREATE TABLE IF NOT EXISTS melanges (
-    boat_name varchar(100),
-    title varchar(100),
-    masse_volumique_seche varchar(100),
-    resistance_compression varchar(100),
-    resistance_tension varchar(100),
-    module_young varchar(100),
+    boat_name varchar(100) CHARACTER SET utf8mb4,
+    title varchar(100) CHARACTER SET utf8mb4,
+    masse_volumique_seche varchar(100) CHARACTER SET utf8mb4,
+    resistance_compression varchar(100) CHARACTER SET utf8mb4,
+    resistance_tension varchar(100) CHARACTER SET utf8mb4,
+    module_young varchar(100) CHARACTER SET utf8mb4,
     FOREIGN KEY (boat_name) REFERENCES boats(name), # permet de créer un index sur cette élément
     PRIMARY KEY (boat_name, title)
 );

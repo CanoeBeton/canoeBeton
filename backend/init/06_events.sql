@@ -2,10 +2,10 @@ drop table if exists events;
 
 CREATE TABLE events (
     id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL ,
+    name VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL,
     begin_date DATETIME not null ,
     end_date DATETIME not null ,
-    description TEXT,
+    description TEXT CHARACTER SET utf8mb4,
     image LONGBLOB,
     PRIMARY KEY (id)
 );
