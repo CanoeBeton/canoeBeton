@@ -19,7 +19,7 @@ class BoatRepository:
         return BoatResponseList(result)
 
     def update(self, boat: BoatRequest, name:str):
-        self.connection.change(f'UPDATE {BoatRepository.TABLE} SET poids = {boat.poids}, longueur = {boat.longueur}, largeur = {boat.largeur}, profondeur = {boat.profondeur}, epaisseur = {boat.epaisseur}, couleur_exterieure = "{boat.couleur_exterieure}", couleur_interieure = "{boat.couleur_interieure}", reinforcement = "{boat.renforcement}" WHERE name = "{name}"')
+        self.connection.change(f'UPDATE {BoatRepository.TABLE} SET poids = "{boat.poids}", longueur = "{boat.longueur}", largeur = "{boat.largeur}", profondeur = "{boat.profondeur}", epaisseur = "{boat.epaisseur}", couleur_exterieure = "{boat.couleur_exterieure}", couleur_interieure = "{boat.couleur_interieure}", renforcement = "{boat.renforcement}" WHERE name = "{name}"')
 
     def delete(self, name: str):
         self.connection.change(f'DELETE FROM {BoatRepository.TABLE} WHERE name = "{name}"')
