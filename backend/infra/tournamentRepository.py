@@ -20,11 +20,12 @@ class TournamentRepository:
 
     def update(self, tournament, id):
         name = tournament['name']
-        begin_date = tournament['begin_date']
-        end_date = tournament['end_date']
+        date = tournament['date']
         description = tournament['description']
-        image = tournament['image']
-        self.connection.change(f'UPDATE {TournamentRepository.TABLE} SET name = "{name}", begin_date = "{begin_date}", end_date = "{end_date}", description = "{description}", image = "{image}" WHERE id = {id}')
+        position = tournament['position']
+        localisation = tournament['localisation']
+
+        self.connection.change(f'UPDATE {TournamentRepository.TABLE} SET name = "{name}", date = "{date}", description = "{description}", position = "{position}", localisation = "{localisation}"  WHERE id = {id}')
 
     def delete(self, id):
         self.connection.change(f'DELETE FROM {TournamentRepository.TABLE} WHERE id = {id}')
