@@ -23,7 +23,7 @@ const BoatInfo = () => {
 
     modifyBoat(res)
   }
-  const divStyle = ' flex flex-col gap-2 justify-between '
+  const divStyle = ' flex flex-col gap-2 justify-between no-wrap'
   const inputStyle = 'border-2 border-gray-300 rounded-md p-2 w-full'
   return (
     <div className="mt-5">
