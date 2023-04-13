@@ -88,12 +88,15 @@ const TournamentInfo = () => {
                 />
               </div>
               <div className={divStyle}>
-                <label htmlFor="date">Date</label>
+                <label htmlFor="date">Date (aaaa-mm-dd)</label>
                 <input
-                  type="date"
+                  type="text"
                   name="date"
                   id="date"
                   className={inputStyle}
+                  placeholder={new Date(tournament.date)
+                    .toISOString()
+                    .slice(0, 10)}
                 />
               </div>
             </div>
