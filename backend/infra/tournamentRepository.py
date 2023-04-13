@@ -19,8 +19,12 @@ class TournamentRepository:
         return TournamentResponseList(self.connection.get(f'SELECT * FROM {TournamentRepository.TABLE}'))
 
     def update(self, tournament, id):
-
-        self.connection.change(f'UPDATE {TournamentRepository.TABLE} SET name = "{tournament.name}", begin_date = "{tournament.begin_date}", end_date = "{tournament.end_date}", description = "{tournament.description}", image = "{tournament.image}" WHERE id = {id}')
+        name = tournament['name']
+        begin_date = tournament['begin_date']
+        end_date = tournament['end_date']
+        description = tournament['description']
+        image = tournament['image']
+        self.connection.change(f'UPDATE {TournamentRepository.TABLE} SET name = "{name}", begin_date = "{begin_date}", end_date = "{end_date}", description = "{description}", image = "{image}" WHERE id = {id}')
 
     def delete(self, id):
         self.connection.change(f'DELETE FROM {TournamentRepository.TABLE} WHERE id = {id}')
