@@ -6,6 +6,7 @@ from domain.partenaire import PartenaireRequest, PartenaireResponseList
 
 partenaireRepository = PartenaireRepository()
 
+
 class PartenaireController(ApiResource):
     @staticmethod
     def path():
@@ -24,6 +25,7 @@ class PartenaireController(ApiResource):
         else:
             partenaires = partenaireRepository.get_all()
             return jsonify(partenaires.__dict__())
+
 
 class PartenaireByIdController(ApiResource):
     @staticmethod
@@ -50,16 +52,18 @@ class PartenaireByIdController(ApiResource):
         partenaireRepository.delete(id)
         return jsonify({"success": True})
 
+
 class PartenaireActivateController(ApiResource):
     @staticmethod
     def path():
         return "/partenaire/<id>/<activate>"
+
     def post(self, id, activate):
         checkAdminRight()
 
-        if activate==1:
-            return self.partenaireRepository.activate(id)
-        elif activate==0:
-            return self.partenaireRepository.deactivate(id)
-        return jsonify({"success": True})
+        if activate == "1":
+            return partenaireRepository.activate(id)
+        elif activate == "0":
 
+            return partenaireRepository.deactivate(id)
+        return jsonify({"success": True})

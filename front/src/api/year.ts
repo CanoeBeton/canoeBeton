@@ -23,3 +23,11 @@ export const getYear = async (year: number): Promise<Year> => {
 
   return response.data
 }
+
+export const activateYear = async (year: number) => {
+  const response = await api().post(`year/${year}/activate`)
+}
+
+export const modifyYear = async (data: Year) => {
+  const response = await api().put(`year/${data.year}`, data)
+}
