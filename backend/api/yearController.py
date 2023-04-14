@@ -40,8 +40,8 @@ class YearByIdController(ApiResource):
         checkAdminRight()
 
         year_json = request.get_json()
-        yearR = YearRequest(**year_json)
-        year_repository.update(yearR, year)
+        yearRequest = YearRequest(year_json)
+        year_repository.update(yearRequest, year)
         return jsonify({"success": True})
 
     def delete(self, year):

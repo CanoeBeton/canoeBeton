@@ -18,7 +18,7 @@ class YearRepository:
         return YearResponseList(self.connection.get(f'SELECT * FROM {YearRepository.TABLE}'))
 
     def update(self, year: YearRequest, yearNumber):
-        self.connection.change(f'UPDATE {YearRepository.TABLE} SET year = "{year.year}", boat_name = "{year.boat_name}", partenaire_mosaique = "{year.partenaire_mosaique}", icone="{year.icone}" WHERE year = {yearNumber}')
+        self.connection.change(f'UPDATE {YearRepository.TABLE} SET boat_name = "{year.boat_name}", partenaire_mosaique = "{year.partenaire_mosaique}", icone="{year.icone}" WHERE year = {yearNumber}')
 
     def delete(self, yearNumber):
         self.connection.change(f'DELETE FROM {YearRepository.TABLE} WHERE year = {yearNumber}')
