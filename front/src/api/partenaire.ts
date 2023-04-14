@@ -42,6 +42,6 @@ export const modifyPartenaire = async (
 ) => {
   const response = await api().put(`partenaire/${partenaire.name}`, partenaire)
   const response2 = await api().post(
-    `partenaire/${partenaire.name}/${active ? 'activate' : 'deactivate'}`
+    `partenaire/${partenaire.name}/${active ? '1' : '0'}`
   )
 }

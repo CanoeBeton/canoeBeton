@@ -61,9 +61,9 @@ class PartenaireActivateController(ApiResource):
     def post(self, id, activate):
         checkAdminRight()
 
-        if activate == "activate":
+        if activate == "1":
             return partenaireRepository.activate(id)
-        elif activate == "deactivate":
+        elif activate == "0":
 
             return partenaireRepository.deactivate(id)
         return jsonify({"success": True})
