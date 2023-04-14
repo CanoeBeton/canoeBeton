@@ -9,6 +9,16 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
+CREATE TRIGGER remove_boat_from_year_on_delete_boat
+BEFORE DELETE ON boats
+FOR EACH ROW
+BEGIN
+     DELETE FROM years ym WHERE ym.boat_name = OLD.name;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
 
 CREATE TRIGGER delete_year_member_on_delete_year
 BEFORE DELETE ON years
