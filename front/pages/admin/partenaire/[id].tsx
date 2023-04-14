@@ -53,7 +53,6 @@ const PartenaireInfo = () => {
       let res: {} = {
         name: partenaire.name,
         image: (image as string) ? (image as string) : partenaire.image,
-        active: clicked ? !checkActive() : checkActive(),
       }
       for (const input of e.target.form) {
         if (input.value) {
@@ -62,7 +61,10 @@ const PartenaireInfo = () => {
           res = { ...res, [input.name]: input.placeholder }
         }
       }
-      modifyPartenaire(res as Partenaire)
+      modifyPartenaire(
+        res as Partenaire,
+        (clicked ? !checkActive() : checkActive()) as boolean
+      )
     }
   }
 

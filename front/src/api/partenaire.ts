@@ -36,7 +36,12 @@ export const deletePartenaires = async (ids: string[]) => {
   }
 }
 
-export const modifyPartenaire = async (partenaire: Partenaire) => {
+export const modifyPartenaire = async (
+  partenaire: Partenaire,
+  active: boolean
+) => {
   const response = await api().put(`partenaire/${partenaire.name}`, partenaire)
-  return response.data
+  const response2 = await api().post(
+    `partenaire/${partenaire.name}/${active ? 'activate' : 'deactivate'}`
+  )
 }
