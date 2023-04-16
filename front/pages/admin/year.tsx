@@ -1,5 +1,5 @@
 import React from 'react'
-import { getYears, activateYear } from '../../src/api/year'
+import { getYears, activateYear, activateNewYear } from '../../src/api/year'
 import { useQuery } from 'react-query'
 import AdminNavBar from '../../src/ui/admin/AdminNavBar'
 import { useRouter } from 'next/router'
@@ -20,7 +20,29 @@ const year = () => {
 
   return (
     <div>
-      <AdminNavBar />
+      <div className="flex justify-between m-2">
+        <AdminNavBar />
+        <button
+          className=""
+          onClick={
+            status === 'success'
+              ? () => {
+                  activateNewYear(
+                    allYears.sort((a, b) => b.year - a.year)[0].year + 1
+                  )
+                  location.reload()
+                }
+              : () => {
+                  console.log('loading')
+                }
+          }
+        >
+          Activer année{' '}
+          {status === 'success'
+            ? (allYears.sort((a, b) => b.year - a.year)[0].year + 1).toString()
+            : ''}
+        </button>
+      </div>
       <div className="m-5">
         {status === 'success' ? (
           allYears

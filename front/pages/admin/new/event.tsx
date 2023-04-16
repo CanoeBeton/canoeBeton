@@ -1,15 +1,15 @@
 import React, { useState, useMemo } from 'react'
-import { addPartenaire } from '../../../src/api/partenaire'
+import { addEvent } from '../../../src/api/event'
 import { useRouter } from 'next/router'
 import Dropzone, { DropzoneState } from 'react-dropzone'
 
-const partenaire = () => {
+const event = () => {
   const router = useRouter()
   const [name, setName] = useState('')
-  const [type, setType] = useState('')
-  const [active, setActive] = useState('')
-  const [image, setImage] = useState('')
+  const [begin_date, setBegin_date] = useState('')
+  const [end_date, setEnd_date] = useState('')
   const [description, setDescription] = useState('')
+  const [image, setImage] = useState('')
 
   const handleDrop = (acceptedFiles: File[]) => {
     const reader = new FileReader()
@@ -37,19 +37,19 @@ const partenaire = () => {
     e.preventDefault()
     const res = {
       name: name,
-      type: type,
-      active: active,
-      image: image,
+      begin_date: begin_date,
+      end_date: end_date,
       description: description,
+      image: image,
     }
-    addPartenaire(res)
-    router.push('/admin/partenaire')
+    addEvent(res)
+    router.push('/admin/event')
   }
 
   return (
-    <div>
-      <h1>Nouveau Partenaire</h1>
-      <form onSubmit={sumbitHandler} className="flex flex-col m-4 gap-2">
+    <div className=" m-4 ">
+      <h1 className="text-2xl">Nouvel Evenement</h1>
+      <form onSubmit={sumbitHandler} className="flex flex-col gap-2">
         <p>Nom</p>
         <input
           type="text"
@@ -58,20 +58,20 @@ const partenaire = () => {
           onChange={(e) => setName(e.target.value)}
           className="border-2 border-gray-300 rounded-md p-2 w-full"
         />
-        <p>Type (bronze, argent, or, platinium)</p>
+        <p>Date de debut (aaaa-mm-jj)</p>
         <input
           type="text"
-          name="type"
-          placeholder="type"
-          onChange={(e) => setType(e.target.value)}
+          name="begin_date"
+          placeholder="begin_date"
+          onChange={(e) => setBegin_date(e.target.value)}
           className="border-2 border-gray-300 rounded-md p-2 w-full"
         />
-        <p>Actif (true, false)</p>
+        <p>Date de fin (aaaa-mm-jj)</p>
         <input
           type="text"
-          name="active"
-          placeholder="active"
-          onChange={(e) => setActive(e.target.value)}
+          name="end_date"
+          placeholder="end_date"
+          onChange={(e) => setEnd_date(e.target.value)}
           className="border-2 border-gray-300 rounded-md p-2 w-full"
         />
         <p>Description</p>
@@ -86,12 +86,13 @@ const partenaire = () => {
         <div className="border-2 border-gray-300 rounded-md p-2 w-full">
           {dropzone} {image.length > 0 && <img src={image} alt="" />}
         </div>
+
         <button type="submit" className="bg-blue-500 text-white rounded-md p-2">
-          Submit
+          Ajouter
         </button>
       </form>
       <button
-        onClick={() => router.push('/admin/partenaire')}
+        onClick={() => router.push('/admin/event')}
         className="bg-red-500 disabled:bg-red-500/25 text-white font-bold py-2 px-4 rounded w-full"
       >
         Annuler
@@ -100,4 +101,4 @@ const partenaire = () => {
   )
 }
 
-export default partenaire
+export default event
