@@ -5,22 +5,6 @@ import NewMelange from '../../../src/ui/admin/NewMelange'
 import { addMelanges } from '../../../src/api/melange'
 import { Melange } from '../../../src/domain/Melange'
 
-interface Boat {
-  name: string
-  poids: string
-  longueur: string
-  largeur: string
-  profondeur: string
-  epaisseur: string
-  couleur_exterieure: string
-  couleur_interieure: string
-  renforcement: string
-  masse_volumique_seche_1: string
-  resistance_compression_1: string
-  resistance_tension_1: string
-  module_young_1: string
-}
-
 const boat = () => {
   const router = useRouter()
   const [name, setName] = useState('')
@@ -60,7 +44,7 @@ const boat = () => {
   return (
     <div className="m-2 mb-8">
       <h1 className="text-2xl">Nouveau Bateau</h1>
-      <form onSubmit={sumbitHandler} className=" m-4 gap-2">
+      <form onSubmit={sumbitHandler} className=" flex flex-col m-4 gap-2">
         <p>Nom</p>
         <input
           type="text"

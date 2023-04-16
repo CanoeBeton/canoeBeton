@@ -27,19 +27,20 @@ export const getTournament = async (id: string): Promise<Tournament> => {
   return tournamentResponse
 }
 
-export const getTournamentsByYear = async (year: string): Promise<Tournament[]> => {
+export const getTournamentsByYear = async (
+  year: string
+): Promise<Tournament[]> => {
   const tournamentResponse = await api()
-      .get(`tournament/year/${year}`)
-      .then((response) => {
-        return response.data
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    .get(`tournament/year/${year}`)
+    .then((response) => {
+      return response.data
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 
   return tournamentResponse
 }
-
 
 export const deleteTournament = async (id: string) => {
   await api()
@@ -64,6 +65,17 @@ export const modifyTournament = async (tournament: Tournament) => {
     .put(`tournament/${tournament.id}`, tournament)
     .then((response) => {
       console.log(`${tournament} modified`)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
+export const addTournament = async (tournament: {}) => {
+  await api()
+    .post(`tournament`, tournament)
+    .then((response) => {
+      console.log(`${tournament} added`)
     })
     .catch((error) => {
       console.log(error)
