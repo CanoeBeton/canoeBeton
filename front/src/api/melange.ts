@@ -22,3 +22,19 @@ export const updateMelange = async (melange: Melange) => {
     .then((response) => {})
     .catch((error) => {})
 }
+
+export const addMelange = async (melange: Melange) => {
+  console.log(melange)
+  await api()
+    .post(`/melange`, melange)
+    .then((response) => {})
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
+export const addMelanges = async (melanges: Melange[]) => {
+  for (const melange of melanges) {
+    await addMelange(melange)
+  }
+}

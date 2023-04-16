@@ -107,10 +107,15 @@ const AdminPage = ({ what, allEntities, deleteAllFunc }: AdminPageProps) => {
     <div>
       <AdminNavBar />
       <div className=" flex gap-5">
-        <button>Ajouter un {what}</button>
+        <button
+          className="p-2 m-1 rounded-sm border-green-500 border-2"
+          onClick={() => router.push(`/admin/new/${what}`)}
+        >
+          Ajouter un {what}
+        </button>
         <button
           {...(selectedForDeletion.length > 0 ? {} : { disabled: true })}
-          className=" disabled:text-gray-300"
+          className=" disabled:text-gray-300 p-2 m-1 rounded-sm border-green-500 border-2"
           onClick={deleteAll}
         >
           Confirmer suppression

@@ -55,3 +55,14 @@ export const modifyBoat = async (boat: Boat) => {
       console.log(error)
     })
 }
+
+export const addBoat = async (boat: {}) => {
+  await api()
+    .post('boat', boat)
+    .then((response) => {
+      console.log(`${boat} added`)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}

@@ -29,17 +29,16 @@ export const getMember = async (id: string): Promise<Member> => {
 
 export const getMembersByYear = async (year: string): Promise<Member[]> => {
   const memberResponse = await api()
-      .get(`member/year/${year}`)
-      .then((response) => {
-        return response.data
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    .get(`member/year/${year}`)
+    .then((response) => {
+      return response.data
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 
   return memberResponse
 }
-
 
 export const deleteMember = async (id: string) => {
   await api()
@@ -63,6 +62,17 @@ export const modifyMember = async (member: Member) => {
     .put(`member/${member.id}`, member)
     .then((response) => {
       console.log(`${member} modified`)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
+export const addMember = async (member: {}) => {
+  await api()
+    .post('/member', member)
+    .then((response) => {
+      console.log(`${member} added`)
     })
     .catch((error) => {
       console.log(error)
