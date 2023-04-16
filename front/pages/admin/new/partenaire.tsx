@@ -1,14 +1,15 @@
 import React, { useState, useMemo } from 'react'
-import { addMember } from '../../../src/api/member'
+import { addPartenaire } from '../../../src/api/partenaire'
 import { useRouter } from 'next/router'
 import Dropzone, { DropzoneState } from 'react-dropzone'
 
-const member = () => {
+const partenaire = () => {
   const router = useRouter()
   const [name, setName] = useState('')
-  const [role, setRole] = useState('')
-  const [description, setDescription] = useState('')
+  const [type, setType] = useState('')
+  const [active, setActive] = useState(false)
   const [image, setImage] = useState('')
+  const [description, setDescription] = useState('')
 
   const handleDrop = (acceptedFiles: File[]) => {
     const reader = new FileReader()
@@ -36,19 +37,20 @@ const member = () => {
     e.preventDefault()
     const res = {
       name: name,
-      role: role,
-      description: description,
+      type: type,
+      active: active,
       image: image,
+      description: description,
     }
-
-    addMember(res)
-    router.push('/admin/member')
+    addPartenaire(res)
+    router.push('/admin/partenaire')
   }
 
   return (
     <div>
-      <h1>Nouveau Membre</h1>
+      <h1>Nouveau Partenaire</h1>
       <form onSubmit={sumbitHandler} className="flex flex-col m-4 gap-2">
+        <p>Nom</p>
         <input
           type="text"
           name="name"
@@ -56,13 +58,23 @@ const member = () => {
           onChange={(e) => setName(e.target.value)}
           className="border-2 border-gray-300 rounded-md p-2 w-full"
         />
+        <p>Type (bronze, argent, or, platinium)</p>
         <input
           type="text"
-          name="role"
-          placeholder="role"
-          onChange={(e) => setRole(e.target.value)}
+          name="type"
+          placeholder="type"
+          onChange={(e) => setType(e.target.value)}
           className="border-2 border-gray-300 rounded-md p-2 w-full"
         />
+        <p>Actif (true, false)</p>
+        <input
+          type="text"
+          name="active"
+          placeholder="active"
+          onChange={(e) => setActive(e.target.value)}
+          className="border-2 border-gray-300 rounded-md p-2 w-full"
+        />
+        <p>Description</p>
         <input
           type="text"
           name="description"
@@ -70,25 +82,16 @@ const member = () => {
           onChange={(e) => setDescription(e.target.value)}
           className="border-2 border-gray-300 rounded-md p-2 w-full"
         />
+        <p>Image</p>
         <div className="border-2 border-gray-300 rounded-md p-2 w-full">
           {dropzone} {image.length > 0 && <img src={image} alt="" />}
         </div>
-
-        <button
-          type="submit"
-          disabled={
-            name.length === 0 ||
-            role.length === 0 ||
-            description.length === 0 ||
-            image.length === 0
-          }
-          className="bg-blue-500 text-white rounded-md p-2"
-        >
+        <button type="submit" className="bg-blue-500 text-white rounded-md p-2">
           Submit
         </button>
       </form>
       <button
-        onClick={() => router.push('/admin/boat')}
+        onClick={() => router.push('/admin/partenaire')}
         className="bg-red-500 disabled:bg-red-500/25 text-white font-bold py-2 px-4 rounded w-full"
       >
         Annuler
@@ -97,4 +100,4 @@ const member = () => {
   )
 }
 
-export default member
+export default partenaire

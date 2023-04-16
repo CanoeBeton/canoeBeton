@@ -45,3 +45,14 @@ export const modifyPartenaire = async (
     `partenaire/${partenaire.name}/${active ? '1' : '0'}`
   )
 }
+
+export const addPartenaire = async (partenaire: {}) => {
+  await api()
+    .post(`partenaire`, partenaire)
+    .then((response) => {
+      console.log(`${partenaire} added`)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}

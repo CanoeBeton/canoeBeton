@@ -2,16 +2,6 @@ import React, { useState } from 'react'
 import { addTournament } from '../../../src/api/tournament'
 import { useRouter } from 'next/router'
 
-interface Tournament {
-  id: string
-  name: string
-  year: number
-  position: number
-  localisation: string
-  description: string
-  date: Date
-}
-
 const tournament = () => {
   const router = useRouter()
   const [name, setName] = useState('')
@@ -102,6 +92,12 @@ const tournament = () => {
           Submit
         </button>
       </form>
+      <button
+        onClick={() => router.push('/admin/tournament')}
+        className="bg-red-500 disabled:bg-red-500/25 text-white font-bold py-2 px-4 rounded w-full"
+      >
+        Annuler
+      </button>
     </div>
   )
 }
