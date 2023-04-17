@@ -1,6 +1,7 @@
 from flask import request, jsonify
 
 from api.resource import ApiResource, checkAdminRight
+from domain.tournament import TournamentRequest
 from infra.tournamentRepository import TournamentRepository
 
 tournament_repository = TournamentRepository()
@@ -14,7 +15,8 @@ class TournamentController(ApiResource):
         checkAdminRight()
 
         tournament_json = request.get_json()
-        tournament_repository.create(tournament_json)
+        tournament = TournamentRequest(tournament_json)
+        tournament_repository.create(tournament)
         return jsonify({"success": True})
 
     def get(self):
