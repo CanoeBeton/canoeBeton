@@ -3,21 +3,13 @@ import { addYear } from '../../../src/api/year'
 import { useRouter } from 'next/router'
 import Dropzone, { DropzoneState } from 'react-dropzone'
 
-interface Year {
-  year: number
-  boat_name: string
-  partenaire_mosaique: string
-  active: boolean
-  icone: string
-}
-
 const year = () => {
   const router = useRouter()
-  const [year, setYear] = useState<Year>({
+  const [year, setYear] = useState<{}>({
     year: new Date().getFullYear(),
     boat_name: '',
     partenaire_mosaique: '',
-    active: false,
+    // active: false,
     icone: '',
   })
 
@@ -53,7 +45,7 @@ const year = () => {
 
   const dropzoneMo = useMemo(
     () => (
-      <Dropzone onDrop={handleDrop}>
+      <Dropzone onDrop={handleDropMo}>
         {({ getRootProps, getInputProps }: DropzoneState) => (
           <div {...getRootProps()}>
             <input {...getInputProps()} />
@@ -96,23 +88,21 @@ const year = () => {
         <div className="border-2 border-gray-300 rounded-md p-2 w-full">
           {dropzoneMo}
           {year.partenaire_mosaique.length > 0 && (
-            <img src={year.icone} alt="" />
+            <img src={year.partenaire_mosaique} alt="" />
           )}
         </div>
-        <p>Active</p>
+        {/* <p>Active</p>
         <input
           type="checkbox"
           name="active"
           placeholder="active"
           onChange={(e) => setYear({ ...year, active: e.target.checked })}
           className="border-2 border-gray-300 rounded-md p-2 w-full"
-        />
+        /> */}
         <p>Icone</p>
         <div className="border-2 border-gray-300 rounded-md p-2 w-full">
           {dropzone}
-          {year.partenaire_mosaique.length > 0 && (
-            <img src={year.icone} alt="" />
-          )}
+          {year.icone.length > 0 && <img src={year.icone} alt="" />}
         </div>
         <button
           disabled={

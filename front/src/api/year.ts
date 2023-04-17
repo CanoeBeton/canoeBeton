@@ -33,5 +33,6 @@ export const modifyYear = async (data: Year) => {
 }
 
 export const addYear = async (info: {}) => {
-  const response = await api().post(`year`, info)
+  console.log(info)
+  const response = await api().post('year', info)
 }
