@@ -9,7 +9,7 @@ class TournamentRepository:
         self.connection = Connection()
 
     def create(self, tournament: TournamentRequest):
-        self.connection.change(f'INSERT INTO {TournamentRepository.TABLE} (name, begin_date, end_date, description, image) VALUES ("{tournament.name}", "{tournament.begin_date}", "{tournament.end_date}", "{tournament.description}", "{tournament.image}")')
+        self.connection.change(f'INSERT INTO {TournamentRepository.TABLE} (name, year, position, localisation, description, date) VALUES ("{tournament.name}", {tournament.year}, {tournament.position}, "{tournament.localisation}", "{tournament.description}", "{tournament.date}")')
 
     def get(self, id) -> TournamentResponse:
         tuple = self.connection.get(f'SELECT * FROM {TournamentRepository.TABLE} WHERE id = {id}')
