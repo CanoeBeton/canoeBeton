@@ -8,7 +8,7 @@ class BoatRepository:
         self.connection = Connection()
 
     def create(self, boat: BoatRequest):
-        self.connection.change(f'INSERT INTO {self.TABLE} (name, poids, longueur, largeur, profondeur, epaisseur, couleur_exterieure, couleur_interieure, renforcement) VALUES ("{boat.name}", {boat.poids}, {boat.longueur}, {boat.largeur}, {boat.profondeur}, {boat.epaisseur}, "{boat.couleur_exterieure}", "{boat.couleur_interieure}", "{boat.renforcement}")')
+        self.connection.change(f'INSERT INTO {self.TABLE} (name, poids, longueur, largeur, profondeur, epaisseur, couleur_exterieure, couleur_interieure, renforcement) VALUES ("{boat.name}", "{boat.poids}", "{boat.longueur}", "{boat.largeur}", "{boat.profondeur}", "{boat.epaisseur}", "{boat.couleur_exterieure}", "{boat.couleur_interieure}", "{boat.renforcement}")')
 
     def get(self, name: str) -> BoatResponse:
         result = self.connection.get(f'SELECT * FROM {BoatRepository.TABLE} WHERE name = "{name}"')
