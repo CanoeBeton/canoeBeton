@@ -15,7 +15,7 @@ class YearController(ApiResource):
         checkAdminRight()
 
         year_json = request.get_json()
-        year = YearRequest(**year_json)
+        year = YearRequest(year_json)
         year_repository.create(year)
         return jsonify({"success": True})
 

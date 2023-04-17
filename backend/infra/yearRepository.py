@@ -8,7 +8,7 @@ class YearRepository:
         self.connection = Connection()
 
     def create(self, year: YearRequest):
-        self.connection.change(f'INSERT INTO {YearRepository.TABLE} (year, boat_name, partenaire_mosaique, icone) VALUES ("{year.year}", "{year.boat_name}", "{year.partenaire_mosaique}"), "{year.icone}"')
+        self.connection.change(f'INSERT INTO {YearRepository.TABLE} (year, boat_name, partenaire_mosaique, icone) VALUES ({year.year}, "{year.boat_name}", "{year.partenaire_mosaique}", "{year.icone}")')
 
     def get(self, yearNumber) -> YearResponse:
         tuple = self.connection.get(f'SELECT * FROM {YearRepository.TABLE} WHERE year = {yearNumber}')
