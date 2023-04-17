@@ -6,6 +6,8 @@ import { Tournament } from '../../domain/Tournament'
 import { useRouter } from 'next/router'
 import { Partenaire } from '../../domain/Partenaire'
 import { Event } from '../../domain/Event'
+import { addYearMember } from '../../api/year'
+
 interface AdminPageProps {
   what: 'boat' | 'member' | 'tournament' | 'partenaire' | 'event'
   allEntities: Member[] | Tournament[] | Boat[] | Partenaire[] | Event[]
@@ -98,6 +100,14 @@ const AdminPage = ({ what, allEntities, deleteAllFunc }: AdminPageProps) => {
           >
             Supprimer
           </button>
+          {what === 'member' && (
+            <button
+              className="text-xs bg-green-500 p-2 text-white rounded"
+              onClick={() => addYearMember(new Date().getFullYear(), entity.id)}
+            >
+              Associer avec {new Date().getFullYear()}
+            </button>
+          )}
         </div>
       )
     })
