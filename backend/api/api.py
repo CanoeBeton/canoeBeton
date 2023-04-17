@@ -14,6 +14,7 @@ from api.boatController import BoatController, BoatByIdController
 from api.partenaireController import PartenaireController, PartenaireByIdController, PartenaireActivateController
 from api.tournamentController import TournamentController, TournamentByIdController, TournamentByYearController
 from api.yearController import YearController, YearByIdController, YearActivateController
+from api.yearMemberController import YearMemberController
 from error.NotFoundError import NotFoundError
 
 app = Flask(__name__)
@@ -41,6 +42,7 @@ routes: list[Type[ApiResource]] = [
     MelangeController,
     MelangeByBoatController,
     AdminController,
+    YearMemberController,
 ]
 
 for route in routes:
