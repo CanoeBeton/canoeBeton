@@ -21,8 +21,9 @@ const tournament = () => {
       description: description,
       date: date,
     }
-    addTournament(res)
-    // router.push('/admin/tournament')
+    addTournament(res).then((res) => {
+      router.push('/admin/tournament')
+    })
   }
 
   return (

@@ -42,10 +42,10 @@ const event = () => {
       description: description,
       image: image,
     }
-    addEvent(res)
-    router.push('/admin/event')
+    addEvent(res).then((res) => {
+      router.push('/admin/event')
+    })
   }
-
   return (
     <div className=" m-4 ">
       <h1 className="text-2xl">Nouvel Evenement</h1>

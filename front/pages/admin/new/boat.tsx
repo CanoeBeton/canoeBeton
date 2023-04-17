@@ -37,8 +37,18 @@ const boat = () => {
     }
 
     addBoat(res)
-    addMelanges(allMelanges)
-    router.push('/admin/boat')
+      .then((res) => {
+        addMelanges(allMelanges)
+          .then((res) => {
+            router.push('/admin/boat')
+          })
+          .catch((err) => {
+            console.log(err) //faire afficher les erreurs dans le ui
+          })
+      })
+      .catch((err) => {
+        console.log(err) //faire afficher les erreurs dans le ui
+      })
   }
 
   return (

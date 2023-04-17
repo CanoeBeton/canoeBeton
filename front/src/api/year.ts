@@ -32,6 +32,6 @@ export const modifyYear = async (data: Year) => {
   const response = await api().put(`year/${data.year}`, data)
 }
 
-export const activateNewYear = async (year: number) => {
-  const response = await api().post(`year/${year}/activate`)
+export const addYear = async (info: {}) => {
+  const response = await api().post(`year`, info)
 }

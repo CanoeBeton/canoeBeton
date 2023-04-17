@@ -42,8 +42,9 @@ const partenaire = () => {
       image: image,
       description: description,
     }
-    addPartenaire(res)
-    router.push('/admin/partenaire')
+    addPartenaire(res).then((res) => {
+      router.push('/admin/partenaire')
+    })
   }
 
   return (

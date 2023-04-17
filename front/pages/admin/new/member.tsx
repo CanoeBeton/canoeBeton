@@ -41,8 +41,9 @@ const member = () => {
       image: image,
     }
 
-    addMember(res)
-    router.push('/admin/member')
+    addMember(res).then((res) => {
+      router.push('/admin/member')
+    })
   }
 
   return (
