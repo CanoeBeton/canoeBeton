@@ -36,3 +36,7 @@ export const addYear = async (info: {}) => {
   console.log(info)
   const response = await api().post('year', info)
 }
+
+export const addYearMember = async (year: number, member: number) => {
+  const response = await api().post(`year/${year}/${member}`)
+}
