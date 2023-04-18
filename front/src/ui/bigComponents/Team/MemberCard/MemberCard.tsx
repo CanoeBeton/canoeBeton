@@ -9,16 +9,12 @@ interface HeaderProps {
 }
 
 const MemberCard: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
-  member
+  member,
 }) => {
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} w-[150px]`}>
       {member.role ? <span className={styles.role}>{member.role}</span> : null}
-      <img
-        src={member.image}
-        alt={member.name}
-        width={300}
-        height={300}/>
+      <img src={member.image} alt={member.name} width={300} height={300} />
       <span className={styles.name}>{member.name}</span>
       <span className={styles.description}>{member.description}</span>
     </div>
