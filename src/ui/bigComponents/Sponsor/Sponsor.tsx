@@ -26,7 +26,7 @@ const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
       {yearStatus == 'loading' && <span> Chargement en cours ! </span>}
       {yearStatus == 'success' && (
         <div className={styles.imageContainer}>
-          <img src={year.partenaire_mosaique} />
+          <img src={year.partenaire_mosaique} alt={'Mosaique des partenaires'}/>
         </div>
       )}
       <h2>Nos partenaire </h2>
@@ -37,7 +37,7 @@ const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
       {partenaireStatus == 'success' && (
         <div>
           {partenaire?.map((partenaire) => (
-            <SponsorCard partenaire={partenaire} />
+            <SponsorCard partenaire={partenaire} key={partenaire.name}/>
           ))}
         </div>
       )}

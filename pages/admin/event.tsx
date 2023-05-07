@@ -3,7 +3,7 @@ import AdminPage from '../../src/ui/admin/AdminPage'
 import { getEvents, deleteEvents } from '../../src/api/event'
 import { useQuery } from 'react-query'
 
-const event = () => {
+const Event = () => {
   const { data: allEvents, status } = useQuery({ queryFn: () => getEvents() })
 
   return (
@@ -21,4 +21,4 @@ const event = () => {
   )
 }
 
-export default event
+export default Event

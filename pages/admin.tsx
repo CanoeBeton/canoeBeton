@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import { getToken } from '../src/api/admin'
 
-const admin = () => {
+const Admin = () => {
   const [email, setEmail] = React.useState('admin@canoe.ca')
   const [password, setPassword] = React.useState('password')
   const [message, setMessage] = React.useState('')
@@ -54,4 +54,4 @@ const admin = () => {
   )
 }
 
-export default admin
+export default Admin

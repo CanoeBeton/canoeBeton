@@ -53,7 +53,7 @@ const AdminPage = ({ what, allEntities, deleteAllFunc }: AdminPageProps) => {
             selectedForDeletion.includes(entity.name) ? ' bg-red-500' : ''
           } ${
             what === 'partenaire'
-              ? entity.active
+              ? "active" in entity && entity.active
                 ? 'bg-green-400/20'
                 : ''
               : ''

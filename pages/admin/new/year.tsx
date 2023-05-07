@@ -2,14 +2,15 @@ import React, { useState, useMemo } from 'react'
 import { addYear } from '../../../src/api/year'
 import { useRouter } from 'next/router'
 import Dropzone, { DropzoneState } from 'react-dropzone'
+import {Year} from '../../../src/domain/Year'
 
-const year = () => {
+const Year = () => {
   const router = useRouter()
-  const [year, setYear] = useState<{}>({
+  const [year, setYear] = useState<Year>({
     year: new Date().getFullYear(),
     boat_name: '',
     partenaire_mosaique: '',
-    // active: false,
+    active: false,
     icone: '',
   })
 
@@ -127,4 +128,4 @@ const year = () => {
   )
 }
 
-export default year
+export default Year

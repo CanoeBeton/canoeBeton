@@ -133,7 +133,7 @@ const PartenaireInfo = () => {
               </button>
               <Link
                 className="w-1/3 text-center rounded bg-red-500 p-2"
-                href="/admin/partenaire"
+                href="/admin/Partenaire"
               >
                 Retour
               </Link>
@@ -151,7 +151,7 @@ const PartenaireInfo = () => {
           </form>
           {image && (
             <div className="m-10">
-              <p>Visualisation de l'image:</p>
+              <p>Visualisation de l&apos;image:</p>
               <img src={image} alt="uploaded" width={300} />
             </div>
           )}

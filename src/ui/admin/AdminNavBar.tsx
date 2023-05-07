@@ -5,12 +5,12 @@ import style from './AdminNavBar.module.css'
 const AdminNavBar = () => {
   return (
     <div className={style.navbar}>
-      <Link href="/admin/member">Membres</Link>
-      <Link href="/admin/tournament">Tournois</Link>
-      <Link href="/admin/boat">Bateau</Link>
-      <Link href="/admin/partenaire">Partenaires</Link>
-      <Link href="/admin/event">Evenements</Link>
-      <Link href="/admin/year">Années</Link>
+      <Link href="/admin/Member">Membres</Link>
+      <Link href="/admin/Rournament">Tournois</Link>
+      <Link href="/admin/Boat">Bateau</Link>
+      <Link href="/admin/Partenaire">Partenaires</Link>
+      <Link href="/admin/Event">Evenements</Link>
+      <Link href="/admin/Year">Années</Link>
       <Link href="/">Accueil</Link>
     </div>
   )

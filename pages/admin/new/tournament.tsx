@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { addTournament } from '../../../src/api/tournament'
 import { useRouter } from 'next/router'
 
-const tournament = () => {
+const Tournament = () => {
   const router = useRouter()
   const [name, setName] = useState('')
   const [year, setYear] = useState('')
@@ -103,4 +103,4 @@ const tournament = () => {
   )
 }
 
-export default tournament
+export default Tournament

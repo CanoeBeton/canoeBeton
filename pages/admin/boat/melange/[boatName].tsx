@@ -32,7 +32,7 @@ const MelangeList = () => {
           <h1 className="text-2xl">{boatName}</h1>
 
           {melanges.map((melange) => (
-            <div className="mx-5 my-10">
+            <div className="mx-5 my-10" key={melange.title}>
               <h2 className="text-xl">{melange.title}</h2>
               <form id="form">
                 <div>

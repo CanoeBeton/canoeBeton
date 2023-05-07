@@ -37,19 +37,24 @@ const EventInfo = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
-    let res = {
-      id: event.id,
-      image: (image as string) ? (image as string) : event.image,
-    } as Event
-    for (const input of e.target.form) {
-      if (input.value !== '' && input.name) {
-        res[input.name] = input.value
-      } else {
-        res[input.name] = input.placeholder
-      }
-    }
 
-    modifyEvent(res)
+    if (event){
+      let res = {
+        id: event.id,
+        image: (image as string) ? (image as string) : event.image,
+      } as Event
+      for (const input of e.target.form) {
+        if (input.value !== '' && input.name) {
+          // @ts-ignore
+          res[input.name] = input.value
+        } else {
+          // @ts-ignore
+          res[input.name] = input.placeholder
+        }
+      }
+
+      modifyEvent(res)
+    }
   }
 
   const divStyle = ' flex flex-col gap-2 justify-between no-wrap'
@@ -128,7 +133,7 @@ const EventInfo = () => {
               </button>
               <Link
                 className="w-1/3 text-center rounded bg-red-500 p-2"
-                href="/admin/event"
+                href="/admin/Event"
               >
                 Retour
               </Link>
@@ -146,7 +151,7 @@ const EventInfo = () => {
           </form>
           {image && (
             <div className="m-10">
-              <p>Visualisation de l'image:</p>
+              <p>Visualisation de l&apos;image:</p>
               <img src={image} alt="uploaded" width={300} />
             </div>
           )}

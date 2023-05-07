@@ -3,7 +3,7 @@ import AdminPage from '../../src/ui/admin/AdminPage'
 import { getMembers, deleteMembers } from '../../src/api/member'
 import { useQuery } from 'react-query'
 
-const member = () => {
+const Member = () => {
   const { data: allMembers, status } = useQuery({ queryFn: () => getMembers() })
 
   return (
@@ -21,4 +21,4 @@ const member = () => {
   )
 }
 
-export default member
+export default Member

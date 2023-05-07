@@ -3,7 +3,7 @@ import { addPartenaire } from '../../../src/api/partenaire'
 import { useRouter } from 'next/router'
 import Dropzone, { DropzoneState } from 'react-dropzone'
 
-const partenaire = () => {
+const Partenaire = () => {
   const router = useRouter()
   const [name, setName] = useState('')
   const [type, setType] = useState('')
@@ -101,4 +101,4 @@ const partenaire = () => {
   )
 }
 
-export default partenaire
+export default Partenaire

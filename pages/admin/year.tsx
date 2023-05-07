@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 import AdminNavBar from '../../src/ui/admin/AdminNavBar'
 import { useRouter } from 'next/router'
 
-const year = () => {
+const Year = () => {
   const router = useRouter()
 
   const { data: allYears, status } = useQuery({ queryFn: () => getYears() })
@@ -75,4 +75,4 @@ const year = () => {
   )
 }
 
-export default year
+export default Year

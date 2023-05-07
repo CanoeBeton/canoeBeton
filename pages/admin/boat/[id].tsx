@@ -12,16 +12,21 @@ const BoatInfo = () => {
   const { data: boat, status } = useQuery({ queryFn: () => getBoat(id) })
   const handleSubmit = (e: any) => {
     e.preventDefault()
-    let res = { name: boat.name } as Boat
-    for (const input of e.target.form) {
-      if (input.value !== '' && input.name) {
-        res[input.name] = input.value
-      } else {
-        res[input.name] = input.placeholder
-      }
-    }
 
-    modifyBoat(res)
+    if (boat){
+      let res = { name: boat.name } as Boat
+      for (const input of e.target.form) {
+        if (input.value !== '' && input.name) {
+          // @ts-ignore
+          res[input.name] = input.value
+        } else {
+          // @ts-ignore
+          res[input.name] = input.placeholder
+        }
+      }
+
+      modifyBoat(res)
+    }
   }
   const divStyle = ' flex flex-col gap-2 justify-between no-wrap'
   const inputStyle = 'border-2 border-gray-300 rounded-md p-2 w-full'
@@ -125,7 +130,7 @@ const BoatInfo = () => {
               </button>
               <Link
                 className="w-1/3 text-center rounded bg-red-500 p-2"
-                href="/admin/boat"
+                href="/admin/Boat"
               >
                 Retour
               </Link>

@@ -3,7 +3,7 @@ import AdminPage from '../../src/ui/admin/AdminPage'
 import { getTournaments, deleteTournaments } from '../../src/api/tournament'
 import { useQuery } from 'react-query'
 
-const tournament = () => {
+const Tournament = () => {
   const { data: allTournaments, status } = useQuery({
     queryFn: () => getTournaments(),
   })
@@ -23,4 +23,4 @@ const tournament = () => {
   )
 }
 
-export default tournament
+export default Tournament

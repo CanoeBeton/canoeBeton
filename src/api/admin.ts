@@ -1,9 +1,10 @@
 import { api } from './api'
+import {Token} from "../domain/Token";
 
 export const getToken = async (credentials: {
   email: string
   password: string
-}): Promise<string> => {
+}): Promise<Token> => {
   const tokenResponse = await api()
     .post('/login', {
       ...credentials,

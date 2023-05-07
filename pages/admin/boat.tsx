@@ -2,7 +2,7 @@ import React from 'react'
 import AdminPage from '../../src/ui/admin/AdminPage'
 import { getBoats, deleteBoats } from '../../src/api/boat'
 import { useQuery } from 'react-query'
-const boat = () => {
+const Boat = () => {
   const { data: allBoats, status } = useQuery({ queryFn: () => getBoats() })
 
   return (
@@ -20,4 +20,4 @@ const boat = () => {
   )
 }
 
-export default boat
+export default Boat

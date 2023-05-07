@@ -57,7 +57,7 @@ const YearInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
             ))}
           </div>
           <h1>Nos partenaires</h1>
-          <img src={year.partenaire_mosaique} />
+          <img src={year.partenaire_mosaique} alt={'Mosaique des partenaires'} />
         </div>
       )}
     </div>

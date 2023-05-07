@@ -3,7 +3,7 @@ import { addEvent } from '../../../src/api/event'
 import { useRouter } from 'next/router'
 import Dropzone, { DropzoneState } from 'react-dropzone'
 
-const event = () => {
+const Event = () => {
   const router = useRouter()
   const [name, setName] = useState('')
   const [begin_date, setBegin_date] = useState('')
@@ -101,4 +101,4 @@ const event = () => {
   )
 }
 
-export default event
+export default Event

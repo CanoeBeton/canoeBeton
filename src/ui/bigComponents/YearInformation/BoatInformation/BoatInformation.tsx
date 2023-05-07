@@ -52,7 +52,7 @@ const BoatInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
               <h1>Propriétés du Béton</h1>
               {melange.map((melange) => {
                 return (
-                  <div>
+                  <div key={melange.title}>
                     <h2> {melange.title} </h2>
                     <div className={styles.melangeContainer}>
                       <span>

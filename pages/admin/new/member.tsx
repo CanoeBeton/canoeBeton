@@ -3,7 +3,7 @@ import { addMember } from '../../../src/api/member'
 import { useRouter } from 'next/router'
 import Dropzone, { DropzoneState } from 'react-dropzone'
 
-const member = () => {
+const Member = () => {
   const router = useRouter()
   const [name, setName] = useState('')
   const [role, setRole] = useState('')
@@ -98,4 +98,4 @@ const member = () => {
   )
 }
 
-export default member
+export default Member

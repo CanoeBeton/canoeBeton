@@ -5,7 +5,7 @@ import NewMelange from '../../../src/ui/admin/NewMelange'
 import { addMelanges } from '../../../src/api/melange'
 import { Melange } from '../../../src/domain/Melange'
 
-const boat = () => {
+const Boat = () => {
   const router = useRouter()
   const [name, setName] = useState('')
   const [poids, setPoids] = useState('')
@@ -171,4 +171,4 @@ const boat = () => {
   )
 }
 
-export default boat
+export default Boat

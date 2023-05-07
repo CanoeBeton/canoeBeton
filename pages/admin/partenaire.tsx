@@ -3,7 +3,7 @@ import AdminPage from '../../src/ui/admin/AdminPage'
 import { getPartenaire, deletePartenaires } from '../../src/api/partenaire'
 import { useQuery } from 'react-query'
 
-const partenaire = () => {
+const Partenaire = () => {
   const { data: allPartenaires, status } = useQuery({
     queryFn: () => getPartenaire(false),
   })
@@ -23,4 +23,4 @@ const partenaire = () => {
   )
 }
 
-export default partenaire
+export default Partenaire

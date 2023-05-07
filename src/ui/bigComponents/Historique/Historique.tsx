@@ -23,7 +23,7 @@ const Historique: FunctionComponent<PropsWithChildren<HeaderProps>> = ({}) => {
         {year
           ?.sort((a, b) => b.year - a.year)
           .map((year) => (
-            <YearCard year={year} />
+            <YearCard year={year} key={year.year} />
           ))}
       </div>
     </div>

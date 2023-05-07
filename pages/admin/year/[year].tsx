@@ -6,7 +6,7 @@ import Dropzone, { DropzoneState } from 'react-dropzone'
 import Link from 'next/link'
 import { Year } from '../../../src/domain/Year'
 
-const yearInfo = () => {
+const YearInfo = () => {
   const router = useRouter()
   const { year } = router.query as { year: string }
   const [mosaique, setMosaique] = useState<string | null>(null)
@@ -129,7 +129,7 @@ const yearInfo = () => {
               </button>
               <Link
                 className="w-1/3 text-center rounded bg-red-500 p-2"
-                href="/admin/year"
+                href="/admin/Year"
               >
                 Retour
               </Link>
@@ -158,13 +158,13 @@ const yearInfo = () => {
           <div>
             {icone && (
               <div className="m-10">
-                <p>Visualisation de l'image:</p>
+                <p>Visualisation de l&apos;image:</p>
                 <img src={icone} alt="uploaded" width={300} />
               </div>
             )}
             {mosaique && (
               <div className="m-10">
-                <p>Visualisation de l'image:</p>
+                <p>Visualisation de l&apos;image:</p>
                 <img src={mosaique} alt="uploaded" width={300} />
               </div>
             )}
@@ -177,4 +177,4 @@ const yearInfo = () => {
   )
 }
 
-export default yearInfo
+export default YearInfo

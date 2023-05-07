@@ -109,7 +109,7 @@ const MemberInfo = () => {
               </button>
               <Link
                 className="w-1/3 text-center rounded bg-red-500 p-2"
-                href="/admin/member"
+                href="/admin/Member"
               >
                 Retour
               </Link>
@@ -127,7 +127,7 @@ const MemberInfo = () => {
           </form>
           {image && (
             <div className="m-10">
-              <p>Visualisation de l'image:</p>
+              <p>Visualisation de l&apos;image:</p>
               <img src={image} alt="uploaded" width={300} />
             </div>
           )}
