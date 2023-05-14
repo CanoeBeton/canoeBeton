@@ -10,14 +10,17 @@ const NextEventList: FunctionComponent = () => {
 
   useEffect(() => {
     if (events !== undefined) {
-      events.sort((a, b) => {
+      setNextEvent(events.sort((a, b) => {
         const aDate = new Date(a.begin_date)
         const bDate = new Date(b.begin_date)
         return aDate >= bDate ? 1 : -1
-      })
-      setNextEvent(events.slice(0, 3))
+      }).filter((event) => {
+        const eventDate = new Date(event.begin_date)
+        const now = new Date()
+        return eventDate >= now
+      }).slice(0, 3))
     }
-  }, [status])
+  }, [events])
   
 
   const transformDate = (date: string) : string => {
@@ -26,18 +29,19 @@ const NextEventList: FunctionComponent = () => {
   }
 
   return (
-    <div className={'flex gap-[10vw] justify-center'}>
+    <div className={'flex gap-[4vw] justify-center flex-wrap'}>
       {nextEvent && nextEvent.map((event:Event) => 
         (
-        <div key={event.id} className={'bg-white'}> 
+        <div key={event.id} className={'bg-white w-[250px]'}> 
           <img src={event.image} alt={event.name} />
           <div className={'items-center justify-center flex flex-col gap-2 min-h-[5em]'}>
-            <h1 className={'text-3xl font-bold'}>{event.name}</h1>
+            <h1 className={'text-3xl font-bold text-center'}>{event.name}</h1>
             <span>À partir du {transformDate(event.begin_date)}!</span>
           </div>
         </div>
         )
         )}
+      {!nextEvent && <div>Aucun événement prévu!</div>}
     </div>
   );
 }
