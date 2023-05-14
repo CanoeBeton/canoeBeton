@@ -3,6 +3,7 @@ import Footer from './Footer/Footer'
 import styles from './Accueil.module.css'
 import Hero from './Hero/Hero'
 import Information from './Information/Information'
+import LastYear from './LastYear/LastYear'
 
 interface HeaderProps {}
 
@@ -11,6 +12,7 @@ const Accueil: FunctionComponent<PropsWithChildren<HeaderProps>> = ({}) => {
     <div className={styles.page}>
       <Hero />
       <Information />
+      <LastYear />
       <Footer />
     </div>
   )

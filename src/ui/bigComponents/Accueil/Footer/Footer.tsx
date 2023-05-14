@@ -17,7 +17,6 @@ const parent: CSSProperties | undefined = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: '#f5f8fa',
   width: '100%',
   gap: '10px',
   paddingTop: '10px',
