@@ -1,25 +1,11 @@
-import Image from 'next/image'
 import { CSSProperties, FunctionComponent, PropsWithChildren } from 'react'
 
 interface HeaderProps {}
 
 const Hero: FunctionComponent<PropsWithChildren<HeaderProps>> = ({}) => {
   return (
-    <div style={parent}>
-      <Image
-        src="Accueil/hero.webp"
-        alt="Hero image"
-        width={1920}
-        height={1080}
-        style={{
-          maxWidth: '100%',
-          height: 'auto',
-          minHeight: '10em',
-          objectPosition: '0 100',
-        }}
-        object-fit={'cover'}
-        priority={true}
-      />
+    <div className={'flex flex-col justify-center items-center'}>
+      <img src="Accueil/hero.webp" alt="Hero image" className={'h-[70vh] w-[100%] object-cover object-center'} />
       <div style={text}>
         <span style={title}>Canoë de Béton</span>
         <span style={subtitle}>DE L&apos;UNIVERSITÉ LAVAL</span>
@@ -28,19 +14,12 @@ const Hero: FunctionComponent<PropsWithChildren<HeaderProps>> = ({}) => {
   )
 }
 
-const parent: CSSProperties | undefined = {
-  flexDirection: 'column',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '100%',
-}
-
 const text: CSSProperties | undefined = {
   display: 'flex',
   flexDirection: 'column',
   position: 'absolute',
   top: '10em',
+  alignItems: 'center'
 }
 
 const title: CSSProperties | undefined = {

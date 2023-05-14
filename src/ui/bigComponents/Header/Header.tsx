@@ -9,7 +9,7 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
   current,
 }) => {
   return (
-    <div style={parent}>
+    <div className={'flex gap-6 z-10 items-center justify-center h-10 relative overflow-auto rounded m-2.5 shadow-header bg-beton'}>
       <Link href="/" style={current === 'home' ? activeLinkStyle : linkStyle}>
         Accueil
       </Link>
@@ -50,30 +50,11 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
 const activeLinkStyle = {
   color: 'blue',
   fontWeight: 'bold',
-  // fontSize: '1.2em',
   textDecoration: 'none',
 }
 
 const linkStyle = {
-  // fontSize: '1.1em',
   textDecoration: 'none',
-}
-
-// css class for the parent div
-const parent: CSSProperties | undefined = {
-  display: 'flex',
-  justifyContent: 'center',
-  gap: '15px',
-  alignItems: 'center',
-  backgroundColor: '#f5f8fa',
-  height: '40px',
-
-  zIndex: '100',
-  position: 'relative',
-  borderRadius: '4px',
-  margin: '10px 10px 30px 10px',
-  boxShadow: '3px 3px rgb(0 0 0 / 0.4)',
-  overflow: 'auto',
 }
 
 export default Header

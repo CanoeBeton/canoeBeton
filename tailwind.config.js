@@ -9,7 +9,14 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        'header': '3px 3px rgb(0 0 0 / 0.4)'
+      },
+      backgroundColor: {
+        'beton' : '#f5f8fa'
+      }
+    },
   },
   plugins: [],
 }
