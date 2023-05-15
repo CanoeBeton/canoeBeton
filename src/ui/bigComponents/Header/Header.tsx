@@ -1,5 +1,7 @@
 import Link from 'next/link'
-import { CSSProperties, FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent, PropsWithChildren, useState } from 'react'
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 interface HeaderProps {
   current: string
@@ -8,8 +10,11 @@ interface HeaderProps {
 const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
   current,
 }) => {
-  return (
-    <div className={'flex gap-6 z-10 items-center justify-center h-10 relative overflow-auto rounded m-2.5 shadow-header bg-beton'}>
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  const MenuOptions = () => {
+    return (
+    <>
       <Link href="/" style={current === 'home' ? activeLinkStyle : linkStyle}>
         Accueil
       </Link>
@@ -43,7 +48,27 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
       >
         Nous joindre
       </Link>
-    </div>
+    </>)
+  }
+  
+  return (
+      <div className={'flex z-10 justify-between h-10 relative rounded m-2.5 shadow-header bg-beton'}>
+        <img src="/favicon.webp" alt="Logo"/>
+        <div className={'flex gap-6 items-center justify-center pr-2 max-sm:hidden'}>
+          {MenuOptions()}
+        </div>
+        <button className='pr-2 sm:hidden' onClick={() => setIsMenuOpen(true)}>
+          <MenuIcon />
+        </button>
+        <div className={`flex flex-col fixed top-0 right-[50vw] bg-white w-[50vw] 
+                items-center h-full justify-around transition-transform duration-500 transform ${isMenuOpen ? 'translate-x-[50vw]' : 'translate-x-[100vw]'}
+                sm:hidden shadow-header bg-beton rounded
+                `}>
+          <button className='absolute top-2 right-2' onClick={() => setIsMenuOpen(false)}><CloseIcon fontSize='large'/></button>
+          {MenuOptions()}
+          <img src="/favicon.webp" alt="Logo"/>
+        </div>
+      </div>
   )
 }
 
