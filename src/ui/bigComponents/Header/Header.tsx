@@ -52,7 +52,7 @@ const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
   }
   
   return (
-      <div className={'flex z-10 justify-between h-10 relative rounded m-2.5 shadow-header bg-beton'}>
+      <div className={'flex z-10 justify-between h-10 relative rounded-md m-2.5 shadow-header bg-beton'}>
         <img src="/favicon.webp" alt="Logo"/>
         <div className={'flex gap-6 items-center justify-center pr-2 max-sm:hidden'}>
           {MenuOptions()}

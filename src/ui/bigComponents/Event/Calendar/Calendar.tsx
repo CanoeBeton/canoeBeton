@@ -1,5 +1,4 @@
 import { FunctionComponent, PropsWithChildren, useState, useEffect } from 'react'
-import styles from './Calendar.module.css'
 import {Event as EventDomaine} from '../../../../domain/Event'
 
 import FullCalendar from '@fullcalendar/react'
@@ -45,7 +44,7 @@ const Calendar: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ events })
   }
 
   return (
-    <span className={styles.calendar}>
+    <span className={'h-[100%]'}>
       <FullCalendar
         locale={frLocale}
         plugins={[dayGridPlugin, interactionPlugin]}

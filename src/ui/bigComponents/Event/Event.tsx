@@ -4,7 +4,6 @@ import {
   useState,
   useEffect,
 } from 'react'
-import styles from './Event.module.css'
 
 import { Event } from '../../../domain/Event'
 import { getEvents } from '../../../api/event'
@@ -45,32 +44,26 @@ const Event: FunctionComponent<PropsWithChildren<HeaderProps>> = ({}) => {
   }, [events])
 
   return (
-    <div className={styles.page}>
-      <div className={styles.title}>
-        <h1>ÉVÉNEMENTS</h1>
+    <div className={'flex flex-col align-center mx-[5vw] pt-4'}>
+      <div className={'flex justify-center'}>
+        <h1 className={'page-title'}>ÉVÉNEMENTS</h1>
       </div>
-      <h2> Prochain événement </h2>
+      <h2 className={'section-title'}> Prochain événement </h2>
       {nextEvent ? (
-        <div className={styles.next_event}>
-          <NextEvent event={nextEvent} />
-        </div>
+        <NextEvent event={nextEvent} />
       ) : (
         <p>Aucun événement prévu pour l&apos;instant</p>
       )}
 
-      <h2> Événement en cours </h2>
+      <h2 className={'section-title'}> Événement en cours </h2>
       {liveEvents.length !== 0 ? (
-        <>
-          <div className={styles.next_event}>
-            <LiveEvents events={liveEvents} />
-          </div>
-        </>
+        <LiveEvents events={liveEvents} />
       ) : (
-        <p>Aucun événement actuellement en cours!</p>
+        <p className={'mb-10'}>Aucun événement actuellement en cours!</p>
       )}
 
-      <div className={styles.calendar_section}>
-        <h2 className={styles.subtitle}>Notre calendrier</h2>
+      <div>
+        <h2 className={'section-title'}>Notre calendrier</h2>
         {status == 'error' && (
           <span>Erreur lors du chargement des événements</span>
         )}

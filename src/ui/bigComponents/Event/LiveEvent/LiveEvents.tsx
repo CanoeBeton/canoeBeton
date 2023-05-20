@@ -1,4 +1,4 @@
-import { FunctionComponent, PropsWithChildren, useState, useEffect } from 'react'
+import { FunctionComponent, PropsWithChildren} from 'react'
 import styles from './LiveEvents.module.css'
 import { Event } from '../../../../domain/Event'
 

@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer components {
+  .page-title {
+    @apply font-bold text-5xl pb-8;
+  }
+
+  .section-title {
+    @apply font-bold text-4xl pb-8
+  }
+}
+
 html,
 body {
   padding: 0;
