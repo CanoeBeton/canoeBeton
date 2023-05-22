@@ -1,6 +1,4 @@
-import Image from 'next/image'
 import { FunctionComponent, PropsWithChildren } from 'react'
-import styles from './MemberCard.module.css'
 
 import { Member } from '../../../../domain/Member'
 
@@ -12,11 +10,11 @@ const MemberCard: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
   member,
 }) => {
   return (
-    <div className={`${styles.card} w-[150px]`}>
-      {member.role ? <span className={styles.role}>{member.role}</span> : null}
+     <div className={`bg-slate-400 gap-1 p-1 m-2 flex flex-col items-center w-[300px] text-center whitespace-pre-line`}>
+      {member.role ? <span className={'text-2xl h-16 font-bold'}>{member.role}</span> : null}
       <img src={member.image} alt={member.name} width={300} height={300} />
-      <span className={styles.name}>{member.name}</span>
-      <span className={styles.description}>{member.description}</span>
+      <span className={'text-2xl'}>{member.name}</span>
+      <span>{member.description}</span>
     </div>
   )
 }

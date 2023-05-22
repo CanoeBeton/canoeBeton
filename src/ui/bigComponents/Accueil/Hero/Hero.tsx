@@ -1,4 +1,4 @@
-import { CSSProperties, FunctionComponent, PropsWithChildren } from 'react'
+import { FunctionComponent, PropsWithChildren } from 'react'
 
 interface HeaderProps {}
 

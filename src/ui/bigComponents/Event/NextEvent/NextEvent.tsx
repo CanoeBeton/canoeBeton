@@ -14,7 +14,7 @@ const NextEvent: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ event })
   return (
     <div className={'flex gap-[5vw] my-12'}>
       <div className={'flex flex-col items-center p-2d w-[45vw] gap-6'}>
-        <h1 className={'font-bold text-2xl pb-8;'}>{event.name}</h1>
+        <h1 className={'font-bold text-2xl pb-8'}>{event.name}</h1>
         <p className={'leading-6'}>{event.description}</p>
         <Countdown date={new Date(event.begin_date)} className={'m-3 font-semibold text-3xl'}>
           <Completionist />

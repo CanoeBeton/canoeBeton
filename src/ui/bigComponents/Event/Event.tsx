@@ -35,9 +35,10 @@ const Event: FunctionComponent<PropsWithChildren<HeaderProps>> = ({}) => {
       )
 
       setLiveEvents(
-        events.filter((event) => {
+        events.filter((event) => { return (
           new Date(event.begin_date) <= new Date(Date.now()) &&
-            new Date(event.end_date) >= new Date(Date.now())
+          new Date(event.end_date) >= new Date(Date.now())
+        )
         })
       )
     }
