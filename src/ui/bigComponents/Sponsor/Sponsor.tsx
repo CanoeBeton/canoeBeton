@@ -1,7 +1,5 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
 
-import styles from './Sponsor.module.css'
-
 import { useQuery } from 'react-query'
 import { getPartenaire } from '../../../api/partenaire'
 import SponsorCard from './SponsorCard/SponsorCard'
@@ -17,19 +15,17 @@ const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
   })
 
   return (
-    <div className={styles.page}>
-      <div className={styles.h1}>Partenaires</div>
-      <h2>Nos partenaire de l&apos;année! </h2>
+    <div className={'mx-4 flex flex-col'}>
+      <div className={'page-title self-center'}>Partenaires</div>
+      <h2 className={'section-title'}>Nos partenaire de l&apos;année! </h2>
       {yearStatus == 'error' && (
         <span>Une erreur est survenue, veillez réessayer plustard</span>
       )}
       {yearStatus == 'loading' && <span> Chargement en cours ! </span>}
-      {yearStatus == 'success' && (
-        <div className={styles.imageContainer}>
-          <img src={year.partenaire_mosaique} alt={'Mosaique des partenaires'}/>
-        </div>
-      )}
-      <h2>Nos partenaire </h2>
+      {yearStatus == 'success' && 
+        <img className={'mx-[10vw]'} src={year.partenaire_mosaique} alt={'Mosaique des partenaires'}/>
+      }
+      <h2 className={'section-title'}>Nos partenaire </h2>
       {partenaireStatus == 'error' && (
         <span>Une erreur est survenue, veillez réessayer plustard</span>
       )}
