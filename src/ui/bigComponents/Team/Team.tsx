@@ -10,7 +10,7 @@ const Team: FunctionComponent<PropsWithChildren> = ({}) => {
 
   return (
     <div className={'flex flex-col mx-[6vw]'}>
-      <span className={'page-title'}>Notre équipe</span>
+      <span className={'page-title self-center'}>Notre équipe</span>
       {status === 'loading' && <div>Chargement en cours...</div>}
       {status === 'error' && <div>Une erreur est survenue</div>}
       {status === 'success' && (
