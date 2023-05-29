@@ -15,7 +15,7 @@ const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
   })
 
   return (
-    <div className={'mx-4 flex flex-col'}>
+    <div className={'flex flex-col'}>
       <div className={'page-title self-center'}>Partenaires</div>
       <h2 className={'section-title'}>Nos partenaire de l&apos;année! </h2>
       {yearStatus == 'error' && (
