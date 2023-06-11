@@ -19,7 +19,6 @@ const parent: CSSProperties | undefined = {
   alignItems: 'center',
   width: '100%',
   gap: '10px',
-  paddingTop: '10px',
   fontSize: '1.2em',
 }
 

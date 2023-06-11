@@ -7,7 +7,9 @@ const event = () => {
   return (
     <>
       <Header current={'event'} />
-      <Event/>
+      <div className={`bg-beton bg-opacity-70`}>
+        <Event/>
+      </div>
       <Footer/>
     </>
   )
