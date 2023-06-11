@@ -15,7 +15,7 @@ const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
   })
 
   return (
-    <div className={'flex flex-col'}>
+    <div className={'flex flex-col bg-beton'}>
       <div className={'page-title self-center'}>Partenaires</div>
       <h2 className={'section-title'}>Nos partenaire de l&apos;année! </h2>
       {yearStatus == 'error' && (
@@ -32,8 +32,8 @@ const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
       {partenaireStatus == 'loading' && <span> Chargement en cours ! </span>}
       {partenaireStatus == 'success' && (
         <div>
-          {partenaire?.map((partenaire) => (
-            <SponsorCard partenaire={partenaire} key={partenaire.name}/>
+          {partenaire?.map((partenaire, index) => (
+            <SponsorCard partenaire={partenaire} pictureLeft={index % 2 == 0} key={partenaire.name}/>
           ))}
         </div>
       )}

@@ -3,26 +3,25 @@ import {Partenaire} from "../../../../domain/Partenaire";
 
 interface SponsorCardProps {
   partenaire : Partenaire
-  isRight: boolean
+  pictureLeft: boolean
 }
 
 const sponsorCard: FunctionComponent<PropsWithChildren<SponsorCardProps>> = ({
  partenaire,
- isRight = true
+ pictureLeft = true
 }) => {
   return (
-    <div>
-      <div className={`flex gap-3 rounded p-1 m-1 justify-between`}>
-        <div className={'text-justify'}>{partenaire.description}</div>
-        <div className={''}>
-          <img
-            src={partenaire.image}
-            width={1000}
-            height={1000}
-            alt={'logo sponsor'}
-            className={''}
-          />
-        </div>
+    <div className={`flex ${pictureLeft ? 'flex-row-reverse' : 'flex-row'} bg-gradient-to-${pictureLeft ? 'l' : 'r'} from-white to-transparent`}>
+      <div className={`flex flex-col w-[50vw] p-8`}>
+        <div>{ partenaire.name }</div>
+        <div className={''}>{partenaire.description}</div>
+      </div>
+      <div className={'items-center max-h-[40vh] w-[50vw] p-8'}>
+        <img
+          src={partenaire.image}
+          alt='logo sponsor'
+          className={'object-contain h-[100%]'}
+        />
       </div>
     </div>
   )
