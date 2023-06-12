@@ -2,15 +2,8 @@
     font-size: 4rem;
     font-weight: bold;
     color: #000;
-    margin-bottom: 1em;
+    margin-bottom: 0.1em;
     text-align: center;
-}
-
-.page{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .tournament_container{

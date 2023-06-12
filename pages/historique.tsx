@@ -7,7 +7,9 @@ const tournament = () => {
   return (
     <>
       <Header current={'historique'} />
-      <Historique />
+      <div className={`bg-gray-100 bg-opacity-80`}>
+        <Historique />
+      </div>
       <Footer />
     </>
   )

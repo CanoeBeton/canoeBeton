@@ -25,7 +25,7 @@ const Sponsor: FunctionComponent<PropsWithChildren> = ({}) => {
       {yearStatus == 'success' && 
         <img className={'mx-[10vw]'} src={year.partenaire_mosaique} alt={'Mosaique des partenaires'}/>
       }
-      <h2 className={'section-title'}>Nos partenaire </h2>
+      <h2 className={'section-title py-4'}>Nos partenaire </h2>
       {partenaireStatus == 'error' && (
         <span>Une erreur est survenue, veillez réessayer plustard</span>
       )}

@@ -13,7 +13,7 @@ const Historique: FunctionComponent<PropsWithChildren<HeaderProps>> = ({}) => {
   })
 
   return (
-    <div className={styles.page}>
+    <div className={`flex flex-col items-center justify-center`}>
       <span className={styles.page_title}>Historique</span>
       <div className={styles.tournament_container}>
         {status == 'error' && (
