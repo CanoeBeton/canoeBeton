@@ -109,7 +109,7 @@ const TournamentInfo = () => {
               </button>
               <Link
                 className="w-1/3 text-center rounded bg-red-500 p-2"
-                href="/admin/Rournament"
+                href="/admin/tournament"
               >
                 Retour
               </Link>

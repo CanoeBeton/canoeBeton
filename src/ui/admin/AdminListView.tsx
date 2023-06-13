@@ -12,9 +12,15 @@ interface AdminPageProps {
   what: 'boat' | 'member' | 'tournament' | 'partenaire' | 'event'
   allEntities: Member[] | Tournament[] | Boat[] | Partenaire[] | Event[]
   deleteAllFunc: (ids: string[]) => void
+  keyPropriety: string
 }
 
-const AdminPage = ({ what, allEntities, deleteAllFunc }: AdminPageProps) => {
+const AdminPage = ({
+  what,
+  allEntities,
+  deleteAllFunc,
+  keyPropriety,
+}: AdminPageProps) => {
   const router = useRouter()
   const [selectedForDeletion, setSelectedForDeletion] = React.useState<
     string[]
@@ -22,7 +28,7 @@ const AdminPage = ({ what, allEntities, deleteAllFunc }: AdminPageProps) => {
 
   const modifyClickHandler = (e: any) => {
     console.log(e.target.id)
-    router.push(`/admin/${what}/${e.target.id}`)
+    router.push(`${what}/${e.target.id}`)
   }
 
   const removeHandler = (selId: string) => {
@@ -43,75 +49,42 @@ const AdminPage = ({ what, allEntities, deleteAllFunc }: AdminPageProps) => {
   const deleteBtnStyle =
     'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
   const nameStyle = 'w-1/2 text-center text-xl '
-  let mappedEntities
 
-  if (what === 'boat' || what === 'partenaire') {
-    mappedEntities = allEntities.map((entity) => {
-      return (
-        <div
-          className={` flex  justify-around border border-gray-400 p-1 ${
-            selectedForDeletion.includes(entity.name) ? ' bg-red-500' : ''
-          } ${
-            what === 'partenaire'
-              ? "active" in entity && entity.active
-                ? 'bg-green-400/20'
-                : ''
-              : ''
-          }`}
-          key={entity.name}
+  let mappedEntities = allEntities.map((entity: any) => {
+    return (
+      <div
+        className={` flex  justify-around border border-gray-400 p-1 ${
+          selectedForDeletion.includes(entity[keyPropriety])
+            ? ' bg-red-500'
+            : ''
+        }`}
+        key={entity[keyPropriety]}
+      >
+        <p className={nameStyle}>{entity.name}</p>
+        <button
+          id={entity[keyPropriety]}
+          onClick={modifyClickHandler}
+          className={modifyBtnStyle}
         >
-          <p className={nameStyle}>{entity.name}</p>
-          <button
-            id={entity.name}
-            onClick={modifyClickHandler}
-            className={modifyBtnStyle}
-          >
-            Modifier
-          </button>
-          <button
-            onClick={() => removeHandler(entity.name)}
-            className={deleteBtnStyle}
-          >
-            Supprimer
-          </button>
-        </div>
-      )
-    })
-  } else {
-    mappedEntities = allEntities.map((entity: any) => {
-      return (
-        <div
-          className={` flex  justify-around border border-gray-400 p-1 ${
-            selectedForDeletion.includes(entity.id) ? ' bg-red-500' : ''
-          }`}
-          key={entity.id}
+          Modifier
+        </button>
+        <button
+          onClick={() => removeHandler(entity[keyPropriety])}
+          className={deleteBtnStyle}
         >
-          <p className={nameStyle}>{entity.name}</p>
+          Supprimer
+        </button>
+        {what === 'member' && (
           <button
-            id={entity.id}
-            onClick={modifyClickHandler}
-            className={modifyBtnStyle}
+            className="text-xs bg-green-500 p-2 text-white rounded"
+            onClick={() => addYearMember(new Date().getFullYear(), entity.id)}
           >
-            Modifier
+            Associer avec {new Date().getFullYear()}
           </button>
-          <button
-            onClick={() => removeHandler(entity.id)}
-            className={deleteBtnStyle}
-          >
-            Supprimer
-          </button>
-          {what === 'member' && (
-            <button
-              className="text-xs bg-green-500 p-2 text-white rounded"
-              onClick={() => addYearMember(new Date().getFullYear(), entity.id)}
-            >
-              Associer avec {new Date().getFullYear()}
-            </button>
-          )}
-        </div>
-      )
-    })
-  }
+        )}
+      </div>
+    )
+  })
 
   return (
     <div>
@@ -137,5 +110,4 @@ const AdminPage = ({ what, allEntities, deleteAllFunc }: AdminPageProps) => {
     </div>
   )
 }
-
 export default AdminPage

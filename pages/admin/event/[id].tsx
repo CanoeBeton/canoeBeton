@@ -38,7 +38,7 @@ const EventInfo = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault()
 
-    if (event){
+    if (event) {
       let res = {
         id: event.id,
         image: (image as string) ? (image as string) : event.image,
@@ -133,7 +133,7 @@ const EventInfo = () => {
               </button>
               <Link
                 className="w-1/3 text-center rounded bg-red-500 p-2"
-                href="/admin/Event"
+                href="/admin/event"
               >
                 Retour
               </Link>

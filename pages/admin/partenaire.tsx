@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminPage from '../../src/ui/admin/AdminPage'
+import AdminPage from '../../src/ui/admin/AdminListView'
 import { getPartenaire, deletePartenaires } from '../../src/api/partenaire'
 import { useQuery } from 'react-query'
 
@@ -15,6 +15,7 @@ const Partenaire = () => {
           what="partenaire"
           allEntities={allPartenaires}
           deleteAllFunc={deletePartenaires}
+          keyPropriety="name"
         />
       ) : (
         <div>Loading...</div>

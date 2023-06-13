@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminPage from '../../src/ui/admin/AdminPage'
+import AdminPage from '../../src/ui/admin/AdminListView'
 import { getEvents, deleteEvents } from '../../src/api/event'
 import { useQuery } from 'react-query'
 
@@ -13,6 +13,7 @@ const Event = () => {
           what="event"
           allEntities={allEvents}
           deleteAllFunc={deleteEvents}
+          keyPropriety="id"
         />
       ) : (
         <div>Loading...</div>

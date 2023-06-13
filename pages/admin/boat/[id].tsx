@@ -13,7 +13,7 @@ const BoatInfo = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault()
 
-    if (boat){
+    if (boat) {
       let res = { name: boat.name } as Boat
       for (const input of e.target.form) {
         if (input.value !== '' && input.name) {
@@ -130,7 +130,7 @@ const BoatInfo = () => {
               </button>
               <Link
                 className="w-1/3 text-center rounded bg-red-500 p-2"
-                href="/admin/Boat"
+                href="/admin/boat"
               >
                 Retour
               </Link>

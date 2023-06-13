@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminPage from '../../src/ui/admin/AdminPage'
+import AdminPage from '../../src/ui/admin/AdminListView'
 import { getTournaments, deleteTournaments } from '../../src/api/tournament'
 import { useQuery } from 'react-query'
 
@@ -15,6 +15,7 @@ const Tournament = () => {
           what="tournament"
           allEntities={allTournaments}
           deleteAllFunc={deleteTournaments}
+          keyPropriety="id"
         />
       ) : (
         <div>Loading...</div>
