@@ -56,7 +56,7 @@ const AdminPage = ({
         className={` flex  justify-around border border-gray-400 p-1 ${
           selectedForDeletion.includes(entity[keyPropriety])
             ? ' bg-red-500'
-            : ''
+            : 'bg-white'
         }`}
         key={entity[keyPropriety]}
       >
@@ -91,14 +91,14 @@ const AdminPage = ({
       <AdminNavBar />
       <div className=" flex gap-5">
         <button
-          className="p-2 m-1 rounded-sm border-green-500 border-2"
+          className="p-2 m-1 rounded-sm border-green-500 border-2 bg-white"
           onClick={() => router.push(`/admin/new/${what}`)}
         >
           Ajouter un {what}
         </button>
         <button
           {...(selectedForDeletion.length > 0 ? {} : { disabled: true })}
-          className=" disabled:text-gray-300 p-2 m-1 rounded-sm border-green-500 border-2"
+          className=" disabled:text-gray-300 p-2 m-1 rounded-sm border-red-500 border-2 bg-white"
           onClick={deleteAll}
         >
           Confirmer suppression
