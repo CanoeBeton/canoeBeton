@@ -98,7 +98,7 @@ const AdminPage = ({
         </button>
         <button
           {...(selectedForDeletion.length > 0 ? {} : { disabled: true })}
-          className=" disabled:text-gray-300 p-2 m-1 rounded-sm border-red-500 border-2 bg-white"
+          className=" disabled:invisible p-2 m-1 rounded-sm border-red-500 border-2 bg-white "
           onClick={deleteAll}
         >
           Confirmer suppression
