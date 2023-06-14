@@ -21,6 +21,20 @@ const AdminPage = ({
   deleteAllFunc,
   keyPropriety,
 }: AdminPageProps) => {
+  const mapWhatToTitle = (what: string) => {
+    switch (what) {
+      case 'boat':
+        return 'bateau'
+      case 'member':
+        return 'membre'
+      case 'tournament':
+        return 'tournoi'
+      case 'partenaire':
+        return 'partenaire'
+      case 'event':
+        return 'évènement'
+    }
+  }
   const router = useRouter()
   const [selectedForDeletion, setSelectedForDeletion] = React.useState<
     string[]
@@ -94,7 +108,7 @@ const AdminPage = ({
           className="p-2 m-1 rounded-sm border-green-500 border-2 bg-white"
           onClick={() => router.push(`/admin/new/${what}`)}
         >
-          Ajouter un {what}
+          Ajouter un {mapWhatToTitle(what)}
         </button>
         <button
           {...(selectedForDeletion.length > 0 ? {} : { disabled: true })}

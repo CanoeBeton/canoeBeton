@@ -35,7 +35,7 @@ const Year = () => {
               return (
                 <div key={year.year} className="flex gap-3 mt-1">
                   <div
-                    className={` grow border-b border-gray-500/10 p-5 hover:bg-green-400/25 hover:border-gray-500 ${
+                    className={` grow bg-white/50 p-5 hover:bg-green-400/75 ${
                       year.active ? 'bg-green-300' : ''
                     }`}
                     onClick={() => {
