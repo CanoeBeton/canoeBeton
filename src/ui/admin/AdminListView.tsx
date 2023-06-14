@@ -102,7 +102,7 @@ const AdminPage = ({
 
   return (
     <div>
-      <AdminNavBar />
+      <AdminNavBar selected={what} />
       <div className=" flex gap-5">
         <button
           className="p-2 m-1 rounded-sm border-green-500 border-2 bg-white"

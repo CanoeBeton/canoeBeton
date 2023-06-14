@@ -6,6 +6,11 @@
   background-color: #f5f5f5;
   padding: 0 1rem;
   height: 3rem;
-  max-width: min-content;
+  padding-left: 10%;
+  padding-right: 10%;
   gap: 1rem;
+}
+
+.selected {
+  text-decoration: underline;
 }
