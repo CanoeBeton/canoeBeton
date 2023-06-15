@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminPage from '../../src/ui/admin/AdminPage'
+import AdminPage from '../../src/ui/admin/AdminListView'
 import { getMembers, deleteMembers } from '../../src/api/member'
 import { useQuery } from 'react-query'
 
@@ -13,6 +13,7 @@ const Member = () => {
           what="member"
           allEntities={allMembers}
           deleteAllFunc={deleteMembers}
+          keyPropriety="id"
         />
       ) : (
         <div>Loading...</div>

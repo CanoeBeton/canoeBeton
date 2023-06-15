@@ -21,8 +21,8 @@ const Year = () => {
 
   return (
     <div>
-      <div className="flex justify-between m-2">
-        <AdminNavBar />
+      <div className="flex gap-1 m-2">
+        <AdminNavBar selected="year" />
         <button className="" onClick={() => router.push('/admin/new/year')}>
           Nouvelle année
         </button>
@@ -35,7 +35,7 @@ const Year = () => {
               return (
                 <div key={year.year} className="flex gap-3 mt-1">
                   <div
-                    className={` grow border-b border-gray-500/10 p-5 hover:border-double hover:border-2 hover:border-gray-500 ${
+                    className={` grow bg-white/50 p-5 hover:bg-green-400/75 ${
                       year.active ? 'bg-green-300' : ''
                     }`}
                     onClick={() => {

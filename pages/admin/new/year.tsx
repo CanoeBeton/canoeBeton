@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react'
 import { addYear } from '../../../src/api/year'
 import { useRouter } from 'next/router'
 import Dropzone, { DropzoneState } from 'react-dropzone'
-import {Year} from '../../../src/domain/Year'
+import { Year } from '../../../src/domain/Year'
 
 const Year = () => {
   const router = useRouter()
@@ -92,14 +92,6 @@ const Year = () => {
             <img src={year.partenaire_mosaique} alt="" />
           )}
         </div>
-        {/* <p>Active</p>
-        <input
-          type="checkbox"
-          name="active"
-          placeholder="active"
-          onChange={(e) => setYear({ ...year, active: e.target.checked })}
-          className="border-2 border-gray-300 rounded-md p-2 w-full"
-        /> */}
         <p>Icone</p>
         <div className="border-2 border-gray-300 rounded-md p-2 w-full">
           {dropzone}

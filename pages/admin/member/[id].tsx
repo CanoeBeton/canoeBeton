@@ -109,7 +109,7 @@ const MemberInfo = () => {
               </button>
               <Link
                 className="w-1/3 text-center rounded bg-red-500 p-2"
-                href="/admin/Member"
+                href="/admin/member"
               >
                 Retour
               </Link>

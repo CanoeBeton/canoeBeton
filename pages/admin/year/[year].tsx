@@ -89,7 +89,7 @@ const YearInfo = () => {
   const inputStyle = 'border-2 border-gray-300 rounded-md p-2 w-full'
 
   return (
-    <div>
+    <div className="my-5">
       {status === 'success' ? (
         <div>
           <form className="mx-5">
@@ -129,7 +129,7 @@ const YearInfo = () => {
               </button>
               <Link
                 className="w-1/3 text-center rounded bg-red-500 p-2"
-                href="/admin/Year"
+                href="/admin/year"
               >
                 Retour
               </Link>
