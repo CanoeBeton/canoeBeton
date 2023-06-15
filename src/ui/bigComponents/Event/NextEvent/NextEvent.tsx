@@ -8,7 +8,7 @@ interface HeaderProps {
 }
 
 const NextEvent: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ event }) => {
-  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+  const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
     if (completed) {
       return <span className={'font-semibold text-3xl'}> L&apos;événement est maintenant en live! </span>;
     } else {
