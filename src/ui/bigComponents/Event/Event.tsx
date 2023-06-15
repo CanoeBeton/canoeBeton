@@ -63,7 +63,7 @@ const Event: FunctionComponent<PropsWithChildren<HeaderProps>> = ({}) => {
         <p className={'mb-10'}>Aucun événement actuellement en cours!</p>
       )}
 
-      <div>
+      <div className={'mb-10'}>
         <h2 className={'section-title'}>Notre calendrier</h2>
         {status == 'error' && (
           <span>Erreur lors du chargement des événements</span>

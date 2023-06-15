@@ -44,7 +44,7 @@ const Calendar: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ events })
   }
 
   return (
-    <span className={'h-[100%]'}>
+   <span className={'h-[100%]'}>
       <FullCalendar
         locale={frLocale}
         plugins={[dayGridPlugin, interactionPlugin]}

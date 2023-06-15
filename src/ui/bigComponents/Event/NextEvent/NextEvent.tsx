@@ -1,5 +1,4 @@
 import { FunctionComponent, PropsWithChildren, useState, useEffect } from 'react'
-import styles from './NextEvent.module.css'
 import { Event } from '../../../../domain/Event'
 import Countdown from 'react-countdown';
 
@@ -9,16 +8,42 @@ interface HeaderProps {
 }
 
 const NextEvent: FunctionComponent<PropsWithChildren<HeaderProps>> = ({ event }) => {
-  const Completionist = () => <span className={'font-semibold text-3xl'}> L&apos;événement est maintenant en live! </span>;
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+    if (completed) {
+      return <span className={'font-semibold text-3xl'}> L&apos;événement est maintenant en live! </span>;
+    } else {
+      return (
+        <div className='flex flex-row gap-4 text-center text-xl'>
+          <div className={'flex flex-col items-center'}>
+            <span>{days}</span>
+            <span>Jours</span>
+          </div>
+          <span>:</span>
+          <div className={'flex flex-col'}>
+            <span>{hours}</span>
+            <span>Heures</span>
+          </div>
+          <span>:</span>
+          <div className={'flex flex-col'}>
+            <span>{minutes}</span>
+            <span>Minutes</span>
+          </div>
+          <span>:</span>
+          <div className={'flex flex-col'}>
+            <span>{seconds}</span>
+            <span>Secondes</span>
+          </div>
+        </div>
+      );
+    }
+  };
 
   return (
-    <div className={'flex gap-[5vw] my-12'}>
+    <div className={'flex my-12'}>
       <div className={'flex flex-col items-center p-2d w-[45vw] gap-6'}>
-        <h1 className={'font-bold text-2xl pb-8'}>{event.name}</h1>
-        <p className={'leading-6'}>{event.description}</p>
-        <Countdown date={new Date(event.begin_date)} className={'m-3 font-semibold text-3xl'}>
-          <Completionist />
-        </Countdown>
+        <h1 className={'font-bold text-2xl pb-4'}>{event.name}</h1>
+        <p className={'leading-6'}>{event.description}</p>s
+        <Countdown date={new Date(event.begin_date)} className={'m-3 font-semibold text-3xl'} renderer={renderer} />
       </div>
       <div className={'flex flex-col items-center p-2 max-h-[40vh] w-[45vw]'}>
         <img
