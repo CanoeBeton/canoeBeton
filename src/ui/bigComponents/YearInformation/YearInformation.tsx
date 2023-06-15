@@ -2,11 +2,11 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 import styles from './YearInformation.module.css'
 import { getYear } from '../../../api/year'
 import { useQuery } from 'react-query'
-import {getTournamentsByYear} from '../../../api/tournament'
+import { getTournamentsByYear } from '../../../api/tournament'
 import TournamentCard from './TournamentCard/TournamentCard'
 import BoatInformation from './BoatInformation/BoatInformation'
 import MemberCard from '../Team/MemberCard/MemberCard'
-import {getMembersByYear} from '../../../api/member'
+import { getMembersByYear } from '../../../api/member'
 
 interface HeaderProps {
   yearName: string
@@ -37,9 +37,9 @@ const YearInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
       )}
       {statusYear == 'loading' && <span> Chargement en cours ! </span>}
       {statusYear == 'success' && (
-        <div>
-          <h1>Les tournois</h1>
-          <div className={styles.tournamentContainer}>
+        <div className="px-[5vw] py-5 bg-beton/70 ">
+          <h1 className="section-title">Les tournois</h1>
+          <div className="grid-cols-1 md:grid-cols-2 grid gap-5 auto-rows-fr xl:grid-cols-3 mb-10">
             {statusTournaments == 'error' && (
               <span>Aucun tournoi pour cette année!</span>
             )}
@@ -48,16 +48,18 @@ const YearInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                 <TournamentCard key={tournament.id} tournament={tournament} />
               ))}
           </div>
-          <h1>Le bateau</h1>
           <BoatInformation boatName={year?.boat_name} />
-          <h1>Les responsables</h1>
+          <h1 className="section-title">Les responsables</h1>
           <div className={styles.responsableContainer}>
             {responsables?.map((member) => (
               <MemberCard key={member.id} member={member} />
             ))}
           </div>
-          <h1>Nos partenaires</h1>
-          <img src={year.partenaire_mosaique} alt={'Mosaique des partenaires'} />
+          <h1 className="section-title">Nos partenaires</h1>
+          <img
+            src={year.partenaire_mosaique}
+            alt={'Mosaique des partenaires'}
+          />
         </div>
       )}
     </div>
