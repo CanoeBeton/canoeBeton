@@ -21,8 +21,8 @@ const Year = () => {
 
   return (
     <div>
-      <div className="flex justify-between m-2">
-        <AdminNavBar />
+      <div className="flex gap-1 m-2">
+        <AdminNavBar selected="year" />
         <button className="" onClick={() => router.push('/admin/new/year')}>
           Nouvelle année
         </button>
