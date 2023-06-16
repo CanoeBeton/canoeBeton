@@ -22,14 +22,14 @@ const BoatInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
   })
 
   return (
-    <div className=" flex gap-10">
+    <div className=" flex flex-col md:flex-row gap-10 mb-10">
       {status == 'error' && (
         <span>Une erreur est survenue, veillez réessayer plus tard</span>
       )}
       {status == 'loading' && <span> Chargement en cours ! </span>}
       {status == 'success' && (
         <>
-          <div className=" rounded-lg bg-white p-10 flex-1 border-2 border-black">
+          <div className="rounded-lg bg-white p-10 flex-1 border-2 border-black gap-3 flex flex-col">
             <h1 className="section-title">Dimensions, Caractéristique</h1>
             <div> Poids: {boat.poids} </div>
             <div> Longueur: {boat.longueur} </div>
@@ -38,7 +38,7 @@ const BoatInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
             <div> Épaisseur: {boat.epaisseur}</div>
             <div className="">
               <div> Couleur: </div>
-              <div className="">
+              <div className="pl-4">
                 <div>Extérieur: {boat.couleur_exterieure}</div>
                 <div>Intérieur: {boat.couleur_interieure}</div>
               </div>

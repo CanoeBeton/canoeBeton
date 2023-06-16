@@ -20,7 +20,9 @@ const Team: FunctionComponent<PropsWithChildren> = ({}) => {
             {members
               .filter((member) => member.role !== null)
               .map((member) => (
-                <MemberCard member={member} key={member.name} />
+                <div key={member.name}> 
+                  <MemberCard member={member} />
+                </div>
               ))}
           </div>
           <span className={'section-title'}>Nos membres</span>
@@ -28,7 +30,9 @@ const Team: FunctionComponent<PropsWithChildren> = ({}) => {
             {members
               .filter((member) => member.role === null)
               .map((member) => (
-                <MemberCard member={member} key={member.name} />
+                <div key={member.name}> 
+                  <MemberCard member={member} />
+                </div>
               ))}
           </div>
         </>

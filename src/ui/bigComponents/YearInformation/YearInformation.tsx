@@ -1,5 +1,4 @@
 import { FunctionComponent, PropsWithChildren } from 'react'
-import styles from './YearInformation.module.css'
 import { getYear } from '../../../api/year'
 import { useQuery } from 'react-query'
 import { getTournamentsByYear } from '../../../api/tournament'
@@ -31,13 +30,13 @@ const YearInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
   })
 
   return (
-    <div className={styles.page}>
+    <div className='flex flex-col'>
       {statusYear == 'error' && (
         <span>Une erreur est survenue, veillez réessayer plustard</span>
       )}
       {statusYear == 'loading' && <span> Chargement en cours ! </span>}
       {statusYear == 'success' && (
-        <div className="px-[5vw] py-5 bg-beton/70 ">
+        <div className="px-[5vw] bg-beton/70 pt-4 pb-8">
           <h1 className="section-title">Les tournois</h1>
           <div className="grid-cols-1 md:grid-cols-2 grid gap-5 auto-rows-fr xl:grid-cols-3 mb-10">
             {statusTournaments == 'error' && (
@@ -50,16 +49,17 @@ const YearInformation: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
           </div>
           <BoatInformation boatName={year?.boat_name} />
           <h1 className="section-title">Les responsables</h1>
-          <div className={styles.responsableContainer}>
+          <div className="grid-cols-1 md:grid-cols-3 grid gap-5 auto-rows-fr xl:grid-cols-4 mb-10">
             {responsables?.map((member) => (
-              <MemberCard key={member.id} member={member} />
+              <div key={member.id} className='flex items-center justify-center'>
+                <MemberCard  member={member} />
+              </div>
             ))}
           </div>
           <h1 className="section-title">Nos partenaires</h1>
-          <img
-            src={year.partenaire_mosaique}
-            alt={'Mosaique des partenaires'}
-          />
+          <div className='flex justify-center'>
+            <img src={year.partenaire_mosaique} alt={'Mosaique des partenaires'}/>
+          </div>
         </div>
       )}
     </div>
